@@ -1,0 +1,115 @@
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>bower_components/bootstrap/css/deliverynote.css">
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300,400,700'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation-flex.min.css'>
+    <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'><link rel="stylesheet" href="./style.css">
+    <style>
+        @media print {
+            .control-group {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<div class="row expanded">
+    <main class="columns">
+        <div class="inner-container">
+            <header class="row control-group">
+                <a class="button" href="<?= base_url() ?>Home/dashboard" >
+                    <i class="ion-ios-home"></i>
+                    Home
+                </a>
+                &nbsp;&nbsp;<a href="javascript:window.print()" class="button"><i class="ion-ios-paper-outline"></i> Print Report</a>
+
+            <style>
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+            </style>
+            </header>
+            <section class="row" style="display:block;">
+                <br>
+                <div class="large invoice-container">
+                    <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $month.'-'.$year?> </h2>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th>In</th>
+                            <th>Out</th>
+
+                            <th>Per Day Salary</th>
+                            <th>OT Hours</th>
+                            <th>OT Payment</th>
+                            <th>Advance</th>
+                            <th>Special Amount</th>
+                        </tr>
+
+                        <?php $TotalAdvance=0; $TotalOTPayent=0;
+                        $TotalOTHours=0; $TotalWOrkingHours=0; $OTHours=0; $TotalPerDaySalary=0;
+                        $TotalSpecialAmount=0;
+                        foreach ($records as $k => $row): ?>
+                        <tr>
+                            <td style="text-align: center"><?php $str=$row->ADate;  echo $str2 = substr($str, 5);  ?></td>
+                            <td style="text-align: center"><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
+                            <td style="text-align: center"><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
+                            <td style="text-align: center">Rs. <?= $row->PerDaySalary;  ?></td>
+
+
+                            <td style="text-align: center"><?php
+                                $starttime=$row->StartTime; $endTime=$row->EndTime;
+                                $first  = new DateTime( $starttime );
+                                $second = new DateTime( $endTime );
+
+                                $diff = $first->diff( $second );
+                                $TotalWOrkingHoursPerDay=$diff->format( '%H' );
+                                if($TotalWOrkingHoursPerDay<11){ $TotalWOrkingHoursPerDay=10;}
+                                echo $OTHours=$TotalWOrkingHoursPerDay-10;  ?></td>
+                            <td style="text-align: center">Rs. <?= $row->OTPayment  ?></td>
+                            <td style="text-align: center">Rs. <?= $row->AdvanceAmount  ?></td>
+                            <td style="text-align: center">Rs. <?= $row->SpecialAmount  ?></td>
+
+                            <?php
+                             $TotalOTHours=$TotalOTHours+$OTHours;
+                             $TotalOTPayent=$TotalOTPayent+ $row->OTPayment;
+                             $TotalAdvance=$TotalAdvance+ $row->AdvanceAmount;
+                             $TotalPerDaySalary=$TotalPerDaySalary+$row->PerDaySalary;
+                             $TotalSpecialAmount=$TotalSpecialAmount+$row->SpecialAmount;?>
+                        </tr>
+                        <?php endforeach; ?>
+
+                        <tr>
+                            <td colspan="4"  style="text-align: center">Totals</td>
+
+                            <td style="text-align: center"><?php echo $TotalOTHours;?></td>
+                            <td style="text-align: center">Rs. <?php echo $TotalOTPayent;?></td>
+                            <td style="text-align: center">Rs. <?php echo $TotalAdvance;?></td>
+                            <td style="text-align: center">Rs. <?php echo $TotalSpecialAmount;?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"  style="text-align: center"> Basic Salary  Rs. <?php echo $TotalPerDaySalary; ?></td>
+                            <td colspan="4"  style="text-align: center">Final Salary  Rs. <?= $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount - $TotalAdvance ?></td>
+                        </tr>
+
+
+                    </table>
+
+
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.js'></script>
+</body>
+</html>
