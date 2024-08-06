@@ -18,6 +18,14 @@
                                 </a>
 
                             </li>
+                            <li class="pcoded-hasmenu">
+                                <a href="<?= base_url('Attendance/Reports') ?>">
+                                    <span class="pcoded-micon"><i class="fa fa-file-text-o"></i></span>
+                                    <span class="pcoded-mtext">Reports</span>
+
+                                </a>
+
+                            </li>
 
 
 

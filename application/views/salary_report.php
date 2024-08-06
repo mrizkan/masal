@@ -99,6 +99,21 @@
                             <td colspan="4"  style="text-align: center">Final Salary  Rs. <?= $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount - $TotalAdvance ?></td>
                         </tr>
 
+                        <tr>
+                            <td colspan="4"  style="text-align: center">E.P.F.</td>
+                            <td colspan="4"  style="text-align: center"></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="4"  style="text-align: center">After E.P.F.</td>
+                            <td colspan="4"  style="text-align: center"></td>
+
+                        </tr>
+
+
+
+
+
 
                     </table>
 
