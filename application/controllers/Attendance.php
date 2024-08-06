@@ -154,7 +154,7 @@ class Attendance extends MY_Controller
         $d['records'] = $this->db->query("select * from attendance where EmployeeId='1' AND year(ADate)=$searchyear AND month(ADate)=$searchmonth Order by AID ASC")->result();
 
 //                    p($this->db->last_query());
-//
+// Print items
 //        p($d);
 //        exit;
 
