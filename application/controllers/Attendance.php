@@ -31,15 +31,18 @@ class Attendance extends MY_Controller
             $EveningOT = 0;
             $TotalOTHoursPerDay = 0;
 
-            $starttime = $post['StartTime'];
+           $starttime = $post['StartTime'];
+
             $first = new DateTime($starttime);
-            $StartHour = $first->format('H');
+            $StartHour = $first->format('H:i');
+
             if ($StartHour < 8) {
                 $MorningOT = 8 - $StartHour;
 
             }
 
-            $endTime = $post['EndTime'];
+           $endTime = $post['EndTime'];
+
             $EndHour = date('h', strtotime($endTime));
             if ($EndHour > 6) {
                 $EveningOT = $EndHour - 6;
@@ -50,11 +53,13 @@ class Attendance extends MY_Controller
             if (isset($_POST['fullday'])) {
                 $WorkedTime = 10;
             } else {
-                $first = new DateTime($starttime);
+              $first = new DateTime($starttime);
+
                 $second = new DateTime($endTime);
                 $diff = $first->diff($second);
                 $diff->format('%H');
-                $WorkedTime = $diff->format('%H');
+                $WorkedTime = $diff->format('%H:%i');
+
 
             }
 
