@@ -60,10 +60,10 @@
                                                                     ?$records2->EmployeeName:""; ?>'>
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <input type="text" name="form[BasicSalary]"
-                                                                       required class="form-control" placeholder="Basic Salary" value='<?=
-                                                                isset($records2->BasicSalary)
-                                                                    ?$records2->BasicSalary:""; ?>'>
+                                                                <input type="text" name="form[FullDaySalary]"
+                                                                       required class="form-control" placeholder="Full Day Salary" value='<?=
+                                                                isset($records2->FullDaySalary)
+                                                                    ?$records2->FullDaySalary:""; ?>'>
                                                             </div>
                                                         </div>
 

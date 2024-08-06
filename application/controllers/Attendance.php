@@ -24,7 +24,7 @@ class Attendance extends MY_Controller
             $post = $this->input->post('form');
             $EmployeeID = $post[EmployeeId];
             $EmployeeOTPH = $this->employee->get($EmployeeID)->OTPH;
-          $EmployeeBasicSalary = $this->employee->get($EmployeeID)->BasicSalary;
+            $EmployeeBasicSalary = $this->employee->get($EmployeeID)->FullDaySalary;
             $post['OTRate'] = $EmployeeOTPH;
             $EmployeeOTH = 0;
             $MorningOT = 0;
@@ -68,9 +68,9 @@ class Attendance extends MY_Controller
                 $EmployeeOTPayment = $OTHours * $EmployeeOTPH;
                 $post['OTPayment'] = $EmployeeOTPayment;
 
-                $NumberOfDaysOnThisMonth = cal_days_in_month(CAL_GREGORIAN, $currentmonth, $currentyear);
 
-                $EmployeePerDaySalary = $EmployeeBasicSalary / $NumberOfDaysOnThisMonth;
+
+                $EmployeePerDaySalary = $EmployeeBasicSalary;
                 $FinalDaySalary = number_format((float)$EmployeePerDaySalary, 2, '.', '');
                 $post['PerDaySalary'] = $FinalDaySalary;
             }
@@ -80,11 +80,12 @@ class Attendance extends MY_Controller
                 $currentyear = date('Y');
                 $currentmonth = date('m');
 
-                $NumberOfDaysOnThisMonth = cal_days_in_month(CAL_GREGORIAN, $currentmonth, $currentyear);
+//                $NumberOfDaysOnThisMonth = cal_days_in_month(CAL_GREGORIAN, $currentmonth, $currentyear);
 
 
 
-                $EmployeePerDaySalary = $EmployeeBasicSalary / $NumberOfDaysOnThisMonth;
+//                $EmployeePerDaySalary = $EmployeeBasicSalary / $NumberOfDaysOnThisMonth;
+                $EmployeePerDaySalary = $EmployeeBasicSalary;
                 $EmployeePerHourSalary = $EmployeePerDaySalary / 10;
                 $PerDaySalary = $EmployeePerHourSalary * $WorkedTime2;
 
