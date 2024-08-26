@@ -30,76 +30,122 @@ class Attendance extends MY_Controller
             $MorningOT = 0;
             $EveningOT = 0;
             $TotalOTHoursPerDay = 0;
+            $DayWorkedHours=0;
+            $DaySalaryAmount=0;
+            $WorkStartedTimeDifference=0;
+            $WorkEndTimeDifference=0;
+            $MorningWorkStartTime='08:00:00';
+            $EveningWorkEndTime='06:00:00';
+            $TotalWorkedHours=0;
+            $TotalLateMinutes=0;
+            $FinalWorkedHours=0;
+            $InSideTheOfficeTime=0;
 
-           $starttime = $post['StartTime'];
 
-            $first = new DateTime($starttime);
-            $StartHour = $first->format('H:i');
+            ///// Start Time Calculation
 
-            if ($StartHour < 8) {
-                $MorningOT = 8 - $StartHour;
+          $starttime = $post['StartTime'];
+          $first = new DateTime($starttime);
+          $StartHour = $first->format('H:i:s');
 
+            if ($StartHour < $MorningWorkStartTime ) {
+                $t1 = strtotime($MorningWorkStartTime);
+                $t2 = strtotime($StartHour);
+                $MorningOT = ($t1 - $t2)/3600*60;
+            }
+            else{
+                $t1 = strtotime($MorningWorkStartTime);
+                $t2 = strtotime($StartHour);
+                $WorkStartedTimeDifference = ($t2 - $t1)/3600*60;
             }
 
-           $endTime = $post['EndTime'];
+            /////END Time Calculation
 
-            $EndHour = date('h', strtotime($endTime));
-            if ($EndHour > 6) {
-                $EveningOT = $EndHour - 6;
+            $endTime = $post['EndTime'];
+            $EndHour = date('h:i:s', strtotime($endTime));
+          if ($EndHour< $EveningWorkEndTime) {
+
+              $t1 = strtotime($EveningWorkEndTime);
+              $t2 = strtotime($EndHour);
+              $WorkEndTimeDifference = ($t1 - $t2)/3600*60;
+
+           }
+
+       $TotalLateMinutes = $WorkStartedTimeDifference + $WorkEndTimeDifference;
+
+
+        ///// Inside the Office Hours Calculation
+            $datetime_1 = $starttime;
+            $datetime_2 = $endTime;
+
+           $InSideTheOfficeTime= round(abs($datetime_2 - $datetime_1)*60);
+
+
+
+            if ($EndHour > $EveningWorkEndTime) {
+                $t1 = strtotime($EveningWorkEndTime);
+                $t2 = strtotime($EndHour);
+                $EveningOT = ($t2 - $t1)/3600*60;
             }
 
+            ///// Total OT Hour Calculation
+         $TotalOTHoursPerDay = $MorningOT + $EveningOT;
 
-            $TotalOTHoursPerDay = $MorningOT + $EveningOT;
+
+
+         $TotalOTHoursInMinutes =$TotalOTHoursPerDay;
+
+
+
+            ///// Pay Full Day Pressed
             if (isset($_POST['fullday'])) {
-                $WorkedTime = 10;
-            } else {
-              $first = new DateTime($starttime);
-
-                $second = new DateTime($endTime);
-                $diff = $first->diff($second);
-                $diff->format('%H');
-                $WorkedTime = $diff->format('%H:%i');
-
+                $TotalLateMinutes=0;
+                $InSideTheOfficeTime=600+$TotalOTHoursInMinutes+$TotalOTHoursInMinutes;
+                $TotalWorkedHours =$InSideTheOfficeTime;
 
             }
+            if ($TotalLateMinutes>0){
+                $TotalWorkedHours = 600-$TotalLateMinutes;
 
-            $WorkedTime2 = $WorkedTime - $TotalOTHoursPerDay;
-            $OTHours = $TotalOTHoursPerDay;
+            }
+            else{
+              $TotalWorkedHours = $InSideTheOfficeTime - $TotalOTHoursInMinutes;
+            }
+
+
+           $WorkedTime2 = $TotalWorkedHours;
+
+
+           $OTHours = $TotalOTHoursPerDay/60;
+
 
             if ($OTHours > 0) {
-                $currentyear = date('Y');
-                $currentmonth = date('m');
 
-                $EmployeeOTPayment = $OTHours * $EmployeeOTPH;
+               echo $EmployeeOTPayment = $OTHours * $EmployeeOTPH;
+                $EmployeeOTPayment = round($EmployeeOTPayment,2);
                 $post['OTPayment'] = $EmployeeOTPayment;
 
 
 
-                $EmployeePerDaySalary = $EmployeeBasicSalary;
-                $FinalDaySalary = number_format((float)$EmployeePerDaySalary, 2, '.', '');
-                $post['PerDaySalary'] = $FinalDaySalary;
+               $EmployeePerDaySalary = $EmployeeBasicSalary;
+               $FinalDaySalary = number_format((float)$EmployeePerDaySalary, 2, '.', '');
+
+               $post['PerDaySalary'] = $FinalDaySalary;
             }
 
-            if ($WorkedTime2 <= 10) {
+            if ($WorkedTime2 <= 600) {
 
-                $currentyear = date('Y');
-                $currentmonth = date('m');
-
-//                $NumberOfDaysOnThisMonth = cal_days_in_month(CAL_GREGORIAN, $currentmonth, $currentyear);
-
-
-
-//                $EmployeePerDaySalary = $EmployeeBasicSalary / $NumberOfDaysOnThisMonth;
                 $EmployeePerDaySalary = $EmployeeBasicSalary;
-                $EmployeePerHourSalary = $EmployeePerDaySalary / 10;
-                $PerDaySalary = $EmployeePerHourSalary * $WorkedTime2;
+                $EmployeePerHourSalary = $EmployeePerDaySalary / 9;
+                $PerDaySalary = $EmployeePerHourSalary * $WorkedTime2/60;
 
-                $FinalDaySalary = number_format((float)$PerDaySalary, 2, '.', '');
+               $FinalDaySalary = number_format((float)$PerDaySalary, 2, '.', '');
 
                 $post['PerDaySalary'] = $FinalDaySalary;
 
 
             }
+//
 
 
             $this->attendance->insert($post);

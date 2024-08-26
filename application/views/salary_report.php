@@ -47,7 +47,7 @@
                             <th>Out</th>
 
                             <th>Per Day Salary</th>
-                            <th>OT Hours</th>
+
                             <th>OT Payment</th>
                             <th>Advance</th>
                             <th>Special Amount</th>
@@ -64,15 +64,7 @@
                             <td style="text-align: center">Rs. <?= $row->PerDaySalary;  ?></td>
 
 
-                            <td style="text-align: center"><?php
-                                $starttime=$row->StartTime; $endTime=$row->EndTime;
-                                $first  = new DateTime( $starttime );
-                                $second = new DateTime( $endTime );
 
-                                $diff = $first->diff( $second );
-                                $TotalWOrkingHoursPerDay=$diff->format( '%H' );
-                                if($TotalWOrkingHoursPerDay<11){ $TotalWOrkingHoursPerDay=10;}
-                                echo $OTHours=$TotalWOrkingHoursPerDay-10;  ?></td>
                             <td style="text-align: center">Rs. <?= $row->OTPayment  ?></td>
                             <td style="text-align: center">Rs. <?= $row->AdvanceAmount  ?></td>
                             <td style="text-align: center">Rs. <?= $row->SpecialAmount  ?></td>
@@ -89,7 +81,7 @@
                         <tr>
                             <td colspan="4"  style="text-align: center">Totals</td>
 
-                            <td style="text-align: center"><?php echo $TotalOTHours;?></td>
+
                             <td style="text-align: center">Rs. <?php echo $TotalOTPayent;?></td>
                             <td style="text-align: center">Rs. <?php echo $TotalAdvance;?></td>
                             <td style="text-align: center">Rs. <?php echo $TotalSpecialAmount;?></td>
