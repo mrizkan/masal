@@ -26,127 +26,88 @@ class Attendance extends MY_Controller
             $EmployeeOTPH = $this->employee->get($EmployeeID)->OTPH;
             $EmployeeBasicSalary = $this->employee->get($EmployeeID)->FullDaySalary;
             $post['OTRate'] = $EmployeeOTPH;
-            $EmployeeOTH = 0;
-            $MorningOT = 0;
-            $EveningOT = 0;
-            $TotalOTHoursPerDay = 0;
-            $DayWorkedHours=0;
-            $DaySalaryAmount=0;
-            $WorkStartedTimeDifference=0;
-            $WorkEndTimeDifference=0;
-            $MorningWorkStartTime='08:00:00';
-            $EveningWorkEndTime='06:00:00';
-            $TotalWorkedHours=0;
-            $TotalLateMinutes=0;
-            $FinalWorkedHours=0;
-            $InSideTheOfficeTime=0;
 
 
-            ///// Start Time Calculation
 
-          $starttime = $post['StartTime'];
-          $first = new DateTime($starttime);
-          $StartHour = $first->format('H:i:s');
+            // Define constants
+            define('DAILY_SALARY', $EmployeeBasicSalary);
+            define('OT_RATE_PER_HOUR', $EmployeeOTPH);
+            define('WORK_START_TIME', '08:00');
+            define('WORK_END_TIME', '18:00');
+            define('LUNCH_START_TIME', '13:00');
+            define('LUNCH_END_TIME', '14:00');
 
-            if ($StartHour < $MorningWorkStartTime ) {
-                $t1 = strtotime($MorningWorkStartTime);
-                $t2 = strtotime($StartHour);
-                $MorningOT = ($t1 - $t2)/3600*60;
+            function calculateDailySalary($employeeStartTime, $employeeEndTime) {
+                // Convert times to minutes since midnight
+                $workStart = strtotime(WORK_START_TIME) / 60;
+                $workEnd = strtotime(WORK_END_TIME) / 60;
+                $lunchStart = strtotime(LUNCH_START_TIME) / 60;
+                $lunchEnd = strtotime(LUNCH_END_TIME) / 60;
+                $empStart = strtotime($employeeStartTime) / 60;
+                $empEnd = strtotime($employeeEndTime) / 60;
+
+                // Calculate regular hours
+                $regularHours = min($workEnd, $empEnd) - max($workStart, $empStart);
+
+                // Deduct lunch hour only if employee works past lunch time
+                if ($empEnd > $lunchEnd && $empStart < $lunchStart)  {
+                    $regularHours -= ($lunchEnd - $lunchStart);
+                }
+
+
+
+                $regularHours = max(0, $regularHours / 60); // Convert to hours and ensure non-negative
+
+
+                // Calculate overtime hours
+                $overtimeHours = 0;
+
+                if ($empStart < $workStart) {
+                    $overtimeHours += $workStart - $empStart;
+                }
+                if ($empEnd > $workEnd) {
+                    $overtimeHours += $empEnd - $workEnd;
+                }
+                $overtimeHours = $overtimeHours / 60; // Convert to hours
+
+
+                $dailySalary=DAILY_SALARY/9;
+
+
+
+                // Calculate salary
+                $regularSalary = $dailySalary*$regularHours;
+                $overtimeSalary = $overtimeHours * OT_RATE_PER_HOUR;
+                $totalSalary = $regularSalary + $overtimeSalary;
+
+                return [
+                    'regularHours' => $regularHours,
+                    'overtimeHours' => $overtimeHours,
+                    'regularSalary' => $regularSalary,
+                    'overtimeSalary' => $overtimeSalary,
+                    'totalSalary' => $totalSalary
+                ];
             }
-            else{
-                $t1 = strtotime($MorningWorkStartTime);
-                $t2 = strtotime($StartHour);
-                $WorkStartedTimeDifference = ($t2 - $t1)/3600*60;
-            }
 
-            /////END Time Calculation
-
+// Example usage for Saman
+            $starttime = $post['StartTime'];
             $endTime = $post['EndTime'];
-            $EndHour = date('h:i:s', strtotime($endTime));
-          if ($EndHour< $EveningWorkEndTime) {
+            $employeeStartTime = $starttime;
+            $employeeEndTime = $endTime;
 
-              $t1 = strtotime($EveningWorkEndTime);
-              $t2 = strtotime($EndHour);
-              $WorkEndTimeDifference = ($t1 - $t2)/3600*60;
+            $result = calculateDailySalary($employeeStartTime, $employeeEndTime);
 
-           }
+//            echo "Employee (Saman) Start Time: $employeeStartTime\n"; echo '<br/>';
+//            echo "Employee (Saman) End Time: $employeeEndTime\n"; echo '<br/>';
+//            echo "Regular Hours Worked: " . number_format($result['regularHours'], 2) . "\n"; echo '<br/>';
+//            echo "Overtime Hours: " . number_format($result['overtimeHours'], 2) . "\n"; echo '<br/>';
+//            echo "Regular Salary: " . number_format($result['regularSalary'], 2) . "\n"; echo '<br/>';
+//            echo "Overtime Salary: " . number_format($result['overtimeSalary'], 2) . "\n"; echo '<br/>';
+//            echo "Total Daily Salary: " . number_format($result['totalSalary'], 2) . "\n";
 
-       $TotalLateMinutes = $WorkStartedTimeDifference + $WorkEndTimeDifference;
-
-
-        ///// Inside the Office Hours Calculation
-            $datetime_1 = $starttime;
-            $datetime_2 = $endTime;
-
-           $InSideTheOfficeTime= round(abs($datetime_2 - $datetime_1)*60);
-
-
-
-            if ($EndHour > $EveningWorkEndTime) {
-                $t1 = strtotime($EveningWorkEndTime);
-                $t2 = strtotime($EndHour);
-                $EveningOT = ($t2 - $t1)/3600*60;
-            }
-
-            ///// Total OT Hour Calculation
-         $TotalOTHoursPerDay = $MorningOT + $EveningOT;
-
-
-
-         $TotalOTHoursInMinutes =$TotalOTHoursPerDay;
-
-
-
-            ///// Pay Full Day Pressed
-            if (isset($_POST['fullday'])) {
-                $TotalLateMinutes=0;
-                $InSideTheOfficeTime=600+$TotalOTHoursInMinutes+$TotalOTHoursInMinutes;
-                $TotalWorkedHours =$InSideTheOfficeTime;
-
-            }
-            if ($TotalLateMinutes>0){
-                $TotalWorkedHours = 600-$TotalLateMinutes;
-
-            }
-            else{
-              $TotalWorkedHours = $InSideTheOfficeTime - $TotalOTHoursInMinutes;
-            }
-
-
-           $WorkedTime2 = $TotalWorkedHours;
-
-
-           $OTHours = $TotalOTHoursPerDay/60;
-
-
-            if ($OTHours > 0) {
-
-               echo $EmployeeOTPayment = $OTHours * $EmployeeOTPH;
-                $EmployeeOTPayment = round($EmployeeOTPayment,2);
-                $post['OTPayment'] = $EmployeeOTPayment;
-
-
-
-               $EmployeePerDaySalary = $EmployeeBasicSalary;
-               $FinalDaySalary = number_format((float)$EmployeePerDaySalary, 2, '.', '');
-
-               $post['PerDaySalary'] = $FinalDaySalary;
-            }
-
-            if ($WorkedTime2 <= 600) {
-
-                $EmployeePerDaySalary = $EmployeeBasicSalary;
-                $EmployeePerHourSalary = $EmployeePerDaySalary / 9;
-                $PerDaySalary = $EmployeePerHourSalary * $WorkedTime2/60;
-
-               $FinalDaySalary = number_format((float)$PerDaySalary, 2, '.', '');
-
-                $post['PerDaySalary'] = $FinalDaySalary;
-
-
-            }
+            $post['OTPayment'] = number_format($result['overtimeSalary'], 2);
+            $post['PerDaySalary'] = number_format($result['regularSalary'], 2);
 //
-
 
             $this->attendance->insert($post);
 

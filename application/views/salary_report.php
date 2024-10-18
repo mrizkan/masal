@@ -29,15 +29,15 @@
                 </a>
                 &nbsp;&nbsp;<a href="javascript:window.print()" class="button"><i class="ion-ios-paper-outline"></i> Print Report</a>
 
-            <style>
-                table, th, td {
-                    border: 1px solid black;
-                    border-collapse: collapse;
-                }
-            </style>
+                <style>
+                    table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                    }
+                </style>
             </header>
             <section class="row" style="display:block;">
-                <br>
+
                 <div class="large invoice-container">
                     <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $month.'-'.$year?> </h2>
                     <table>
@@ -57,50 +57,91 @@
                         $TotalOTHours=0; $TotalWOrkingHours=0; $OTHours=0; $TotalPerDaySalary=0;
                         $TotalSpecialAmount=0;
                         foreach ($records as $k => $row): ?>
-                        <tr>
-                            <td style="text-align: center"><?php $str=$row->ADate;  echo $str2 = substr($str, 5);  ?></td>
-                            <td style="text-align: center"><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
-                            <td style="text-align: center"><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
-                            <td style="text-align: center">Rs. <?= $row->PerDaySalary;  ?></td>
+                            <tr>
+                                <td><?php $str=$row->ADate;  echo $str2 = substr($str, 5);  ?></td>
+                                <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
+                                <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
+                                <td>Rs. <?= $row->PerDaySalary;  ?></td>
 
 
 
-                            <td style="text-align: center">Rs. <?= $row->OTPayment  ?></td>
-                            <td style="text-align: center">Rs. <?= $row->AdvanceAmount  ?></td>
-                            <td style="text-align: center">Rs. <?= $row->SpecialAmount  ?></td>
+                                <td style="text-align: center">Rs. <?php if(!empty($row->OTPayment)){ echo $row->OTPayment;} else {echo "0";}  ?></td>
+                                <td style="text-align: center">Rs. <?= $row->AdvanceAmount  ?></td>
+                                <td style="text-align: center">Rs. <?= $row->SpecialAmount  ?></td>
 
-                            <?php
-                             $TotalOTHours=$TotalOTHours+$OTHours;
-                             $TotalOTPayent=$TotalOTPayent+ $row->OTPayment;
-                             $TotalAdvance=$TotalAdvance+ $row->AdvanceAmount;
-                             $TotalPerDaySalary=$TotalPerDaySalary+$row->PerDaySalary;
-                             $TotalSpecialAmount=$TotalSpecialAmount+$row->SpecialAmount;?>
-                        </tr>
+                                <?php
+                                $TotalOTHours=$TotalOTHours+$OTHours;
+                                $TotalOTPayent=$TotalOTPayent+ $row->OTPayment;
+                                $TotalAdvance=$TotalAdvance+ $row->AdvanceAmount;
+                                $TotalPerDaySalary=$TotalPerDaySalary+$row->PerDaySalary;
+                                $TotalSpecialAmount=$TotalSpecialAmount+$row->SpecialAmount;?>
+                            </tr>
                         <?php endforeach; ?>
 
                         <tr>
-                            <td colspan="4"  style="text-align: center">Totals</td>
+                            <td colspan="4"  style="text-align: center">Basic Salary</td>
 
 
-                            <td style="text-align: center">Rs. <?php echo $TotalOTPayent;?></td>
-                            <td style="text-align: center">Rs. <?php echo $TotalAdvance;?></td>
-                            <td style="text-align: center">Rs. <?php echo $TotalSpecialAmount;?></td>
+                            <td  colspan="4"  style="text-align: center">Rs. <?php echo $TotalPerDaySalary; ?></td>
+                            <!--<td>Rs. <?php echo $TotalAdvance;?></td>-->
+                            <!--<td>Rs. <?php echo $TotalSpecialAmount;?></td>-->
                         </tr>
                         <tr>
-                            <td colspan="4"  style="text-align: center"> Basic Salary  Rs. <?php echo $TotalPerDaySalary; ?></td>
-                            <td colspan="4"  style="text-align: center">Final Salary  Rs. <?= $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount - $TotalAdvance ?></td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="4"  style="text-align: center">E.P.F.</td>
-                            <td colspan="4"  style="text-align: center"></td>
-
+                            <td colspan="4"  style="text-align: center">Total OT Payment</td>
+                            <td  colspan="4"  style="text-align: center">Rs. <?php echo $TotalOTPayent; ?></td>
                         </tr>
                         <tr>
-                            <td colspan="4"  style="text-align: center">After E.P.F.</td>
-                            <td colspan="4"  style="text-align: center"></td>
-
+                            <td colspan="4"  style="text-align: center">Total Special Amount</td>
+                            <td  colspan="4"  style="text-align: center">Rs. <?php echo $TotalSpecialAmount; ?></td>
                         </tr>
+                        <tr>
+                            <td colspan="4"  style="text-align: center"><b>Total</b> </td>
+                            <td  colspan="4"  style="text-align: center"><b>Rs. <?= $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount; ?></b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"  style="text-align: center">Less Advance </td>
+                            <td  colspan="4"  style="text-align: center">Rs. <?= $TotalAdvance; ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"  style="text-align: center">Total </td>
+                            <td  colspan="4"  style="text-align: center">Rs. <?= $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount - $TotalAdvance; ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"  style="text-align: center">Less E.P.F. 8% </td>
+                            <td  colspan="4"  style="text-align: center"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"  style="text-align: center">Total </td>
+                            <td  colspan="4"  style="text-align: center"></td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"  style="text-align: center">Less O/D </td>
+                            <td  colspan="4"  style="text-align: center"> </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"  style="text-align: center">Total </td>
+                            <td  colspan="4"  style="text-align: center"> </td>
+                        </tr>
+
+
+
+
+
+                        <!--<tr>-->
+                        <!--    <td colspan="4"> Basic Salary  Rs. <?php echo $TotalPerDaySalary; ?></td>-->
+                        <!--    <td colspan="4">Final Salary  Rs. <?= $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount - $TotalAdvance ?></td>-->
+                        <!--</tr>-->
+
+                        <!--<tr>-->
+                        <!--    <td colspan="4">E.P.F.</td>-->
+                        <!--    <td colspan="4"></td>-->
+
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--    <td colspan="4">After E.P.F.</td>-->
+                        <!--    <td colspan="4"></td>-->
+
+                        <!--</tr>-->
 
 
 
