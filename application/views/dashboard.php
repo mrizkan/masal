@@ -46,7 +46,7 @@
                                             <!-- Basic Form Inputs card start -->
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h5>Add Salary</h5>
+                                                    <h5>Mark Attendance</h5>
                                                     <div class="card-header-right">
                                                         <i class="icofont icofont-rounded-down"></i>
                                                     </div>
@@ -137,12 +137,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-block">
-
+<!--                                                    New Talbe -->
                                                     <div class="dt-responsive table-responsive">
-                                                        <table class="table table-striped table-bordered nowrap">
+                                                        <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                                             <thead>
                                                             <tr>
                                                                 <th>Employee Name</th>
+
                                                                 <th>Option</th>
 
                                                             </tr>
@@ -152,8 +153,8 @@
                                                                 <tr>
                                                                     <td><?= $row->EmployeeName  ?></td>
                                                                     <td>
-                                                                        <a href="<?= base_url() ?>Attendance/currentsalary/<?=$row->EmployeeId ?>" > <button class="btn btn-warning btn-mini btn-round">Generate this Month Report</button></a>
-                                                                        <a href="<?= base_url() ?>Attendance/previoussalary/<?=$row->EmployeeId ?>" ><button class="btn btn-success btn-mini btn-round"> Generate Salary Report</button></a>
+                                                                        <a href="<?= base_url() ?>Attendance/currentsalary/<?=$row->EmployeeId ?>" > <button class="btn btn-warning btn-mini btn-round">Current Month Salary Report</button></a>
+                                                                        <a href="<?= base_url() ?>Attendance/previoussalary/<?=$row->EmployeeId ?>" ><button class="btn btn-success btn-mini btn-round"> Previous Month Salary Report</button></a>
                                                                     </td>
                                                                 </tr>
                                                             <?php endforeach; ?>
@@ -162,13 +163,16 @@
                                                             </tbody>
                                                             <tfoot>
                                                             <tr>
-                                                                <th>Employee Name</th>
+                                                                <th>Name</th>
+
                                                                 <th>Option</th>
 
                                                             </tr>
                                                             </tfoot>
                                                         </table>
                                                     </div>
+<!--                                                    New Talbe -->
+
                                                 </div>
                                             </div>
                                         </div>

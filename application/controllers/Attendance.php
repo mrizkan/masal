@@ -97,16 +97,9 @@ class Attendance extends MY_Controller
 
             $result = calculateDailySalary($employeeStartTime, $employeeEndTime);
 
-//            echo "Employee (Saman) Start Time: $employeeStartTime\n"; echo '<br/>';
-//            echo "Employee (Saman) End Time: $employeeEndTime\n"; echo '<br/>';
-//            echo "Regular Hours Worked: " . number_format($result['regularHours'], 2) . "\n"; echo '<br/>';
-//            echo "Overtime Hours: " . number_format($result['overtimeHours'], 2) . "\n"; echo '<br/>';
-//            echo "Regular Salary: " . number_format($result['regularSalary'], 2) . "\n"; echo '<br/>';
-//            echo "Overtime Salary: " . number_format($result['overtimeSalary'], 2) . "\n"; echo '<br/>';
-//            echo "Total Daily Salary: " . number_format($result['totalSalary'], 2) . "\n";
 
-            $post['OTPayment'] = number_format($result['overtimeSalary'], 2);
-            $post['PerDaySalary'] = number_format($result['regularSalary'], 2);
+            $post['OTPayment'] = $result['overtimeSalary'];
+            $post['PerDaySalary'] = $result['regularSalary'];
 //
 
             $this->attendance->insert($post);
@@ -133,7 +126,7 @@ class Attendance extends MY_Controller
         $d['year'] = $currentyear;
         $d['records2'] = $this->employee->get($_id);
 
-        $d['records'] = $this->db->query("select * from attendance where EmployeeId=" . $_id . " AND year(ADate)=$currentyear AND month(ADate)=$currentmonth Order by AID ASC")->result();
+        $d['records'] = $this->db->query("select * from attendance where IsDeleted=0 AND EmployeeId=" . $_id . " AND year(ADate)=$currentyear AND month(ADate)=$currentmonth Order by AID ASC")->result();
 
 //                    p($this->db->last_query());
 //
@@ -178,6 +171,24 @@ class Attendance extends MY_Controller
 
         $d['records'] = $this->employee->get_all();
         $this->load->view('old_salary_report',$d);
+    }
+
+    function OldSalary($_id = 0){
+        $post = $this->input->post('form');
+        $EmployeeID = $post[EmployeeId];
+        $Month = $post[adate];
+        $d['records2'] = $this->employee->get($EmployeeID);
+
+
+        // Breaking the year and Month
+        $searchyear = substr($Month, 0, 4);
+        $searchmonth = substr($Month,  -2);
+        $d['month'] = $searchmonth;
+        $d['year'] = $searchyear;
+
+        // SQl Query to get the records
+        $d['records'] = $this->db->query("SELECT * FROM `attendance` WHERE ADate LIKE '$Month%' AND EmployeeId='$EmployeeID';")->result();
+        $this->load->view('salary_report', $d);
     }
 
 

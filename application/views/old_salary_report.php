@@ -52,7 +52,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-block">
-                                                    <form action="<?= base_url('Attendance/AddAttendance') ?>" method="post" enctype="multipart/form-data">
+                                                    <form action="<?= base_url('Attendance/OldSalary') ?>" method="post" enctype="multipart/form-data">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6">
                                                                 <input type="month" name="form[adate]"  class="form-control">

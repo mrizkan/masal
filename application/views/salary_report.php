@@ -42,6 +42,7 @@
                     <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $month.'-'.$year?> </h2>
                     <table>
                         <tr>
+                            <th>#</th>
                             <th>Date</th>
                             <th>In</th>
                             <th>Out</th>
@@ -53,58 +54,72 @@
                             <th>Special Amount</th>
                         </tr>
 
-                        <?php $TotalAdvance=0; $TotalOTPayent=0;
-                        $TotalOTHours=0; $TotalWOrkingHours=0; $OTHours=0; $TotalPerDaySalary=0;
+                        <?php
+                        $TotalAdvance=0;
+                        $TotalOTPayent=0;
+                        $TotalOTHours=0;
+                        $TotalWOrkingHours=0;
+                        $OTHours=0;
+                        $TotalPerDaySalary=0;
                         $TotalSpecialAmount=0;
-                        foreach ($records as $k => $row): ?>
+
+//                        p(number_format((float)$a+$b,2));
+
+                        foreach ($records as $k => $row):
+
+//                            p($Tosalary);
+//                            $Tosalary += $Tosalary+(float)$row->PerDaySalary;
+//                            p($row->PerDaySalary);
+
+                            ?>
                             <tr>
+                                <td><?= $k+1 ?></td>
                                 <td><?php $str=$row->ADate;  echo $str2 = substr($str, 5);  ?></td>
                                 <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
                                 <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
-                                <td>Rs. <?= $row->PerDaySalary;  ?></td>
+                                <td>Rs. <?= number_format($row->PerDaySalary,2);  ?></td>
 
 
 
-                                <td style="text-align: center">Rs. <?php if(!empty($row->OTPayment)){ echo $row->OTPayment;} else {echo "0";}  ?></td>
+                                <td style="text-align: center">Rs. <?php if(!empty($row->OTPayment)){ echo number_format($row->OTPayment,2);} else {echo "0";}  ?></td>
                                 <td style="text-align: center">Rs. <?= $row->AdvanceAmount  ?></td>
                                 <td style="text-align: center">Rs. <?= $row->SpecialAmount  ?></td>
 
                                 <?php
-                                $TotalOTHours=$TotalOTHours+$OTHours;
-                                $TotalOTPayent=$TotalOTPayent+ $row->OTPayment;
-                                $TotalAdvance=$TotalAdvance+ $row->AdvanceAmount;
-                                $TotalPerDaySalary=$TotalPerDaySalary+$row->PerDaySalary;
-                                $TotalSpecialAmount=$TotalSpecialAmount+$row->SpecialAmount;?>
+                                $TotalOTHours+=$OTHours;
+                                $TotalOTPayent+=$row->OTPayment;
+                                $TotalAdvance+=$row->AdvanceAmount;
+                                $TotalPerDaySalary+=$row->PerDaySalary;
+                                $TotalSpecialAmount+=$row->SpecialAmount;?>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endforeach;  ?>
 
                         <tr>
                             <td colspan="4"  style="text-align: center">Basic Salary</td>
 
 
-                            <td  colspan="4"  style="text-align: center">Rs. <?php echo $TotalPerDaySalary; ?></td>
-                            <!--<td>Rs. <?php echo $TotalAdvance;?></td>-->
-                            <!--<td>Rs. <?php echo $TotalSpecialAmount;?></td>-->
+                            <td  colspan="4"  style="text-align: center">Rs. <?php echo  number_format($TotalPerDaySalary,2); ?></td>
+
                         </tr>
                         <tr>
                             <td colspan="4"  style="text-align: center">Total OT Payment</td>
-                            <td  colspan="4"  style="text-align: center">Rs. <?php echo $TotalOTPayent; ?></td>
+                            <td  colspan="4"  style="text-align: center">Rs. <?php echo number_format($TotalOTPayent,2); ?></td>
                         </tr>
                         <tr>
                             <td colspan="4"  style="text-align: center">Total Special Amount</td>
-                            <td  colspan="4"  style="text-align: center">Rs. <?php echo $TotalSpecialAmount; ?></td>
+                            <td  colspan="4"  style="text-align: center">Rs. <?php echo number_format($TotalSpecialAmount,2); ?></td>
                         </tr>
                         <tr>
                             <td colspan="4"  style="text-align: center"><b>Total</b> </td>
-                            <td  colspan="4"  style="text-align: center"><b>Rs. <?= $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount; ?></b></td>
+                            <td  colspan="4"  style="text-align: center"><b>Rs. <?php $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount;  echo number_format($Final,2); ?></b></td>
                         </tr>
                         <tr>
                             <td colspan="4"  style="text-align: center">Less Advance </td>
-                            <td  colspan="4"  style="text-align: center">Rs. <?= $TotalAdvance; ?></td>
+                            <td  colspan="4"  style="text-align: center">Rs. <?= number_format($TotalAdvance,2); ?></td>
                         </tr>
                         <tr>
                             <td colspan="4"  style="text-align: center">Total </td>
-                            <td  colspan="4"  style="text-align: center">Rs. <?= $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount - $TotalAdvance; ?></td>
+                            <td  colspan="4"  style="text-align: center">Rs. <?php $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount - $TotalAdvance; echo number_format($Final,2); ?></td>
                         </tr>
                         <tr>
                             <td colspan="4"  style="text-align: center">Less E.P.F. 8% </td>
@@ -122,31 +137,6 @@
                             <td colspan="4"  style="text-align: center">Total </td>
                             <td  colspan="4"  style="text-align: center"> </td>
                         </tr>
-
-
-
-
-
-                        <!--<tr>-->
-                        <!--    <td colspan="4"> Basic Salary  Rs. <?php echo $TotalPerDaySalary; ?></td>-->
-                        <!--    <td colspan="4">Final Salary  Rs. <?= $Final= $TotalPerDaySalary+ $TotalOTPayent + $TotalSpecialAmount - $TotalAdvance ?></td>-->
-                        <!--</tr>-->
-
-                        <!--<tr>-->
-                        <!--    <td colspan="4">E.P.F.</td>-->
-                        <!--    <td colspan="4"></td>-->
-
-                        <!--</tr>-->
-                        <!--<tr>-->
-                        <!--    <td colspan="4">After E.P.F.</td>-->
-                        <!--    <td colspan="4"></td>-->
-
-                        <!--</tr>-->
-
-
-
-
-
 
                     </table>
 

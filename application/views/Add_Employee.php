@@ -54,12 +54,14 @@
                                                         <div class="form-group row">
 
                                                             <div class="col-sm-8">
+                                                                <p>Employee Name</p>
                                                                 <input type="text" name="form[EmployeeName]"
                                                                        required class="form-control" placeholder="Employee Name" value='<?=
                                                                 isset($records2->EmployeeName)
                                                                     ?$records2->EmployeeName:""; ?>'>
                                                             </div>
                                                             <div class="col-sm-4">
+                                                                <p>Full Day Salary</p>
                                                                 <input type="text" name="form[FullDaySalary]"
                                                                        required class="form-control" placeholder="Full Day Salary" value='<?=
                                                                 isset($records2->FullDaySalary)
@@ -70,13 +72,14 @@
 
                                                         <div class="form-group row">
                                                             <div class="col-sm-4">
+                                                                <p>OT Per Hour</p>
                                                                 <input type="text" name="form[OTPH]"
                                                                        required class="form-control" placeholder="OT Per Hour" value='<?=
                                                                 isset($records2->OTPH)
                                                                     ?$records2->OTPH:""; ?>'>
                                                             </div>
                                                             <div class="col-sm-2">
-
+                                                                <span><br><br></span>
                                                                 <button class="btn btn-primary btn-round">Save</button>
                                                             </div>
                                                         </div>
