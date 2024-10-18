@@ -42,7 +42,7 @@
                     <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $month.'-'.$year?> </h2>
                     <table>
                         <tr>
-                            <th>#</th>
+<!--                            <th>#</th>-->
                             <th>Date</th>
                             <th>In</th>
                             <th>Out</th>
@@ -73,7 +73,7 @@
 
                             ?>
                             <tr>
-                                <td><?= $k+1 ?></td>
+<!--                                <td>--><?php //= $k+1 ?><!--</td>-->
                                 <td><?php $str=$row->ADate;  echo $str2 = substr($str, 5);  ?></td>
                                 <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
                                 <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
