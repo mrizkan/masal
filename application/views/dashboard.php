@@ -119,6 +119,91 @@
 
 
                                             </div>
+<!--                                            Edit Employee Card start here-->
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Edit Attendance</h5>
+                                                    <div class="card-header-right">
+                                                        <i class="icofont icofont-rounded-down"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <form action="<?= base_url('Attendance/EditAttendance') ?>" method="post" enctype="multipart/form-data">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <input type="date" name="form[adate]"  class="form-control" value="<?php  if (!empty($records2)) { foreach ($records2 as $k => $row){ echo $row->ADate;} } ?>" <?php  if (!empty($records2)) { echo "readonly";}?>>
+                                                            </div>
+                                                        </div>
+
+                                                        <?php if (!empty($records2)) {?>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-6">
+                                                                    <p>Start Time</p>
+                                                                    <input type="time" name="form[StartTime]"  class="form-control" value="<?php foreach ($records2 as $k => $row){ echo $row->StartTime;} ?>">
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <p>End Time</p>
+                                                                    <input type="time" name="form[EndTime]"  class="form-control" value="<?php foreach ($records2 as $k => $row){ echo $row->EndTime;} ?>">
+                                                                </div>
+
+                                                            </div>
+                                                        <?php } ?>
+                                                        <div class="form-group row">
+
+                                                            <div class="col-sm-12">
+
+                                                                <select name="form[EmployeeId]" class="form-control">
+                                                                    <?php if (!empty($records2)) { foreach ($records2 as $k => $row){ ?>
+                                                                    <option value="<?php foreach ($records2 as $k => $row){ echo $row->EmployeeId;} ?>" <?php echo "selected "; echo "disabled";?>>Select Employee123</option>
+                                                                    <?php }} else{?>
+                                                                    <option value="">Select Employee</option>
+                                                                    <?php foreach ($records as $k => $row): ?>
+                                                                        <option value="<?= $row->EmployeeId  ?>"><?= $row->EmployeeName  ?></option>
+                                                                    <?php endforeach; }?>
+
+                                                                </select>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <?php if (!empty($records2)) {?>
+                                                        <div class="form-group row">
+                                                            <!--<div class="col-sm-6">-->
+                                                            <!--    <input type="checkbox" name="fullday" value="Pay Full Day"><label for="vehicle1"> Pay Full Day Salary</label>-->
+                                                            <!--</div>-->
+                                                            <div class="col-sm-6">
+                                                                <p>Advance Amount</p>
+                                                                <input type="number" name="form[AdvanceAmount]"
+                                                                       required class="form-control" placeholder="Advance"  value="<?php foreach ($records2 as $k => $row){ echo $row->AdvanceAmount;} ?>">
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p>Special Amount</p>
+                                                                <input type="number" name="form[SpecialAmount]"
+                                                                       class="form-control" placeholder="Special Amount"  value="<?php foreach ($records2 as $k => $row){ echo $row->SpecialAmount;} ?>">
+                                                            </div>
+                                                        </div>
+                                                        <?php } ?>
+
+                                                        <div class="form-group row">
+
+                                                            <div class="col-sm-8">
+                                                            </div>
+                                                            <div class="col-sm-4">
+
+                                                                <button class="btn btn-danger btn-round">Edit</button>
+                                                            </div>
+                                                        </div>
+
+                                                </div> <!-- End of card-block tag -->
+
+
+
+                                                <?= form_close() ?>
+
+
+                                            </div>
+<!--                                            Edit Employee Card end here-->
                                         </div>
 
 

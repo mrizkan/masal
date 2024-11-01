@@ -89,7 +89,7 @@ class Attendance extends MY_Controller
                 ];
             }
 
-// Example usage for Saman
+
             $starttime = $post['StartTime'];
             $endTime = $post['EndTime'];
             $employeeStartTime = $starttime;
@@ -112,6 +112,14 @@ class Attendance extends MY_Controller
             echo "error go back";
         }
         redirect('Home/dashboard');
+    }
+
+    function EditAttendance(){
+      $post = $this->input->post('form');
+      $EmployeeID = $post[EmployeeId];
+      $DateToEdit=$post[adate];
+      $d['records2'] = $this->db->query("select * from attendance where EmployeeId=" . $EmployeeID . " AND ADate='". $DateToEdit."'")->result();
+      $this->load->view('dashboard', $d);
     }
 
 
