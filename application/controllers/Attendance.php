@@ -128,8 +128,10 @@ class Attendance extends MY_Controller
             $post = $this->input->post('form');
             $EmployeeID = $post[EmployeeId];
             $DateToEdit = $post[adate];
+            $d['records3'] = $this->employee->get($EmployeeID)->EmployeeName;
             $d['records2'] = $this->db->query("select * from attendance where EmployeeId=" . $EmployeeID . " AND ADate='" . $DateToEdit . "'")->result();
             $this->load->view('dashboard', $d);
+
 
     }
 

@@ -159,7 +159,7 @@
 
                                                                 <select name="form[EmployeeId]" class="form-control">
                                                                     <?php if (!empty($records2)) { foreach ($records2 as $k => $row){ ?>
-                                                                    <option value="<?php foreach ($records2 as $k => $row){ echo $row->EmployeeId;} ?>">Select Employee123</option>
+                                                                    <option value="<?php foreach ($records2 as $k => $row){ echo $row->EmployeeId;} ?>"><?php echo $records3; ?></option>
                                                                     <?php }} else{?>
                                                                     <option value="">Select Employee</option>
                                                                     <?php foreach ($records as $k => $row): ?>
