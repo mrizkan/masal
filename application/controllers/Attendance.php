@@ -23,6 +23,7 @@ class Attendance extends MY_Controller
 
             $post = $this->input->post('form');
             $EmployeeID = $post[EmployeeId];
+            $AID = $post[AID];
             $EmployeeOTPH = $this->employee->get($EmployeeID)->OTPH;
             $EmployeeBasicSalary = $this->employee->get($EmployeeID)->FullDaySalary;
             $post['OTRate'] = $EmployeeOTPH;
@@ -100,11 +101,20 @@ class Attendance extends MY_Controller
 
             $post['OTPayment'] = $result['overtimeSalary'];
             $post['PerDaySalary'] = $result['regularSalary'];
+            echo "$AID";
 //
+            if (!empty($AID)){
+                $d = '<div class="alert alert-warning background-warning"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Updated Successfully</strong> </div>';
+                $this->attendance->update($AID,$post);
 
-            $this->attendance->insert($post);
+            }
+            else {
 
-            $d = '<div class="alert alert-success background-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Marked Successfully</strong> </div>';
+                $d = '<div class="alert alert-success background-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Marked Successfully</strong> </div>';
+                $this->attendance->insert($post);
+            }
+
+
             $this->session->set_flashdata('notification', $d);
             redirect('Home/dashboard');
         } else {
@@ -115,11 +125,12 @@ class Attendance extends MY_Controller
     }
 
     function EditAttendance(){
-      $post = $this->input->post('form');
-      $EmployeeID = $post[EmployeeId];
-      $DateToEdit=$post[adate];
-      $d['records2'] = $this->db->query("select * from attendance where EmployeeId=" . $EmployeeID . " AND ADate='". $DateToEdit."'")->result();
-      $this->load->view('dashboard', $d);
+            $post = $this->input->post('form');
+            $EmployeeID = $post[EmployeeId];
+            $DateToEdit = $post[adate];
+            $d['records2'] = $this->db->query("select * from attendance where EmployeeId=" . $EmployeeID . " AND ADate='" . $DateToEdit . "'")->result();
+            $this->load->view('dashboard', $d);
+
     }
 
 

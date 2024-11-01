@@ -128,10 +128,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-block">
-                                                    <form action="<?= base_url('Attendance/EditAttendance') ?>" method="post" enctype="multipart/form-data">
+                                                    <?php if (!empty($records2)) {?>
+                                                    <form action="<?= base_url('Attendance/AddAttendance') ?>" method="post" enctype="multipart/form-data">
+                                                        <?php }  else {?>
+                                                        <form action="<?= base_url('Attendance/EditAttendance') ?>" method="post" enctype="multipart/form-data">
+                                                            <?php } ?>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <input type="date" name="form[adate]"  class="form-control" value="<?php  if (!empty($records2)) { foreach ($records2 as $k => $row){ echo $row->ADate;} } ?>" <?php  if (!empty($records2)) { echo "readonly";}?>>
+                                                                <input type="date" name="form[adate]"  class="form-control" required value="<?php  if (!empty($records2)) { foreach ($records2 as $k => $row){ echo $row->ADate;} } ?>" <?php  if (!empty($records2)) { echo "readonly";}?>>
+                                                                <input type="hidden" name="form[AID]" value="<?php  if (!empty($records2)) { foreach ($records2 as $k => $row){ echo $row->AID;} } ?>">
                                                             </div>
                                                         </div>
 
@@ -154,7 +159,7 @@
 
                                                                 <select name="form[EmployeeId]" class="form-control">
                                                                     <?php if (!empty($records2)) { foreach ($records2 as $k => $row){ ?>
-                                                                    <option value="<?php foreach ($records2 as $k => $row){ echo $row->EmployeeId;} ?>" <?php echo "selected "; echo "disabled";?>>Select Employee123</option>
+                                                                    <option value="<?php foreach ($records2 as $k => $row){ echo $row->EmployeeId;} ?>">Select Employee123</option>
                                                                     <?php }} else{?>
                                                                     <option value="">Select Employee</option>
                                                                     <?php foreach ($records as $k => $row): ?>
@@ -190,8 +195,11 @@
                                                             <div class="col-sm-8">
                                                             </div>
                                                             <div class="col-sm-4">
-
-                                                                <button class="btn btn-danger btn-round">Edit</button>
+                                                                <?php if (!empty($records2)) {?>
+                                                                <button class="btn btn-danger btn-round">Update</button>
+                                                                <?php } else {?>
+                                                                    <button class="btn btn-warning btn-round">Edit</button>
+                                                                <?php } ?>
                                                             </div>
                                                         </div>
 
