@@ -151,6 +151,10 @@ class Attendance extends MY_Controller
 
         $d['records'] = $this->db->query("select * from attendance where IsDeleted=0 AND EmployeeId=" . $_id . " AND year(ADate)=$currentyear AND month(ADate)=$currentmonth Order by AID ASC")->result();
 
+//        foreach ($data as $row){
+//
+//        }
+
 //                    p($this->db->last_query());
 //
 //        p($d);
