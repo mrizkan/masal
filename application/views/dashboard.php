@@ -122,7 +122,7 @@
 <!--                                            Edit Employee Card start here-->
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h5>Edit Attendance</h5>
+                                                    <h5>Delete Attendance</h5>
                                                     <div class="card-header-right">
                                                         <i class="icofont icofont-rounded-down"></i>
                                                     </div>
@@ -198,7 +198,7 @@
                                                                 <?php if (!empty($records2)) {?>
                                                                 <button class="btn btn-danger btn-round">Update</button>
                                                                 <?php } else {?>
-                                                                    <button class="btn btn-warning btn-round">Edit</button>
+                                                                    <button class="btn btn-danger btn-round">Delete</button>
                                                                 <?php } ?>
                                                             </div>
                                                         </div>

@@ -36,10 +36,19 @@
                     }
                 </style>
             </header>
+            <?php
+            $currentYear = date('Y');
+            $currentMonth = date('m');
+            $firstDay = new DateTime("$currentYear-$currentMonth-01");
+            $daysInMonth = $firstDay->format('t');
+
+
+
+            ?>
             <section class="row" style="display:block;">
 
                 <div class="large invoice-container">
-                    <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $month.'-'.$year?> </h2>
+                    <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $firstDay->format('F Y')?> </h2>
                     <table>
                         <tr>
 <!--                            <th>#</th>-->
@@ -62,19 +71,31 @@
                         $OTHours=0;
                         $TotalPerDaySalary=0;
                         $TotalSpecialAmount=0;
+                        $PreviousDate=0;
 
 //                        p(number_format((float)$a+$b,2));
 
+                        for ($day = 1; $day <= $daysInMonth; $day++) {
+                            // Create a new DateTime object for each day
+                            $currentDate = new DateTime("$currentYear-$currentMonth-" . str_pad($day, 2, '0', STR_PAD_LEFT));
+                            $originalDate = $currentDate->format('Y-m-j');
+                            $newDate = date("Y-m-d", strtotime($originalDate));
+
+
                         foreach ($records as $k => $row):
 
-//                            p($Tosalary);
-//                            $Tosalary += $Tosalary+(float)$row->PerDaySalary;
-//                            p($row->PerDaySalary);
 
+
+
+                                // Format and display the day
+
+                                if ($newDate == $str=$row->ADate){
                             ?>
                             <tr>
-<!--                                <td>--><?php //= $k+1 ?><!--</td>-->
-                                <td><?php $str=$row->ADate;  echo $str2 = substr($str, 5);  ?></td>
+
+<!--                                <td>--><?php //$str=$row->ADate;  echo $str2 = substr($str, 5);  ?><!--</td>-->
+
+                                <td><?php echo $currentDate->format('m-j'); ?></td>
                                 <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
                                 <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
                                 <td>Rs. <?= number_format($row->PerDaySalary,2);  ?></td>
@@ -90,9 +111,23 @@
                                 $TotalOTPayent+=$row->OTPayment;
                                 $TotalAdvance+=$row->AdvanceAmount;
                                 $TotalPerDaySalary+=$row->PerDaySalary;
-                                $TotalSpecialAmount+=$row->SpecialAmount;?>
+                                $TotalSpecialAmount+=$row->SpecialAmount;
+                                $PreviousDate = $newDate;?>
                             </tr>
-                        <?php endforeach;  ?>
+                        <?php  } endforeach;  ?>
+
+                               <?php if ($newDate != $str=$row->ADate){ if ($PreviousDate<$newDate){ ?>
+                                                            <tr>
+                                                                <td><?php echo $currentDate->format('m-j'); ?></td>
+                                                                <td> - </td>
+                                                                <td> - </td>
+                                                                <td> - </td>
+                                                                <td> - </td>
+                                                                <td> - </td>
+                                                                <td> - </td>
+
+                                                            </tr>
+                        <?php } } } ?>
 
                         <tr>
                             <td colspan="4"  style="text-align: center">Basic Salary</td>
