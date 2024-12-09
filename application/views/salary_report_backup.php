@@ -79,6 +79,7 @@
                             // Create a new DateTime object for each day
                             $currentDate = new DateTime("$currentYear-$currentMonth-" . str_pad($day, 2, '0', STR_PAD_LEFT));
                             $originalDate = $currentDate->format('Y-m-j');
+
                             $newDate = date("Y-m-d", strtotime($originalDate));
 
 
