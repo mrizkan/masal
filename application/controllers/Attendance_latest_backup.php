@@ -102,9 +102,6 @@ class Attendance extends MY_Controller
             $post['OTPayment'] = $result['overtimeSalary'];
             $post['PerDaySalary'] = $result['regularSalary'];
             echo "$AID";
-
-//            p($post);
-//            exit;
 //
             if (!empty($AID)){
                 $d = '<div class="alert alert-warning background-warning"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Updated Successfully</strong> </div>';
@@ -143,27 +140,40 @@ class Attendance extends MY_Controller
 
     function currentsalary($_id = 0)
     {
+        //Details for Month & Year Calculation
+        $currentYear = date('Y');
+        $currentMonth = date('m');
+        $firstDay = new DateTime("$currentYear-$currentMonth-01");
+        $daysInMonth = $firstDay->format('t');
+        $CurrentMonthAndYear= $firstDay->format('F Y');
 
-        $currentyear = date('Y');
-        $currentmonth = date('m');
-
-
-        $d['month'] = $currentmonth;
-        $d['year'] = $currentyear;
+        //Employee Details to Get the Datas from DB
         $d['records2'] = $this->employee->get($_id);
+        $d['records'] = $this->db->query("select * from attendance where IsDeleted=0 AND EmployeeId=" . $_id . " AND year(ADate)=". $currentYear ." AND month(ADate)=". $currentMonth ." Order by AID ASC")->result();
+        // p( $d['records']);
 
-        $d['records'] = $this->db->query("select * from attendance where IsDeleted=0 AND EmployeeId=" . $_id . " AND year(ADate)=$currentyear AND month(ADate)=$currentmonth Order by AID ASC")->result();
+        //Variables for Calculation
+        $TotalAdvance=0;  $TotalOTPayent=0;  $TotalOTHours=0;   $TotalWOrkingHours=0; $OTHours=0; $TotalPerDaySalary=0;
+        $TotalSpecialAmount=0;  $PreviousDate=0;
 
-//        foreach ($data as $row){
-//
-//        }
+        //Month Days Calculation
+        for ($day = 1; $day <= $daysInMonth; $day++) {
+            // Create a new DateTime object for each day
+            $currentDate = new DateTime("$currentYear-$currentMonth-" . str_pad($day, 2, '0', STR_PAD_LEFT));
+            $originalDate = $currentDate->format('Y-m-j');
+            $dayname = $currentDate->format('l');
+            $newDate = date("Y-m-d", strtotime($originalDate));
 
-//                    p($this->db->last_query());
-//
-//        p($d);
-//        exit;
+            foreach ($records as $k => $row):
+                if ($newDate == $str=$row->ADate) {
+                    echo $currentDate->format('m-j-l');
+                }
 
-        $this->load->view('salary_report', $d);
+            endforeach;
+
+        }
+
+
     }
 
     function previoussalary($_id = 0)
@@ -187,10 +197,10 @@ class Attendance extends MY_Controller
         $d['month'] = $searchmonth;
         $d['year'] = $searchyear;
 
-        $d['records'] = $this->db->query("select * from attendance where EmployeeId='1' AND year(ADate)=$searchyear AND month(ADate)=$searchmonth Order by AID ASC")->result();
+        $d['records'] = $this->db->query("select * from attendance where EmployeeId=" . $_id . " AND year(ADate)=$searchyear AND month(ADate)=$searchmonth Order by AID ASC")->result();
 
 //                    p($this->db->last_query());
-// Print items
+//
 //        p($d);
 //        exit;
 
@@ -201,12 +211,6 @@ class Attendance extends MY_Controller
 
         $d['records'] = $this->employee->get_all();
         $this->load->view('old_salary_report',$d);
-    }
-
-    function Delete_attendance(){
-
-        $d['records'] = $this->employee->get_all();
-        $this->load->view('delete_attendance',$d);
     }
 
     function OldSalary($_id = 0){
@@ -230,138 +234,6 @@ class Attendance extends MY_Controller
     public function days(){
         $this->load->view('days');
     }
-    public function MarkAttendance(){
-        $d['records'] = $this->employee->order_by('EmployeeNumber', 'ASC')->get_all();
-        $this->load->view('mark_attendance',$d);
-
-    }
-
-    public function CalculateSalary()
-    {
-        $post2 = $this->input->post('form2');
-        $post3 = $this->input->post('form');
-        $SelectedDate = $post2[ADate];
-
-
-        foreach($post3 as $record) {
-//            p($record);
-            $EmployeeId= $record['EmployeeId'];
-            $Start_Time= $record['Start_Time'];
-            $End_Time= $record['End_Time'];
-            $Advance= $record['Advance'];
-            $Special_Amount= $record['Special_Amount'];
-            $employeeStartTime = $Start_Time;
-            $employeeEndTime = $End_Time;
-            $AID = $SelectedDate;
-            $EmployeeOTPH = $this->employee->get($EmployeeId)->OTPH;
-            $EmployeeBasicSalary = $this->employee->get($EmployeeId)->FullDaySalary;
-
-            //setting Array Data's
-            $post['adate'] = $SelectedDate;
-            $post['StartTime'] = $Start_Time;
-            $post['EndTime'] = $End_Time;
-            $post['EmployeeId'] = $EmployeeId;
-            $post['AdvanceAmount'] = $Advance;
-            $post['SpecialAmount'] = $Special_Amount;
-
-
-
-
-//                echo $employeeStartTime." TIME ".$employeeEndTime;
-
-
-
-
-
-           $result = $this->calculateDailySalary($employeeStartTime, $employeeEndTime, $EmployeeBasicSalary, $EmployeeOTPH);
-
-         //   p($result);
-
-            $post['OTRate'] = $EmployeeOTPH;
-            $post['OTPayment'] = $result['overtimeSalary'];
-            $post['PerDaySalary'] = $result['regularSalary'];
-
-
-            $d = '<div class="alert alert-success background-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Marked Successfully</strong> </div>';
-            $this->attendance->insert($post);
-
-
-
-
-
-
-        } /*end of Foreach of Form Submitted Data*/
-        $this->session->set_flashdata('notification', $d);
-        redirect('Attendance/markattendance');
-
-
-
-
-    }
-
-
-        public function calculateDailySalary($employeeStartTime, $employeeEndTime, $EmployeeBasicSalary, $EmployeeOTPH) {
-
-
-            // Define constants
-            define('DAILY_SALARY', $EmployeeBasicSalary);
-            define('OT_RATE_PER_HOUR', $EmployeeOTPH);
-            define('WORK_START_TIME', '08:00');
-            define('WORK_END_TIME', '18:00');
-            define('LUNCH_START_TIME', '13:00');
-            define('LUNCH_END_TIME', '14:00');
-
-            // Convert times to minutes since midnight
-            $workStart = strtotime(WORK_START_TIME) / 60;
-            $workEnd = strtotime(WORK_END_TIME) / 60;
-            $lunchStart = strtotime(LUNCH_START_TIME) / 60;
-            $lunchEnd = strtotime(LUNCH_END_TIME) / 60;
-            $empStart = strtotime($employeeStartTime) / 60;
-            $empEnd = strtotime($employeeEndTime) / 60;
-
-            // Calculate regular hours
-            $regularHours = min($workEnd, $empEnd) - max($workStart, $empStart);
-
-            // Deduct lunch hour only if employee works past lunch time
-            if ($empEnd > $lunchEnd && $empStart < $lunchStart)  {
-                $regularHours -= ($lunchEnd - $lunchStart);
-            }
-
-
-
-            $regularHours = max(0, $regularHours / 60); // Convert to hours and ensure non-negative
-
-
-            // Calculate overtime hours
-            $overtimeHours = 0;
-
-            if ($empStart < $workStart) {
-                $overtimeHours += $workStart - $empStart;
-            }
-            if ($empEnd > $workEnd) {
-                $overtimeHours += $empEnd - $workEnd;
-            }
-            $overtimeHours = $overtimeHours / 60; // Convert to hours
-
-
-            $dailySalary=DAILY_SALARY/9;
-
-
-
-            // Calculate salary
-            $regularSalary = $dailySalary*$regularHours;
-            $overtimeSalary = $overtimeHours * OT_RATE_PER_HOUR;
-            $totalSalary = $regularSalary + $overtimeSalary;
-
-            return [
-                'regularHours' => $regularHours,
-                'overtimeHours' => $overtimeHours,
-                'regularSalary' => $regularSalary,
-                'overtimeSalary' => $overtimeSalary,
-                'totalSalary' => $totalSalary
-            ];
-        }
-
 
 
 }

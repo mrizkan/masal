@@ -53,13 +53,25 @@
                                                     <form action="" method="post" enctype="multipart/form-data">
                                                         <div class="form-group row">
 
-                                                            <div class="col-sm-8">
+                                                            <div class="col-sm-4">
+                                                                <p>Employee Number</p>
+                                                                <input type="text" name="form[EmployeeNumber]"
+                                                                       required class="form-control" placeholder="Employee Number" value='<?=
+                                                                isset($records2->EmployeeNumber)
+                                                                    ?$records2->EmployeeNumber:""; ?>'>
+                                                            </div>
+                                                            <div class="col-sm-6">
                                                                 <p>Employee Name</p>
                                                                 <input type="text" name="form[EmployeeName]"
                                                                        required class="form-control" placeholder="Employee Name" value='<?=
                                                                 isset($records2->EmployeeName)
                                                                     ?$records2->EmployeeName:""; ?>'>
                                                             </div>
+
+                                                        </div>
+
+
+                                                        <div class="form-group row">
                                                             <div class="col-sm-4">
                                                                 <p>Full Day Salary</p>
                                                                 <input type="text" name="form[FullDaySalary]"
@@ -67,10 +79,6 @@
                                                                 isset($records2->FullDaySalary)
                                                                     ?$records2->FullDaySalary:""; ?>'>
                                                             </div>
-                                                        </div>
-
-
-                                                        <div class="form-group row">
                                                             <div class="col-sm-4">
                                                                 <p>OT Per Hour</p>
                                                                 <input type="text" name="form[OTPH]"

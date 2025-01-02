@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php include('inc/header_top.php');?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.min.js"></script>
+</head>
+<!-- Menu horizontal icon fixed -->
+
+<body class="horizontal-icon-fixed">
+<!-- Pre-loader start -->
+<div class="theme-loader">
+    <div class="ball-scale">
+        <div></div>
+    </div>
+</div>
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+
+    <div class="pcoded-container">
+        <!-- Menu header start -->
+        <?php include('inc/top_bar.php');?>
+        <!-- Menu header end -->
+        <div class="pcoded-main-container">
+            <?php include('inc/navigation.php');?>
+            <div class="pcoded-wrapper">
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <!-- Main-body start -->
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <!-- Page header start -->
+                                <div class="page-header">
+                                    <?php $this->view('inc/success_notification.php'); ?>
+                                    <div class="page-header-title">
+                                        <h4>Mark Attendance </h4>
+                                    </div>
+
+                                </div>
+                                <!-- Page header end -->
+                                <!-- Page body start -->
+                                <div class="page-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!-- Basic Form Inputs card start -->
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Mark Attendance</h5>
+                                                    <div class="card-header-right">
+                                                        <i class="icofont icofont-rounded-down"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <form action="<?= base_url('Attendance/CalculateSalary') ?>" method="post" enctype="multipart/form-data">
+                                                        <div class="form-group row">
+                                                            <input class="col-sm-3 col-form-label form-control form-bg-warning" name="form2[ADate]" value="2025-01-01" type="date" class="form-control">
+                                                            <label class="col-sm-2 col-form-label form-txt-success"><b>Start Time</b></label>
+                                                            <label class="col-sm-2 col-form-label form-txt-danger"><b>End Time</b></label>
+                                                            <label class="col-sm-2 col-form-label form-txt-danger"><b>Advance</b></label>
+                                                            <label class="col-sm-2 col-form-label form-txt-danger"><b>Special Amount</b></label>
+                                                        </div>
+                                                        <?php foreach ($records as $k => $row): ?>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-3 col-form-label"><?= $row->EmployeeName  ?></label>
+                                                                <input type="hidden" name="form[<?= $k  ?>][EmployeeId]" value="<?= $row->EmployeeId?>" >
+                                                                <div class="col-sm-2">
+                                                                    <input type="time" class="form-control form-txt-success"  name="form[<?= $k  ?>][Start_Time]" value="07:30">
+
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <input type="time" class="form-control form-txt-danger"  name="form[<?= $k  ?>][End_Time]" value="18:30">
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <input type="number" class="form-control form-txt-danger"  name="form[<?= $k  ?>][Advance]" value="500">
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <input type="number" class="form-control form-txt-danger"  name="form[<?= $k  ?>][Special_Amount]" value="200">
+                                                                </div>
+                                                            </div>
+                                                        <?php endforeach; ?>
+                                                        <button type="submit" class="submit-btn btn btn-success btn-round">Submit Data</button>
+                                                </div> <!-- End of card-block tag -->
+
+                                                <?= form_close() ?>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <!--                                            Edit Employee Card start here-->
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Delete Attendance</h5>
+                                                    <div class="card-header-right">
+                                                        <i class="icofont icofont-rounded-down"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <?php if (!empty($records2)) {?>
+                                                    <form action="<?= base_url('Attendance/AddAttendance') ?>" method="post" enctype="multipart/form-data">
+                                                        <?php }  else {?>
+                                                        <form action="<?= base_url('Attendance/EditAttendance') ?>" method="post" enctype="multipart/form-data">
+                                                            <?php } ?>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="form[adate]"  class="form-control" required value="<?php  if (!empty($records2)) { foreach ($records2 as $k => $row){ echo $row->ADate;} } ?>" <?php  if (!empty($records2)) { echo "readonly";}?>>
+                                                                    <input type="hidden" name="form[AID]" value="<?php  if (!empty($records2)) { foreach ($records2 as $k => $row){ echo $row->AID;} } ?>">
+                                                                </div>
+                                                            </div>
+
+                                                            <?php if (!empty($records2)) {?>
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-6">
+                                                                        <p>Start Time</p>
+                                                                        <input type="time" name="form[StartTime]"  class="form-control" value="<?php foreach ($records2 as $k => $row){ echo $row->StartTime;} ?>">
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p>End Time</p>
+                                                                        <input type="time" name="form[EndTime]"  class="form-control" value="<?php foreach ($records2 as $k => $row){ echo $row->EndTime;} ?>">
+                                                                    </div>
+
+                                                                </div>
+                                                            <?php } ?>
+                                                            <div class="form-group row">
+
+                                                                <div class="col-sm-12">
+
+                                                                    <select name="form[EmployeeId]" class="form-control">
+                                                                        <?php if (!empty($records2)) { foreach ($records2 as $k => $row){ ?>
+                                                                            <option value="<?php foreach ($records2 as $k => $row){ echo $row->EmployeeId;} ?>"><?php echo $records3; ?></option>
+                                                                        <?php }} else{?>
+                                                                            <option value="">Select Employee</option>
+                                                                            <?php foreach ($records as $k => $row): ?>
+                                                                                <option value="<?= $row->EmployeeId  ?>"><?= $row->EmployeeName  ?></option>
+                                                                            <?php endforeach; }?>
+
+                                                                    </select>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <?php if (!empty($records2)) {?>
+                                                                <div class="form-group row">
+                                                                    <!--<div class="col-sm-6">-->
+                                                                    <!--    <input type="checkbox" name="fullday" value="Pay Full Day"><label for="vehicle1"> Pay Full Day Salary</label>-->
+                                                                    <!--</div>-->
+                                                                    <div class="col-sm-6">
+                                                                        <p>Advance Amount</p>
+                                                                        <input type="number" name="form[AdvanceAmount]"
+                                                                               required class="form-control" placeholder="Advance"  value="<?php foreach ($records2 as $k => $row){ echo $row->AdvanceAmount;} ?>">
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p>Special Amount</p>
+                                                                        <input type="number" name="form[SpecialAmount]"
+                                                                               class="form-control" placeholder="Special Amount"  value="<?php foreach ($records2 as $k => $row){ echo $row->SpecialAmount;} ?>">
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>
+
+                                                            <div class="form-group row">
+
+                                                                <div class="col-sm-8">
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <?php if (!empty($records2)) {?>
+                                                                        <button class="btn btn-danger btn-round">Update</button>
+                                                                    <?php } else {?>
+                                                                        <button class="btn btn-danger btn-round">Delete</button>
+                                                                    <?php } ?>
+                                                                </div>
+                                                            </div>
+
+                                                </div> <!-- End of card-block tag -->
+
+
+
+                                                <?= form_close() ?>
+
+
+                                            </div>
+                                            <!--                                            Edit Employee Card end here-->
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- Page body end -->
+                        </div>
+                    </div>
+                    <!-- Main-body end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<?php include('inc/footer_below.php');?>
+</body>
+
+</html>

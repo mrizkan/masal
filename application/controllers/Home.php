@@ -64,7 +64,7 @@ class Home extends CI_Controller
 
     function dashboard()
     {
-       $d['records'] = $this->employee->get_all();
+        $d['records'] = $this->employee->order_by('EmployeeNumber', 'ASC')->get_all();
 
 //        p($d['records']);
 //        p($this->db->last_query());

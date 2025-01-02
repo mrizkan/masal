@@ -79,7 +79,7 @@
                             // Create a new DateTime object for each day
                             $currentDate = new DateTime("$currentYear-$currentMonth-" . str_pad($day, 2, '0', STR_PAD_LEFT));
                             $originalDate = $currentDate->format('Y-m-j');
-
+                            $dayname= $currentDate->format('l');
                             $newDate = date("Y-m-d", strtotime($originalDate));
 
 
@@ -96,7 +96,7 @@
 
                                         <!--                                <td>--><?php //$str=$row->ADate;  echo $str2 = substr($str, 5);  ?><!--</td>-->
 
-                                        <td><?php echo $currentDate->format('m-j'); ?></td>
+                                        <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>
                                         <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
                                         <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
                                         <td>Rs. <?= number_format($row->PerDaySalary,2);  ?></td>
@@ -117,10 +117,10 @@
                                     </tr>
                                 <?php  } endforeach;  ?>
 
-                            <?php if ($newDate != $str=$row->ADate){ if ($PreviousDate<$newDate){ ?>
+                            <?php if ($newDate != $str=$row->ADate){ if ($PreviousDate<$newDate){ if ($dayname=='Sunday'){?>
                                 <tr>
-                                    <td><?php echo $currentDate->format('m-j'); ?></td>
-                                    <td> - </td>
+                                    <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ; ?></td>
+                                    <td> Holiday </td>
                                     <td> - </td>
                                     <td> - </td>
                                     <td> - </td>
@@ -128,7 +128,22 @@
                                     <td> - </td>
 
                                 </tr>
-                            <?php } } } ?>
+                            <?php } else{ ?>
+
+                                <tr>
+                                    <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ; ?></td>
+                                    <td> AB </td>
+                                    <td> - </td>
+                                    <td> - </td>
+                                    <td> - </td>
+                                    <td> - </td>
+                                    <td> - </td>
+
+                                </tr>
+
+
+                            <?php }
+                            } } }?>
 
                         <tr>
                             <td colspan="4"  style="text-align: center">Basic Salary</td>
