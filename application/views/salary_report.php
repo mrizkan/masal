@@ -97,8 +97,17 @@
 <!--                                <td>--><?php //$str=$row->ADate;  echo $str2 = substr($str, 5);  ?><!--</td>-->
 
                                 <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>
-                                <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
-                                <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
+                                <?php $checkstrttime= date("g:i a", strtotime("$row->StartTime"));
+                                        $checkendtime = date("g:i a", strtotime("$row->EndTime"));
+                                    if ($checkstrttime='12:00 am' && $checkendtime='12:00 am'){ ?>
+
+                                        <td> AB </td>
+                                        <td> - </td>
+                                 <?php   } else{ ?>
+                                        <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
+                                        <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
+                                <?php } ?>
+
                                 <td>Rs. <?= number_format($row->PerDaySalary,2);  ?></td>
 
 

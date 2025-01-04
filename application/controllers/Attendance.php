@@ -265,7 +265,10 @@ class Attendance extends MY_Controller
             $post['SpecialAmount'] = $Special_Amount;
 
 
-
+            if (empty($employeeStartTime)){
+                $employeeStartTime='08:00';
+                $employeeEndTime='08:00';
+            }
 
 //                echo $employeeStartTime." TIME ".$employeeEndTime;
 
@@ -292,7 +295,7 @@ class Attendance extends MY_Controller
 
         } /*end of Foreach of Form Submitted Data*/
         $this->session->set_flashdata('notification', $d);
-        redirect('Attendance/markattendance');
+        redirect('Home/dashboard');
 
 
 
