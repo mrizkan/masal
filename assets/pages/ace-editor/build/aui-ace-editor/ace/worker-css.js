@@ -245,7 +245,7 @@ define('ace/lib/regexp', ['require', 'exports', 'module' ], function(require, ex
                (regex.multiline  ? "m" : "") +
                (regex.extended   ? "x" : "") + // Proposed for ES4; included in AS3
                (regex.sticky     ? "y" : "");
-    };
+    }
 
     function indexOf (array, item, from) {
         if (Array.prototype.indexOf) // Use the native array method if available
@@ -255,7 +255,7 @@ define('ace/lib/regexp', ['require', 'exports', 'module' ], function(require, ex
                 return i;
         }
         return -1;
-    };
+    }
 
 });
 // vim: ts=4 sts=4 sw=4 expandtab
@@ -2115,7 +2115,7 @@ var Range = function(startRow, startColumn, endRow, endColumn) {
         if (!this.isMultiLine()) {
             if (row === this.start.row) {
                 return column < this.start.column ? -1 : (column > this.end.column ? 1 : 0);
-            };
+            }
         }
 
         if (row < this.start.row)

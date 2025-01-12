@@ -2377,7 +2377,7 @@ Y.log('attempting to load ' + s[i] + ', ' + self.base, 'info', 'loader');
 	    if (groupName && this.groups[groupName] && this.groups[groupName].filter) {		
 	 	   modFilter = this.groups[groupName].filter;
 		   hasFilter = true;		
-	     };
+	     }
 
         if (u) {
             if (hasFilter) {

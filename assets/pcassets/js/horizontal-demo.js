@@ -41,7 +41,7 @@ $( document ).ready(function() {
 			var navbartheme = $(this).attr("navbar-theme");
 			$('.pcoded-navbar').attr("navbar-theme", navbartheme);
         });
-    };
+    }
 
 	handlenavbartheme();
  /* Navbar Theme Change function Close */
@@ -52,7 +52,7 @@ $( document ).ready(function() {
 			var AtciveItemTheme = $(this).attr("active-item-theme");
 			$('.pcoded-navbar').attr("active-item-theme", AtciveItemTheme);
         });
-    };
+    }
 
 	handleActiveItemTheme();
  /* Navbar Theme Change function Close */ 
@@ -64,7 +64,7 @@ $( document ).ready(function() {
 			var themebgpattern = $(this).attr("themebg-pattern");
 			$('body').attr("themebg-pattern", themebgpattern);
         });
-    };
+    }
 
 	handlethemebgpattern();
  /* Theme background pattren Change function Close */
@@ -75,7 +75,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded').attr('horizontal-layout', get_value);
 		});
-	};
+	}
 
    handlethemehorizontallayout ();
  /* Theme Layout Change function Close*/
@@ -86,7 +86,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded').attr('horizontal-placement', get_value); 
 		});
-	};
+	}
 
    handleMenuPlacement ();
  /*Menu Placement change function Close*/
@@ -102,7 +102,7 @@ $( document ).ready(function() {
 					$('.pcoded-navbar .pcoded-item').attr('item-border', 'true');
 				}
 			});
-		};
+		}
 
    handleIItemBorder ();
  /*Item border change function Close*/
@@ -117,7 +117,7 @@ $( document ).ready(function() {
 					$('.pcoded-navbar .pcoded-item').attr('subitem-border', 'true');
 				}
 			});
-		};
+		}
 
    handleSubIItemBorder ();
  /*SubItem border change function Close*/
@@ -129,7 +129,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded-navbar .pcoded-item').attr('item-border-style', get_value);
 		});
-	};
+	}
 
    handlBoderStyle ();
  /*Item border Style change function Close*/
@@ -143,7 +143,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded-navbar .pcoded-hasmenu').attr('dropdown-icon', get_value);
 		});
-	};
+	}
 
    handleDropDownIconStyle ();
  /*Dropdown Icon change function Close*/
@@ -161,7 +161,7 @@ $( document ).ready(function() {
 					$('.pcoded-navbar').attr("pcoded-navbar-position", 'relative' ); 
 				}
 			});
-		};
+		}
 
    handleNavigationPosition ();
    
@@ -175,7 +175,7 @@ $( document ).ready(function() {
 					$('.pcoded .pcoded-navbar .pcoded-item > li > a .pcoded-micon:not(".pcoded-search-item .pcoded-micon")').show();
 				}
 			});
-		};
+		}
 
 	handleNavigationMenuIcon ();
    /* Hide Show Brand logo */
@@ -187,7 +187,7 @@ $( document ).ready(function() {
 					$('.pcoded .pcoded-navbar .pcoded-brand').show();
 				}
 			});
-		};
+		}
 
 	handlepcodedBrandVisibility (); 
 	function handlePcodedLeftItemVisibility() {
@@ -198,7 +198,7 @@ $( document ).ready(function() {
 					$('.pcoded .pcoded-navbar .pcoded-item.pcoded-left-item').show();
 				}
 			});
-		}; 
+		}
 	handlePcodedLeftItemVisibility ();
 	function handlePcodedRightItemVisibility() {
 			$('#rightitem-visibility').change(function() {
@@ -208,7 +208,7 @@ $( document ).ready(function() {
 					$('.pcoded .pcoded-navbar .pcoded-item.pcoded-right-item').show();
 				}
 			});
-		}; 
+		}
 	handlePcodedRightItemVisibility ();
 	function handlePcodedSearchItemVisibility() {
 			$('#searchitem-visibility').change(function() {
@@ -218,7 +218,7 @@ $( document ).ready(function() {
 					$('.pcoded .pcoded-navbar .pcoded-item.pcoded-search-item').show();
 				}
 			});
-		}; 
+		}
 	handlePcodedSearchItemVisibility ();
 	
 	function handleBrandItemAlign() {
@@ -232,7 +232,7 @@ $( document ).ready(function() {
 				$('.pcoded-navbar .pcoded-brand').removeClass('pcoded-left-align');
 			}
 		});
-	};
+	}
 
    handleBrandItemAlign ();
    function handleLeftItemAlign() {
@@ -246,7 +246,7 @@ $( document ).ready(function() {
 				$('.pcoded-navbar .pcoded-left-item').removeClass('pcoded-left-align');
 			}
 		});
-	};
+	}
 
    handleLeftItemAlign ();
    function handleRightItemAlign() {
@@ -260,7 +260,7 @@ $( document ).ready(function() {
 				$('.pcoded-navbar .pcoded-right-item').removeClass('pcoded-left-align');
 			}
 		});
-	};
+	}
 
    handleRightItemAlign ();
    function handleSearchItemAlign() {
@@ -274,7 +274,7 @@ $( document ).ready(function() {
 				$('.pcoded-navbar .pcoded-search-item').removeClass('pcoded-left-align');
 			}
 		});
-	};
+	}
 
    handleSearchItemAlign ();
 });

@@ -98,6 +98,6 @@ $(document).ready(function() {
     $('#dropper').on('shown.bs.modal', function() {
         $('#dropping').summernote({ height: 300, focus: true });
     }).on('hidden.bs.modal', function() {
-        $('#dropping').summernote('destroy');;
+        $('#dropping').summernote('destroy');
     });
 });

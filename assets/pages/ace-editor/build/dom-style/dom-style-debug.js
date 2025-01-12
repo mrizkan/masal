@@ -69,7 +69,7 @@ Y.mix(Y_DOM, {
         if (style) {
             if (val === null || val === '') { // normalize unsetting
                 val = '';
-            } else if (!isNaN(new Number(val)) && re_unit.test(att)) { // number values may need a unit
+            } else if (!isNaN(Number(val)) && re_unit.test(att)) { // number values may need a unit
                 val += Y_DOM.DEFAULT_UNIT;
             }
 

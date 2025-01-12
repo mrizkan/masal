@@ -33,7 +33,7 @@
             timeout = setTimeout(later, wait);
             if (callNow) func.apply(context, args);
         };
-    };
+    }
 
     Note = {
         // DOM selectors

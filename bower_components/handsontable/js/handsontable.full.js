@@ -2100,7 +2100,7 @@ function extendEvent(context, event) {
 exports.default = EventManager;
 function getListenersCounter() {
   return listenersCounter;
-};
+}
 
 /***/ }),
 /* 5 */
@@ -15563,7 +15563,7 @@ function Core(rootElement, userSettings) {
     for (i in settings) {
       if (i === 'data') {
         /* eslint-disable no-continue */
-        continue; // loadData will be triggered later
+         // loadData will be triggered later
       } else if (_pluginHooks2.default.getSingleton().getRegistered().indexOf(i) > -1) {
         if ((0, _function.isFunction)(settings[i]) || Array.isArray(settings[i])) {
           settings[i].initialHook = true;
@@ -17275,7 +17275,7 @@ function Core(rootElement, userSettings) {
   // this.version = Handsontable.version;
 
   _pluginHooks2.default.getSingleton().run(instance, 'construct');
-};
+}
 
 /***/ }),
 /* 65 */
@@ -17507,7 +17507,7 @@ var _object = __webpack_require__(1);
  * @return {Object} ColumnSettings
  */
 function columnFactory(GridSettings, conflictList) {
-  function ColumnSettings() {};
+  function ColumnSettings() {}
 
   (0, _object.inherit)(ColumnSettings, GridSettings);
 
@@ -19299,7 +19299,7 @@ var _object = __webpack_require__(1);
  * ---
  * __Important notice:__ In order for the data separation to work properly, make sure that each instance of Handsontable has a unique `id`.
  */
-function DefaultSettings() {};
+function DefaultSettings() {}
 
 DefaultSettings.prototype = {
   /**
@@ -31765,7 +31765,7 @@ function jQueryWrapper(Handsontable) {
 
     return output;
   };
-};
+}
 
 /***/ }),
 /* 293 */
@@ -50756,7 +50756,7 @@ function Search(instance) {
 
     return queryResult;
   };
-};
+}
 
 Search.DEFAULT_CALLBACK = function (instance, row, col, data, testResult) {
   instance.getCellMeta(row, col).isSearchResult = testResult;
@@ -50811,7 +50811,7 @@ function SearchCellDecorator(instance, TD, row, col, prop, value, cellProperties
   } else {
     (0, _element.removeClass)(TD, searchResultClass);
   }
-};
+}
 
 var originalBaseRenderer = (0, _renderers.getRenderer)('base');
 
@@ -51240,7 +51240,7 @@ function UndoRedo(instance) {
 
     plugin.done(new UndoRedo.RowMoveAction(movedRows, target));
   });
-};
+}
 
 UndoRedo.prototype.done = function (action) {
   if (!this.ignoreNewActions) {
@@ -53561,7 +53561,7 @@ var LinkedList = function () {
   return LinkedList;
 }();
 
-;
+
 
 exports.NodeStructure = NodeStructure;
 exports.default = LinkedList;
@@ -53838,7 +53838,7 @@ function merge(array, compareFunction, startIndex, middleIndex, endIndex) {
   }
 
   return array;
-};
+}
 
 /***/ }),
 /* 388 */
@@ -53877,7 +53877,7 @@ function autocompleteValidator(value, callback) {
   } else {
     callback(true);
   }
-};
+}
 
 /**
  * Function responsible for validation of autocomplete value.
@@ -53969,7 +53969,7 @@ function dateValidator(value, callback) {
   }
 
   callback(valid);
-};
+}
 
 /**
  * Format the given string using moment.js' format feature
@@ -53991,7 +53991,7 @@ function correctFormat(value, dateFormat) {
   }
 
   return date.format(dateFormat);
-};
+}
 
 /***/ }),
 /* 390 */
@@ -54021,7 +54021,7 @@ function numericValidator(value, callback) {
   } else {
     callback(/^-?\d*(\.|,)?\d*$/.test(value));
   }
-};
+}
 
 /***/ }),
 /* 391 */
@@ -54100,7 +54100,7 @@ function timeValidator(value, callback) {
   }
 
   callback(valid);
-};
+}
 
 /***/ }),
 /* 392 */
@@ -54781,13 +54781,13 @@ var map = {
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
-};
+}
 function webpackContextResolve(req) {
 	var id = map[req];
 	if(!(id + 1)) // check for number or string
 		throw new Error("Cannot find module '" + req + "'.");
 	return id;
-};
+}
 webpackContext.keys = function webpackContextKeys() {
 	return Object.keys(map);
 };

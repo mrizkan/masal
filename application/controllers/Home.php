@@ -11,6 +11,7 @@ class Home extends CI_Controller
         parent::__construct();
 
         $this->load->model('Employee_model', 'employee');
+        $this->load->model('Attendance_model', 'attendance');
         $this->controller = get_class();
     }
 
@@ -47,6 +48,9 @@ class Home extends CI_Controller
             
             $User= $this->session->user;
            $d['records'] = $this->employee->get_all();
+            $currentYear = date('Y');
+            $currentMonth = date('m');
+            $d['records2'] = $this->db->query("SELECT ADate FROM attendance WHERE YEAR(ADate) =". $currentYear ." AND MONTH(ADate) =". $currentMonth." Order by ADate DESC")->result();
 //        p($d['records']);
 //        p($this->db->last_query());
 //        exit;
@@ -66,7 +70,11 @@ class Home extends CI_Controller
     {
         $d['records'] = $this->employee->order_by('EmployeeNumber', 'ASC')->get_all();
 
-//        p($d['records']);
+        $currentYear = date('Y');
+        $currentMonth = date('m');
+       $d['records2'] = $this->db->query("SELECT ADate FROM attendance WHERE YEAR(ADate) =". $currentYear ." AND MONTH(ADate) =". $currentMonth." Order by ADate DESC")->result();
+
+//        p($d['records2']);
 //        p($this->db->last_query());
 //        exit;
         $this->load->view('dashboard',$d);

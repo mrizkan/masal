@@ -2794,7 +2794,7 @@ class QRcode {
 		$rs['gfpoly'] = $gfpoly;
 		// Find prim-th root of 1, used in decoding
 		for ($iprim=1; ($iprim % $prim) != 0; $iprim += $rs['nn']) {
-			; // intentional empty-body loop!
+            // intentional empty-body loop!
 		}
 		$rs['iprim'] = (int)($iprim / $prim);
 		$rs['genpoly'][0] = 1;

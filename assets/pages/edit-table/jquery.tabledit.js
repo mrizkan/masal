@@ -68,11 +68,11 @@ if (typeof jQuery === 'undefined') {
                     html: 'Confirm'
                 }
             },
-            onDraw: function() { return; },
-            onSuccess: function() { return; },
-            onFail: function() { return; },
-            onAlways: function() { return; },
-            onAjax: function() { return; }
+            onDraw: function() {  },
+            onSuccess: function() {  },
+            onFail: function() {  },
+            onAlways: function() {  },
+            onAjax: function() {  }
         };
 
         var settings = $.extend(true, defaults, options);

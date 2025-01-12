@@ -192,7 +192,7 @@ $.fn.pcodedmenu = function( settings ) {
 						}
 					}
 				});
-			};
+			}
 			function closeLeftbarSearch() {
 				$(document).on('click', function(evt) {
 					var target = $(evt.target);
@@ -202,7 +202,7 @@ $.fn.pcodedmenu = function( settings ) {
 					}
 
 				});
-			};
+			}
 
 			closeSubMenu();
 			closeLeftbarSearch();
@@ -313,7 +313,7 @@ $.fn.pcodedmenu = function( settings ) {
 					}else {
 						elm.hide();
 					}
-				};
+				}
 				function leftitemalignment() {
 					var elm = $('#'+oid + '.pcoded .pcoded-navbar .pcoded-item.pcoded-left-item');
 					if (settings.horizontalLeftNavItem === true){
@@ -331,7 +331,7 @@ $.fn.pcodedmenu = function( settings ) {
 					}else {
 						elm.hide();
 					}
-				};
+				}
 				function rightitemalignment() {
 					var elm = $('#'+oid + '.pcoded .pcoded-navbar .pcoded-item.pcoded-right-item');
 					if (settings.horizontalRightItem === true){
@@ -349,7 +349,7 @@ $.fn.pcodedmenu = function( settings ) {
 					}else{
 						elm.hide();
 					}
-				};
+				}
 				function searchitemalignment() {
 					var elm = $('#'+oid + '.pcoded .pcoded-navbar .pcoded-search-item');
 					if (settings.horizontalSearchItem === true){
@@ -367,7 +367,7 @@ $.fn.pcodedmenu = function( settings ) {
 					}else {
 						elm.hide();
 					}
-				};
+				}
 				if (settings.horizontalNavIsCentered === false){
 					branditemalignment();
 					leftitemalignment();
@@ -507,7 +507,7 @@ $.fn.pcodedmenu = function( settings ) {
 				} else {
 					$('body').attr("themebg-pattern", "pattern1");
 				}
-            };
+            }
              function setheadertheme() {
                 var ev = settings.HeaderBackground;
 				if(ev != undefined && ev != "") {
@@ -515,7 +515,7 @@ $.fn.pcodedmenu = function( settings ) {
 				} else {
 					$('#'+oid + ' .pcoded-header').attr("header-theme", "theme1");
 				}
-            };
+            }
             function setlheadertheme() {
                 var ev = settings.LHeaderBackground;
 				if(ev != undefined && ev != "") {
@@ -523,7 +523,7 @@ $.fn.pcodedmenu = function( settings ) {
 				} else {
 					$('#'+oid + ' .pcoded-header .pcoded-left-header').attr("lheader-theme", "theme1");
 				}
-            };
+            }
             function setnavbartheme() {
                 var ev = settings.NavbarBackground;
 				if(ev != undefined && ev != "") {
@@ -531,7 +531,7 @@ $.fn.pcodedmenu = function( settings ) {
 				} else {
 					$('#'+oid + ' .pcoded-navbar').attr("navbar-theme", "theme1");
 				}
-            };
+            }
 			function setactiveitemtheme() {
                 var ev = settings.ActiveItemBackground;
 				if(ev != undefined && ev != "") {
@@ -539,7 +539,7 @@ $.fn.pcodedmenu = function( settings ) {
 				} else {
 					$('#'+oid + ' .pcoded-navbar').attr("active-item-theme", "theme1");
 				}
-            };
+            }
 			function setsubitemtheme() {
                 var ev = settings.SubItemBackground;
 				if(ev != undefined && ev != "") {
@@ -547,7 +547,7 @@ $.fn.pcodedmenu = function( settings ) {
 				} else {
 					$('#'+oid + ' .pcoded-navbar').attr("sub-item-theme", "theme1");
 				}
-            };
+            }
 			themebackgroundpattern();
 			setheadertheme();
             setlheadertheme();
@@ -855,7 +855,7 @@ $.fn.pcodedmenu = function( settings ) {
 				} else {
 					return false;
 				}
-            };
+            }
 			setHeight();
 
             $(window).resize(function() {
@@ -929,7 +929,7 @@ $.fn.pcodedmenu = function( settings ) {
 					}
 
 				}
-			};
+			}
             devicesize();
 
              $(window).resize(function() {

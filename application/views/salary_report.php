@@ -51,7 +51,7 @@
                     <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $firstDay->format('F Y')?> </h2>
                     <table>
                         <tr>
-<!--                            <th>#</th>-->
+                            <!--                            <th>#</th>-->
                             <th>Date</th>
                             <th>In</th>
                             <th>Out</th>
@@ -73,7 +73,7 @@
                         $TotalSpecialAmount=0;
                         $PreviousDate=0;
 
-//                        p(number_format((float)$a+$b,2));
+                        //                        p(number_format((float)$a+$b,2));
 
                         for ($day = 1; $day <= $daysInMonth; $day++) {
                             // Create a new DateTime object for each day
@@ -83,7 +83,7 @@
                             $newDate = date("Y-m-d", strtotime($originalDate));
 
 
-                        foreach ($records as $k => $row):
+                            foreach ($records as $k => $row):
 
 
 
@@ -91,57 +91,57 @@
                                 // Format and display the day
 
                                 if ($newDate == $str=$row->ADate){
-                            ?>
-                            <tr>
+                                    ?>
+                                    <tr>
 
-<!--                                <td>--><?php //$str=$row->ADate;  echo $str2 = substr($str, 5);  ?><!--</td>-->
+                                        <!--                                <td>--><?php //$str=$row->ADate;  echo $str2 = substr($str, 5);  ?><!--</td>-->
 
-                                <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>
-                                <?php $checkstrttime= date("g:i a", strtotime("$row->StartTime"));
-                                       $checkendtime = date("g:i a", strtotime("$row->EndTime"));
+                                        <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>
+                                        <?php $checkstrttime= date("g:i a", strtotime("$row->StartTime"));
+                                        $checkendtime = date("g:i a", strtotime("$row->EndTime"));
 
-                                    if ($checkstrttime=='12:00 am' && $checkendtime=='12:00 am'){ ?>
+                                        if ($checkstrttime=='12:00 am' && $checkendtime=='12:00 am'){ ?>
 
-                                        <td> AB </td>
-                                        <td> - </td>
-                                 <?php   } else{ ?>
-                                        <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
-                                        <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?> </td>
-                                <?php } ?>
+                                            <td> AB </td>
+                                            <td> - </td>
+                                        <?php   } else{ ?>
+                                            <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
+                                            <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?> </td>
+                                        <?php } ?>
 
-                                <td>Rs. <?= number_format($row->PerDaySalary,2);  ?></td>
+                                        <td>Rs. <?= number_format($row->PerDaySalary,2);  ?></td>
 
 
 
-                                <td style="text-align: center">Rs. <?php if(!empty($row->OTPayment)){ echo number_format($row->OTPayment,2);} else {echo "0";}  ?></td>
-                                <td style="text-align: center">Rs. <?= $row->AdvanceAmount  ?></td>
-                                <td style="text-align: center">Rs. <?= $row->SpecialAmount  ?></td>
+                                        <td style="text-align: center">Rs. <?php if(!empty($row->OTPayment)){ echo number_format($row->OTPayment,2);} else {echo "0";}  ?></td>
+                                        <td style="text-align: center">Rs. <?= $row->AdvanceAmount  ?></td>
+                                        <td style="text-align: center">Rs. <?= $row->SpecialAmount  ?></td>
 
-                                <?php
-                                $TotalOTHours+=$OTHours;
-                                $TotalOTPayent+=$row->OTPayment;
-                                $TotalAdvance+=$row->AdvanceAmount;
-                                $TotalPerDaySalary+=$row->PerDaySalary;
-                                $TotalSpecialAmount+=$row->SpecialAmount;
-                                $PreviousDate = $newDate;?>
-                            </tr>
-                        <?php  } endforeach;  ?>
+                                        <?php
+                                        $TotalOTHours+=$OTHours;
+                                        $TotalOTPayent+=$row->OTPayment;
+                                        $TotalAdvance+=$row->AdvanceAmount;
+                                        $TotalPerDaySalary+=$row->PerDaySalary;
+                                        $TotalSpecialAmount+=$row->SpecialAmount;
+                                        $PreviousDate = $newDate;?>
+                                    </tr>
+                                <?php  } endforeach;  ?>
 
-                               <?php if ($newDate != $str=$row->ADate){ if ($PreviousDate<$newDate){ if ($dayname=='Sunday'){?>
-                                                            <tr>
-                                                                <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ; ?></td>
-                                                                <td> Holiday </td>
-                                                                <td> - </td>
-                                                                <td> - </td>
-                                                                <td> - </td>
-                                                                <td> - </td>
-                                                                <td> - </td>
+                            <?php if ($newDate != $str=$row->ADate){ if ($PreviousDate<$newDate){ if ($dayname=='Sunday'){?>
+                                <tr>
+                                    <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>
+                                    <td> Holiday </td>
+                                    <td> - </td>
+                                    <td> - </td>
+                                    <td> - </td>
+                                    <td> - </td>
+                                    <td> - </td>
 
-                                                            </tr>
-                        <?php } else{ ?>
+                                </tr>
+                            <?php } else{ ?>
 
                                 <tr>
-                                    <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ; ?></td>
+                                    <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>
                                     <td> AB </td>
                                     <td> - </td>
                                     <td> - </td>
@@ -152,7 +152,7 @@
                                 </tr>
 
 
-                              <?php }
+                            <?php }
                             } } }?>
 
                         <tr>

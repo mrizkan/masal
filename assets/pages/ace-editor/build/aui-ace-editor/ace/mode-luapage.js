@@ -1927,7 +1927,7 @@ oop.inherits(FoldMode, BaseFoldMode);
             }
             else if (this.voidElements[top.tagName]) {
                 stack.pop();
-                continue;
+
             } else {
                 return null;
             }

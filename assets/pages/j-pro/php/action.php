@@ -1,5 +1,9 @@
 <?php
-	header("Content-Type: text/html; charset=utf-8");
+
+use ReCaptcha\ReCaptcha;
+use ReCaptcha\RequestMethod\SocketPost;
+
+header("Content-Type: text/html; charset=utf-8");
 	header("Cache-Control: no-cache");
 
 	if (!$_POST) exit;
@@ -68,11 +72,11 @@
 				// If file_get_contents() is locked down on your PHP installation to disallow
 				// its use with URLs, then you can use the alternative request method instead.
 				// This makes use of fsockopen() instead.
-				$re_captcha = new \ReCaptcha\ReCaptcha(RECAPTCHA_SERVER_SECRET_KEY, new \ReCaptcha\RequestMethod\SocketPost());
+				$re_captcha = new ReCaptcha(RECAPTCHA_SERVER_SECRET_KEY, new SocketPost());
 			} else {
 
 				// Create an instance of the service using your secret key
-				$re_captcha = new \ReCaptcha\ReCaptcha(RECAPTCHA_SERVER_SECRET_KEY);
+				$re_captcha = new ReCaptcha(RECAPTCHA_SERVER_SECRET_KEY);
 			}
 
 			// Make the call to verify the response and also pass the user's IP address

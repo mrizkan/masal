@@ -26,7 +26,7 @@
                $('.contact-box').addClass("contact-hide");
          
       }
-    };
+    }
         $(window).on('resize',function() {
             setHeight();
         });

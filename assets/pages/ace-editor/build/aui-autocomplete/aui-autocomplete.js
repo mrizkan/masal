@@ -1645,7 +1645,7 @@ var AutoComplete = A.Component.create(
 							instance._toggleContainer(false);
 						}
 
-						return;
+
 					}
 
 				}

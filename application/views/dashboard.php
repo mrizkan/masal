@@ -42,7 +42,7 @@
                                 <!-- Page body start -->
                                 <div class="page-body">
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-10">
                                             <!-- Basic Form Inputs card start -->
                                             <div class="card">
                                                 <div class="card-header">
@@ -79,12 +79,51 @@
                                                                 </div>
                                                             </div>
                                                         <?php endforeach; ?>
+
+
                                                         <button type="submit" class="submit-btn btn btn-success btn-round">Submit Data</button>
                                                 </div> <!-- End of card-block tag -->
 
                                                 <?= form_close() ?>
 
                                             </div>
+
+
+
+
+                                        </div>
+
+                                        <div class="col-lg-2">
+                                            <!--                                            Previous Data start-->
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Previous Day's</h5>
+
+
+                                                </div>
+                                                <div class="card-block table-border-style">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr>
+
+                                                                <th>Day</th>
+
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <?php foreach ($records2 as $k => $row2): ?>
+                                                            <tr>
+                                                                <td> <?= $row2->ADate?></td>
+                                                            </tr>
+                                                            <?php endforeach; ?>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--                                            Previus data end-->
 
                                         </div>
 

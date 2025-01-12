@@ -251,7 +251,7 @@ var Selector = {
                 if (useFrag) { // cleanup
                     frag.removeChild(node);
                 }
-            };
+            }
         }
 
         return ret;

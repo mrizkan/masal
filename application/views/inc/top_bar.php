@@ -23,7 +23,7 @@
 <!--                                    </a>-->
 <!--                                </li>-->
                                 <li>
-                                    <a href="#!" onclick="javascript:toggleFullScreen()">
+                                    <a href="#!" onclick="toggleFullScreen()">
                                         <i class="ti-fullscreen"></i>
                                     </a>
                                 </li>

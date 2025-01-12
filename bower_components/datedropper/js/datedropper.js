@@ -600,7 +600,7 @@ jQuery.easing._dd_easing = function(x, t, b, c, d) {
                             'Saturday'
                         ];
                         break;
-                };
+                }
 
 
 

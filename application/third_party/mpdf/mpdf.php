@@ -31835,8 +31835,8 @@ function rgb2hsl($var_r, $var_g, $var_b) {
             $del_b = ((($var_max - $var_b) / 6) + ($del_max / 2)) / $del_max;
             if ($var_r == $var_max) { $h = $del_b - $del_g; }
             elseif ($var_g == $var_max)  { $h = (1 / 3) + $del_r - $del_b; }
-            elseif ($var_b == $var_max)  { $h = (2 / 3) + $del_g - $del_r; };
-            if ($h < 0) { $h += 1; }
+            elseif ($var_b == $var_max)  { $h = (2 / 3) + $del_g - $del_r; }
+        if ($h < 0) { $h += 1; }
             if ($h > 1) { $h -= 1; }
     }
     return array($h,$s,$l);
@@ -31865,12 +31865,12 @@ function hsl2rgb($h2,$s2,$l2) {
 
 function hue_2_rgb($v1,$v2,$vh) {
 	// Function to convert hue to RGB, called from above
-	if ($vh < 0) { $vh += 1; };
-	if ($vh > 1) { $vh -= 1; };
-	if ((6 * $vh) < 1) { return ($v1 + ($v2 - $v1) * 6 * $vh); };
-	if ((2 * $vh) < 1) { return ($v2); };
-	if ((3 * $vh) < 2) { return ($v1 + ($v2 - $v1) * ((2 / 3 - $vh) * 6)); };
-	return ($v1);
+	if ($vh < 0) { $vh += 1; }
+    if ($vh > 1) { $vh -= 1; }
+    if ((6 * $vh) < 1) { return ($v1 + ($v2 - $v1) * 6 * $vh); }
+    if ((2 * $vh) < 1) { return ($v2); }
+    if ((3 * $vh) < 2) { return ($v1 + ($v2 - $v1) * ((2 / 3 - $vh) * 6)); }
+    return ($v1);
 }
 
 function _invertColor($cor) {

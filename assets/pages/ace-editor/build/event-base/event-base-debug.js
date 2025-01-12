@@ -1130,7 +1130,7 @@ Y.log(type + " attach call failed, invalid callback", "error", "event");
 
             Event.locked = false;
 
-            return;
+
 
         },
 

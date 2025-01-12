@@ -561,4 +561,4 @@ option = {
 };
      myChart.setOption(option);
 
- };
+ }

@@ -602,7 +602,7 @@ exports.coreCommands = {
 
 var handleCursorMove = exports.onCursorMove = function(editor, e) {
     if (util.currentMode === 'insert' || handleCursorMove.running)
-        return;
+
     else if(!editor.selection.isEmpty()) {
         handleCursorMove.running = true;
         if (util.onVisualLineMode) {
@@ -621,7 +621,7 @@ var handleCursorMove = exports.onCursorMove = function(editor, e) {
             }
         }
         handleCursorMove.running = false;
-        return;
+
     }
     else {
         if (e && (util.onVisualLineMode || util.onVisualMode)) {

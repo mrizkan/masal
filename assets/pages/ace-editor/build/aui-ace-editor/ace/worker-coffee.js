@@ -245,7 +245,7 @@ define('ace/lib/regexp', ['require', 'exports', 'module' ], function(require, ex
                (regex.multiline  ? "m" : "") +
                (regex.extended   ? "x" : "") + // Proposed for ES4; included in AS3
                (regex.sticky     ? "y" : "");
-    };
+    }
 
     function indexOf (array, item, from) {
         if (Array.prototype.indexOf) // Use the native array method if available
@@ -255,7 +255,7 @@ define('ace/lib/regexp', ['require', 'exports', 'module' ], function(require, ex
                 return i;
         }
         return -1;
-    };
+    }
 
 });
 // vim: ts=4 sts=4 sw=4 expandtab
@@ -2141,7 +2141,7 @@ var Range = function(startRow, startColumn, endRow, endColumn) {
         if (!this.isMultiLine()) {
             if (row === this.start.row) {
                 return column < this.start.column ? -1 : (column > this.end.column ? 1 : 0);
-            };
+            }
         }
 
         if (row < this.start.row)
@@ -2695,7 +2695,7 @@ define('ace/mode/coffee/lexer', ['require', 'exports', 'module' , 'ace/mode/coff
       if (__indexOf.call(JS_FORBIDDEN, id) >= 0) {
         if (forcedIdentifier) {
           tag = 'IDENTIFIER';
-          id = new String(id);
+          id = String(id);
           id.reserved = true;
         } else if (__indexOf.call(RESERVED, id) >= 0) {
           this.error("reserved word \"" + id + "\"");
@@ -3482,7 +3482,7 @@ define('ace/mode/coffee/rewriter', ['require', 'exports', 'module' ], function(r
         }
         prevTag = this.tag(idx - 1);
         startsLine = !prevTag || (__indexOf.call(LINEBREAKS, prevTag) >= 0);
-        value = new String('{');
+        value = String('{');
         value.generated = true;
         tok = this.generate('{', value, token[2]);
         tokens.splice(idx, 0, tok);
@@ -4474,7 +4474,7 @@ define('ace/mode/coffee/nodes', ['require', 'exports', 'module' , 'ace/mode/coff
       var node;
       node = this;
       while (node !== (node = node.unwrap())) {
-        continue;
+
       }
       return node;
     };
@@ -6100,7 +6100,7 @@ define('ace/mode/coffee/nodes', ['require', 'exports', 'module' , 'ace/mode/coff
       var args, base, code, i, index, node, _i, _len;
       index = -1;
       while ((node = list[++index]) && !(node instanceof Splat)) {
-        continue;
+
       }
       if (index >= list.length) return '';
       if (list.length === 1) {

@@ -126,7 +126,7 @@ function SWF (p_oElement /*:String*/, swfURL /*:String*/, p_oAttributes /*:Objec
 			this.publish("wrongflashversion", {fireOnce:true});
 	     	this.fire("wrongflashversion", event);
 		}		
-};
+}
 
 /**
  * @private
@@ -187,7 +187,7 @@ SWF.prototype =
 	{
 		if (!args) { 
 			  args= []; 
-		};	
+		}
 		if (this._swf._node[func]) {
 		return(this._swf._node[func].apply(this._swf._node, args));
 	    } else {

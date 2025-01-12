@@ -779,7 +779,7 @@ var delay = (function(){
                     });
                 } else {
                     if(typeof callback === 'function') callback();
-                    return;
+
                 }
             });
         },

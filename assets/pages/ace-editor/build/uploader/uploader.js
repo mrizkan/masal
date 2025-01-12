@@ -50,18 +50,18 @@ function Uploader (config /*Object*/) {
 
 	if (config.hasOwnProperty("boundingBox")) {
 		this.set("boundingBox", config.boundingBox);
-	};
+	}
 
 	if (config.hasOwnProperty("buttonSkin")) {
 		this.set("buttonSkin", config.buttonSkin);
-	};
+	}
 	if (config.hasOwnProperty("transparent")) {
 		this.set("transparent", config.transparent);
-	};
+	}
 	if (config.hasOwnProperty("swfURL")) {
 		this.set("swfURL", config.swfURL);
-	};
-};
+	}
+}
 
 
 Y.extend(Uploader, Y.Base, {

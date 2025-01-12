@@ -245,7 +245,7 @@ define('ace/lib/regexp', ['require', 'exports', 'module' ], function(require, ex
                (regex.multiline  ? "m" : "") +
                (regex.extended   ? "x" : "") + // Proposed for ES4; included in AS3
                (regex.sticky     ? "y" : "");
-    };
+    }
 
     function indexOf (array, item, from) {
         if (Array.prototype.indexOf) // Use the native array method if available
@@ -255,7 +255,7 @@ define('ace/lib/regexp', ['require', 'exports', 'module' ], function(require, ex
                 return i;
         }
         return -1;
-    };
+    }
 
 });
 // vim: ts=4 sts=4 sw=4 expandtab
@@ -2135,7 +2135,7 @@ var Range = function(startRow, startColumn, endRow, endColumn) {
         if (!this.isMultiLine()) {
             if (row === this.start.row) {
                 return column < this.start.column ? -1 : (column > this.end.column ? 1 : 0);
-            };
+            }
         }
 
         if (row < this.start.row)
@@ -3663,7 +3663,7 @@ org.antlr.runtime.BitSet.prototype = {
 		    	this.add(e);
     		}
         } else {
-            return;
+
         }
 	},
 
@@ -18809,7 +18809,7 @@ var XQueryParser = function(input, state) {
           this.highlighter.setSource(s);
         };
 
-        this.lexerStack = new Array();
+        this.lexerStack = [];
 
         this.lc = function(b){ return b; };
         this.popLexer = function (){
@@ -19650,7 +19650,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:295:1: p_Module : (vd= p_VersionDecl )? (lm= p_LibraryModule[$vd.tree] -> | mm= p_MainModule[$vd.tree] ->) EOF ;
@@ -19795,7 +19795,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:304:1: p_VersionDecl : k= XQUERY ( (k= ENCODING enc= p_StringLiteral ) | (k= VERSION ver= p_StringLiteral (k= ENCODING enc= p_StringLiteral )? ) ) SEMICOLON -> ^( VersionDecl ^( VersionDeclVersion ( $ver)? ) ^( VersionDeclEncoding ( $enc)? ) ) ;
@@ -20012,7 +20012,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:311:1: p_MainModule[vd] : pm_Prolog pm_QueryBody -> ^( MainModule pm_Prolog ) ;
@@ -20104,7 +20104,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:317:1: p_LibraryModule[vd] : p_ModuleDecl pm_Prolog -> ^( LibraryModule p_ModuleDecl pm_Prolog ) ;
@@ -20197,7 +20197,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:323:1: p_ModuleDecl : k+= MODULE k+= NAMESPACE p_NCName EQUAL p_StringLiteral SEMICOLON -> ^( ModuleDecl p_NCName p_StringLiteral ) ;
@@ -20321,7 +20321,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:331:1: pm_Prolog : ( (dnd+= pm_DefaultNamespaceDecl | s+= p_Setter | nd+= pm_NamespaceDecl | i+= p_Import | fto+= pm_FTOptionDecl ) )* (od+= pg_OrderedDecl )* -> ^( Prolog ^( DefaultNamespaceDecls ( $dnd)* ) ^( Setters ( $s)* ) ^( NamespaceDecls ( $nd)* ) ^( Imports ( $i)* ) ^( FTOptionDecls ( $fto)* ) ^( OrderedDecls ( $od)* ) ) ;
@@ -20684,7 +20684,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:347:1: pg_OrderedDecl : ( pm_ContextItemDecl | pm_AnnotatedDecl | pm_OptionDecl );
@@ -20810,7 +20810,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:358:1: p_Setter : ( pm_BoundarySpaceDecl | pm_DefaultCollationDecl | pm_BaseURIDecl | pm_ConstructionDecl | pm_OrderingModeDecl | pm_EmptyOrderDecl | {...}? => pm_RevalidationDecl | pm_CopyNamespacesDecl | pm_DecimalFormatDecl );
@@ -20990,7 +20990,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:371:1: pm_BoundarySpaceDecl : k= DECLARE k= BOUNDARY_SPACE ( (k= PRESERVE ) | (k= STRIP ) ) SEMICOLON ;
@@ -21123,7 +21123,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:376:1: pm_DefaultCollationDecl : k= DECLARE k= DEFAULT k= COLLATION p_StringLiteral SEMICOLON ;
@@ -21214,7 +21214,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:381:1: pm_BaseURIDecl : k= DECLARE k= BASE_URI sl= p_StringLiteral SEMICOLON -> ^( BaseURIDecl $sl) ;
@@ -21320,7 +21320,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:387:1: pm_ConstructionDecl : k= DECLARE k= CONSTRUCTION ( (k= STRIP | k= PRESERVE ) ) SEMICOLON ;
@@ -21445,7 +21445,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:392:1: pm_OrderingModeDecl : k= DECLARE k= ORDERING ( (k= ORDERED | k= UNORDERED ) ) SEMICOLON ;
@@ -21570,7 +21570,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:397:1: pm_EmptyOrderDecl : k= DECLARE k= DEFAULT k= ORDER k= EMPTY ( (k= GREATEST | k= LEAST ) ) SEMICOLON ;
@@ -21711,7 +21711,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:402:1: pm_CopyNamespacesDecl : k= DECLARE k= COPY_NAMESPACES p_PreserveMode COMMA p_InheritMode SEMICOLON ;
@@ -21808,7 +21808,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:407:1: p_PreserveMode : (k+= PRESERVE | k+= NO_PRESERVE ) ;
@@ -21912,7 +21912,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:412:1: p_InheritMode : (k+= INHERIT | k+= NO_INHERIT ) ;
@@ -22016,7 +22016,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:417:1: pm_DecimalFormatDecl : k= DECLARE ( (k= DECIMAL_FORMAT p_QName ) | (k= DEFAULT k= DECIMAL_FORMAT ) ) ( p_DFPropertyName EQUAL p_StringLiteral )* SEMICOLON ;
@@ -22200,7 +22200,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:422:1: p_DFPropertyName : (k= DECIMAL_SEPARATOR | k= GROUPING_SEPARATOR | k= INFINITY | k= MINUS_SIGN | k= NAN | k= PERCENT | k= PER_MILLE | k= ZERO_DIGIT | k= DIGIT | k= PATTERN_SEPARATOR ) ;
@@ -22401,7 +22401,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:427:1: p_Import : ( pm_SchemaImport | pm_ModuleImport );
@@ -22504,7 +22504,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:432:1: pm_SchemaImport : k= IMPORT k= SCHEMA (sp= p_SchemaPrefix )? us= p_StringLiteral (k= AT ah+= p_StringLiteral ( COMMA ah+= p_StringLiteral )* )? SEMICOLON -> ^( SchemaImport ^( SchemaPrefix ( $sp)? ) $us ^( AtHints ( $ah)* ) ) ;
@@ -22734,7 +22734,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:438:1: p_SchemaPrefix : (k= NAMESPACE nn= p_NCName EQUAL -> ^( NamespaceName $nn) | k= DEFAULT k= ELEMENT k= NAMESPACE -> DefaultElementNamespace );
@@ -22897,7 +22897,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:446:1: pm_ModuleImport : k= IMPORT k= MODULE (k= NAMESPACE nn= p_NCName EQUAL )? us= p_StringLiteral (k= AT ah+= p_StringLiteral ( COMMA ah+= p_StringLiteral )* )? SEMICOLON -> ^( ModuleImport ^( NamespaceName ( $nn)? ) $us ^( AtHints ( $ah)* ) ) ;
@@ -23140,7 +23140,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:452:1: pm_NamespaceDecl : k= DECLARE k= NAMESPACE nn= p_NCName EQUAL us= p_StringLiteral SEMICOLON -> ^( NamespaceDecl $nn $us) ;
@@ -23262,7 +23262,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:458:1: pm_DefaultNamespaceDecl : k= DECLARE k= DEFAULT (k= ELEMENT | k= FUNCTION ) k= NAMESPACE p_StringLiteral SEMICOLON ;
@@ -23397,7 +23397,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:463:1: pm_AnnotatedDecl : k= DECLARE ( p_Annotation )* pg_AnnotatedDecl SEMICOLON ;
@@ -23502,7 +23502,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:466:1: pg_AnnotatedDecl : ( p_VarDecl | pm_FunctionDecl | {...}? => p_CollectionDecl | {...}? => p_IndexDecl | {...}? => p_ICDecl );
@@ -23660,7 +23660,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:475:1: p_Annotation : ANN_PERCENT p_QName ( LPAREN p_Literal ( COMMA p_Literal )* RPAREN )? ;
@@ -23799,7 +23799,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:480:1: p_VarDecl : k= VARIABLE d= DOLLAR qn= p_QName (td= p_TypeDeclaration )? ( ( BIND vv= p_VarValue ) | (k= EXTERNAL ( BIND vdv= p_VarDefaultValue )? ) ) -> ^( VarDecl $qn ^( VarType ( $td)? ) ^( VarValue ( $vv)? ^( VarDefaultValue ( $vdv)? ) ) ) ;
@@ -24061,7 +24061,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:486:1: p_VarValue : p_ExprSingle[true] ;
@@ -24119,7 +24119,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:491:1: p_VarDefaultValue : p_ExprSingle[true] ;
@@ -24177,7 +24177,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:496:1: pm_ContextItemDecl : k= DECLARE k= CONTEXT k= ITEM (k= AS p_ItemType )? ( ( BIND p_VarValue ) | (k= EXTERNAL ( BIND p_VarDefaultValue )? ) ) SEMICOLON ;
@@ -24385,7 +24385,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:502:1: pm_FunctionDecl : ({...}? =>k= UPDATING )? k= FUNCTION qn= pg_FQName LPAREN (pl= p_ParamList )? RPAREN (k= AS st= p_SequenceType )? ( LBRACKET soe= p_StatementsAndOptionalExpr RBRACKET | k= EXTERNAL ) -> ^( FunctionDecl $qn ^( ParamList ( $pl)? ) ^( ReturnType ( $st)? ) ( $soe)? ) ;
@@ -24667,7 +24667,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:508:1: p_ParamList : p+= p_Param ( COMMA p+= p_Param )* -> ( $p)+ ;
@@ -24790,7 +24790,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:514:1: p_Param : d= DOLLAR qn= p_QName (td= p_TypeDeclaration )? -> ^( Param $qn ( $td)? ) ;
@@ -24914,7 +24914,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:520:1: pm_FunctionBody : p_EnclosedExpr ;
@@ -24972,7 +24972,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:526:1: p_EnclosedExpr : LBRACKET p_Expr[true,true] RBRACKET -> ^( EnclosedExpr p_Expr ) ;
@@ -25067,7 +25067,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:532:1: pm_OptionDecl : k= DECLARE k= OPTION p_QName p_StringLiteral SEMICOLON ;
@@ -25157,7 +25157,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:537:1: pm_QueryBody : ({...}? => p_Program | p_Expr[true,true] );
@@ -25239,7 +25239,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:549:1: p_Expr[strict, allowConcat] : es= p_ExprSingle[$strict] ( COMMA p_ExprSingle[$strict] )* ;
@@ -25347,7 +25347,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:573:1: p_ExprSingle[strict] : ( ( ( ( FOR | LET ) DOLLAR ) | ( FOR ( TUMBLING | SLIDING ) ) )=> p_FLWORHybrid[$strict] | ( IF LPAREN )=> p_IfHybrid[$strict] | ( SWITCH LPAREN )=> p_SwitchHybrid[$strict] | ( TYPESWITCH LPAREN )=> p_TypeswitchHybrid[$strict] | ( TRY LBRACKET )=> p_TryCatchHybrid[$strict] | p_ExprSimple );
@@ -25481,7 +25481,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:583:1: p_FLWORHybrid[strict] : p_InitialClause ( p_IntermediateClause )* p_ReturnHybrid[$strict] ;
@@ -25576,7 +25576,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:588:1: p_InitialClause : ( p_ForClause | p_LetClause | p_WindowClause );
@@ -25696,7 +25696,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:593:1: p_IntermediateClause : ( p_InitialClause | p_WhereClause | p_GroupByClause | p_OrderByClause | p_CountClause );
@@ -25841,7 +25841,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:598:1: p_StringConcatExpr : p_RangeExpr (o= CONCAT p_RangeExpr )* ;
@@ -25939,7 +25939,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:604:1: p_ForClause : k= FOR p_ForBinding ( COMMA p_ForBinding )* ;
@@ -26044,7 +26044,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:609:1: p_ForBinding : s= DOLLAR v= p_VarName ( p_TypeDeclaration )? ( p_AllowingEmpty )? ( p_PositionalVar )? ( p_FTScoreVar )? k= IN p_ExprSingle[true] ;
@@ -26221,7 +26221,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:614:1: p_AllowingEmpty : k= ALLOWING k= EMPTY ;
@@ -26290,7 +26290,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:619:1: p_PositionalVar : k= AT d= DOLLAR v= p_VarName ;
@@ -26368,7 +26368,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:624:1: p_LetClause : k= LET p_LetBinding ( COMMA p_LetBinding )* ;
@@ -26473,7 +26473,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:630:1: p_LetBinding : ( (d= DOLLAR v= p_VarName ( p_TypeDeclaration )? ) | p_FTScoreVar ) BIND p_ExprSingle[true] ;
@@ -26621,7 +26621,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:635:1: p_WindowClause : k= FOR ( p_TumblingWindowClause | p_SlidingWindowClause ) ;
@@ -26727,7 +26727,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:640:1: p_TumblingWindowClause : k= TUMBLING k= WINDOW d= DOLLAR v= p_VarName ( p_TypeDeclaration )? k= IN p_ExprSingle[true] p_WindowStartCondition ( p_WindowEndCondition )? ;
@@ -26881,7 +26881,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:645:1: p_SlidingWindowClause : k= SLIDING k= WINDOW d= DOLLAR v= p_VarName ( p_TypeDeclaration )? k= IN p_ExprSingle[true] p_WindowStartCondition ( p_WindowEndCondition )? ;
@@ -27035,7 +27035,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:650:1: p_WindowStartCondition : k= START p_WindowVars k= WHEN p_ExprSingle[true] ;
@@ -27118,7 +27118,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:655:1: p_WindowEndCondition : (k= ONLY )? k= END p_WindowVars k= WHEN p_ExprSingle[true] ;
@@ -27225,7 +27225,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:660:1: p_WindowVars : (d= DOLLAR v= p_CurrentItem )? ( p_PositionalVar )? (k= PREVIOUS DOLLAR p_PreviousItem )? (k= NEXT DOLLAR p_NextItem )? ;
@@ -27410,7 +27410,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:665:1: p_CurrentItem : p_QName ;
@@ -27468,7 +27468,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:670:1: p_PreviousItem : p_QName ;
@@ -27526,7 +27526,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:675:1: p_NextItem : p_QName ;
@@ -27584,7 +27584,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:680:1: p_CountClause : k= COUNT d= DOLLAR v= p_VarName ;
@@ -27662,7 +27662,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:685:1: p_WhereClause : k= WHERE p_ExprSingle[true] ;
@@ -27730,7 +27730,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:690:1: p_GroupByClause : k= GROUP k= BY p_GroupingSpecList ;
@@ -27806,7 +27806,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:695:1: p_GroupingSpecList : p_GroupingSpec ( COMMA p_GroupingSpec )* ;
@@ -27901,7 +27901,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:700:1: p_GroupingSpec : d= DOLLAR v= p_VarName (k= COLLATION p_StringLiteral )? ;
@@ -28002,7 +28002,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:705:1: p_OrderByClause : ( (k+= ORDER k+= BY ) | (k+= STABLE k+= ORDER k+= BY ) ) p_OrderSpecList ;
@@ -28147,7 +28147,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:710:1: p_OrderSpecList : p_OrderSpec ( COMMA p_OrderSpec )* ;
@@ -28242,7 +28242,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:715:1: p_OrderSpec : p_ExprSingle[true] p_OrderModifier ;
@@ -28307,7 +28307,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:720:1: p_OrderModifier : (k+= ASCENDING | k+= DESCENDING )? (k+= EMPTY (k+= GREATEST | k+= LEAST ) )? (k+= COLLATION p_StringLiteral )? ;
@@ -28506,7 +28506,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:725:1: p_ReturnHybrid[strict] : k= RETURN p_Hybrid[$strict,false] ;
@@ -28574,7 +28574,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:730:1: p_QuantifiedExpr : (k= SOME | k= EVERY ) d= DOLLAR v= p_VarName ( p_TypeDeclaration )? k= IN p_ExprSingle[true] ( COMMA e= DOLLAR w= p_QName ( p_TypeDeclaration )? k= IN p_ExprSingle[true] )* k= SATISFIES p_ExprSingle[true] ;
@@ -28826,7 +28826,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:735:1: p_SwitchHybrid[strict] : k= SWITCH LPAREN p_Expr[true,true] RPAREN ( p_SwitchCaseHybrid[$strict] )+ k= DEFAULT k= RETURN p_Hybrid[$strict,false] ;
@@ -28968,7 +28968,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:740:1: p_SwitchCaseHybrid[strict] : (k= CASE p_SwitchCaseOperand )+ k= RETURN p_Hybrid[$strict,false] ;
@@ -29081,7 +29081,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:745:1: p_SwitchCaseOperand : p_ExprSingle[true] ;
@@ -29139,7 +29139,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:750:1: p_TypeswitchHybrid[strict] : k= TYPESWITCH LPAREN p_Expr[true,true] RPAREN ( p_CaseHybrid[$strict] )+ k= DEFAULT (d= DOLLAR v= p_VarName )? k= RETURN p_Hybrid[$strict,false] ;
@@ -29314,7 +29314,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:755:1: p_CaseHybrid[strict] : k= CASE (d= DOLLAR v= p_VarName k= AS )? p_SequenceTypeUnion k= RETURN p_ExprSingle[false] ;
@@ -29438,7 +29438,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:760:1: p_SequenceTypeUnion : p_SequenceType ( VBAR p_SequenceType )* ;
@@ -29533,7 +29533,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:765:1: p_IfHybrid[strict] : k= IF LPAREN p_Expr[true,true] RPAREN k= THEN p_Hybrid[$strict,false] k= ELSE p_Hybrid[$strict,false] ;
@@ -29645,7 +29645,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:770:1: p_TryCatchExpr : p_TryClause ( p_CatchClause )+ ;
@@ -29740,7 +29740,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:775:1: p_TryClause : k= TRY LBRACKET p_TryTargetExpr RBRACKET ;
@@ -29822,7 +29822,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:780:1: p_TryTargetExpr : p_Expr[false,false] ;
@@ -29880,7 +29880,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:785:1: p_CatchClause : k= CATCH p_CatchErrorList LBRACKET p_Expr[false,false] RBRACKET ;
@@ -29969,7 +29969,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:790:1: p_CatchErrorList : ( p_NameTest ( VBAR p_NameTest )* | {...}? => () );
@@ -30099,7 +30099,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:796:1: p_OrExpr : p_AndExpr (k= OR p_AndExpr )* ;
@@ -30197,7 +30197,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:801:1: p_AndExpr : p_ComparisonExpr (k= AND p_ComparisonExpr )* ;
@@ -30295,7 +30295,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:807:1: p_ComparisonExpr : p_FTContainsExpr ( ( p_ValueComp | p_GeneralComp | p_NodeComp ) p_FTContainsExpr )? ;
@@ -30448,7 +30448,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:812:1: p_RangeExpr : p_AdditiveExpr (k= TO p_AdditiveExpr )? ;
@@ -30539,7 +30539,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:817:1: p_AdditiveExpr : p_MultiplicativeExpr ( (o= PLUS | o= MINUS ) p_MultiplicativeExpr )* ;
@@ -30676,7 +30676,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:822:1: p_MultiplicativeExpr : p_UnionExpr ( (o= STAR | (k= DIV | k= IDIV | k= MOD ) ) p_UnionExpr )* ;
@@ -30864,7 +30864,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:827:1: p_UnionExpr : p_IntersectExceptExpr ( (k= UNION | VBAR ) p_IntersectExceptExpr )* ;
@@ -31000,7 +31000,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:832:1: p_IntersectExceptExpr : p_InstanceofExpr ( (k= INTERSECT | k= EXCEPT ) p_InstanceofExpr )* ;
@@ -31134,7 +31134,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:837:1: p_InstanceofExpr : p_TreatExpr (k= INSTANCE k= OF p_SequenceType )? ;
@@ -31233,7 +31233,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:842:1: p_TreatExpr : p_CastableExpr (k= TREAT k= AS p_SequenceType )? ;
@@ -31332,7 +31332,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:847:1: p_CastableExpr : p_CastExpr (k= CASTABLE k= AS p_SingleType )? ;
@@ -31431,7 +31431,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:852:1: p_CastExpr : p_UnaryExpr (k= CAST k= AS p_SingleType )? ;
@@ -31530,7 +31530,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:857:1: p_UnaryExpr : (o= PLUS | o= MINUS )* p_ValueExpr -> ^( UnaryExpr ( PLUS )* p_ValueExpr ) ;
@@ -31666,7 +31666,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:863:1: p_ValueExpr : ( ( VALIDATE ( p_ValidationMode | TYPE )? )=> p_ValidateExpr | p_PathExpr | p_ExtensionExpr );
@@ -32019,7 +32019,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:870:1: p_GeneralComp : (o= EQUAL | o= NOTEQUAL | o= SMALLER | o= SMALLEREQ | o= GREATER | o= GREATEREQ ) ;
@@ -32168,7 +32168,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:875:1: p_ValueComp : (k= EQ | k= NE | k= LT | k= LE | k= GT | k= GE ) ;
@@ -32317,7 +32317,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:880:1: p_NodeComp : (k= IS | SMALLER_SMALLER | GREATER_GREATER );
@@ -32429,7 +32429,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:885:1: p_ValidateExpr : k= VALIDATE ( p_ValidationMode | k= TYPE p_TypeName )? LBRACKET p_Expr[true,true] RBRACKET ;
@@ -32557,7 +32557,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:890:1: p_ValidationMode : (k= LAX | k= STRICT ) ;
@@ -32654,7 +32654,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:895:1: p_ExtensionExpr : ( L_Pragma )+ LBRACKET ( p_Expr[true,true] )? RBRACKET ;
@@ -32779,7 +32779,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:908:1: p_PathExpr : ( ( SLASH p_RelativePathExpr )=> ( SLASH p_RelativePathExpr ) | SLASH | SLASH_SLASH p_RelativePathExpr | p_RelativePathExpr );
@@ -32904,7 +32904,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:916:1: p_RelativePathExpr : p_StepExpr ( ( SLASH | SLASH_SLASH ) p_StepExpr )* ;
@@ -33006,7 +33006,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:921:1: p_StepExpr : ( ( LBRACKET | LPAREN | SMALLER | QUOT | APOS | DOLLAR )=> p_PostfixExpr | ( ( ( ELEMENT | ATTRIBUTE ) ( p_QName )? LBRACKET ) | ( ( NAMESPACE | PROCESSING_INSTRUCTION ) ( p_NCName )? LBRACKET ) | ( ( DOCUMENT | TEXT | COMMENT ) LBRACKET ) )=> p_PostfixExpr | ( p_KindTest )=> p_AxisStep | ( p_QName LPAREN )=> p_PostfixExpr | ( p_PrimaryExpr )=> p_PostfixExpr | p_AxisStep );
@@ -33140,7 +33140,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:935:1: p_AxisStep : ( p_ReverseStep | p_ForwardStep ) p_PredicateList ;
@@ -33531,7 +33531,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:940:1: p_ForwardStep : ( p_ForwardAxis p_NodeTest | p_AbbrevForwardStep );
@@ -33616,7 +33616,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:946:1: p_ForwardAxis : ( CHILD COLON_COLON | DESCENDANT COLON_COLON | ATTRIBUTE COLON_COLON | SELF COLON_COLON | DESCENDANT_OR_SELF COLON_COLON | FOLLOWING_SIBLING COLON_COLON | FOLLOWING COLON_COLON );
@@ -33842,7 +33842,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:957:1: p_AbbrevForwardStep : ( ATTR_SIGN )? p_NodeTest ;
@@ -33923,7 +33923,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:962:1: p_ReverseStep : ( p_ReverseAxis p_NodeTest | p_AbbrevReverseStep );
@@ -34022,7 +34022,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:968:1: p_ReverseAxis : ( PARENT COLON_COLON | ANCESTOR COLON_COLON | PRECEDING_SIBLING COLON_COLON | PRECEDING COLON_COLON | ANCESTOR_OR_SELF COLON_COLON );
@@ -34200,7 +34200,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:977:1: p_AbbrevReverseStep : DOT_DOT ;
@@ -34258,7 +34258,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:982:1: p_NodeTest : ( p_KindTest | p_NameTest );
@@ -34336,7 +34336,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:987:1: p_NameTest : ( ( p_Wildcard )=> p_Wildcard | ( p_NCName COLON )=> p_QName | ( p_NCName )=> p_QName );
@@ -34465,7 +34465,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:994:1: p_Wildcard : ( STAR ( COLON p_NCName )? | p_NCName COLON STAR | p_StringLiteral COLON STAR );
@@ -34839,7 +34839,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1002:1: p_PostfixExpr : p_PrimaryExpr ( p_Predicate )* ;
@@ -34927,7 +34927,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1010:1: p_ArgumentList : LPAREN ( p_Argument ( COMMA p_Argument )* )? RPAREN ;
@@ -35052,7 +35052,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1015:1: p_PredicateList : ( p_Predicate )* ;
@@ -35133,7 +35133,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1020:1: p_Predicate : LSQUARE p_Expr[true,true] RSQUARE ;
@@ -35205,7 +35205,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1026:1: p_PrimaryExpr : ( ( LPAREN )=> p_ParenthesizedExpr | p_Literal | p_VarRef | p_ContextItemExpr | p_FunctionCall | p_OrderedExpr | p_UnorderedExpr | p_Constructor | p_BlockExpr );
@@ -35381,7 +35381,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1041:1: p_Literal : ( p_NumericLiteral | p_StringLiteral );
@@ -35473,7 +35473,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1046:1: p_NumericLiteral : (d+= L_IntegerLiteral | d+= L_DecimalLiteral | d+= L_DoubleLiteral );
@@ -35597,7 +35597,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1051:1: p_VarRef : d= DOLLAR v= p_VarName ;
@@ -35665,7 +35665,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1056:1: p_VarName : p_QName ;
@@ -35723,7 +35723,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1061:1: p_ParenthesizedExpr : LPAREN ( p_Expr[true,true] )? RPAREN ;
@@ -35811,7 +35811,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1066:1: p_ContextItemExpr : DOT ;
@@ -35869,7 +35869,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1071:1: p_OrderedExpr : k= ORDERED LBRACKET p_Expr[true,true] RBRACKET ;
@@ -35951,7 +35951,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1076:1: p_UnorderedExpr : k= UNORDERED LBRACKET p_Expr[true,true] RBRACKET ;
@@ -36033,7 +36033,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1082:1: p_FunctionCall : f= pg_FQName p_ArgumentList ;
@@ -36101,7 +36101,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1087:1: p_Argument : ( p_ExprSingle[true] | p_ArgumentPlaceholder );
@@ -36193,7 +36193,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1092:1: p_ArgumentPlaceholder : QUESTION ;
@@ -36251,7 +36251,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1097:1: p_Constructor : ( p_DirectConstructor | p_ComputedConstructor );
@@ -36346,7 +36346,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1103:1: p_DirectConstructor : ( p_DirElemConstructor | p_DirCommentConstructor | p_DirPIConstructor );
@@ -36455,7 +36455,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1110:1: p_DirElemConstructor : SMALLER ts= p_QName p_DirAttributeList ( EMPTY_CLOSE_TAG | ( GREATER ( pm_DirElemContent )* CLOSE_TAG te= p_QName ( S )? GREATER ) ) -> ^( DirElemConstructor ^( DirAttributeList ( p_DirAttributeList )* ) ^( DirElemContent ( pm_DirElemContent )* ) ) ;
@@ -36708,7 +36708,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1119:1: p_DirAttributeList : ( S (t= p_QName ( S )? EQUAL ( S )? v= p_DirAttributeValue )? )* ;
@@ -36875,7 +36875,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1124:1: p_DirAttributeValue : ( (s+= QUOT (s+= ESCAPE_QUOT | s+= APOS | p_QuotAttrValueContent )* s+= QUOT ) -> ^( DirAttributeValue ( p_QuotAttrValueContent )* ) | (s+= APOS (s+= ESCAPE_APOS | s+= QUOT | p_AposAttrValueContent )* s+= APOS ) -> ^( DirAttributeValue ( p_AposAttrValueContent )* ) );
@@ -37199,7 +37199,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1132:1: p_QuotAttrValueContent : (s= p_QuotAttrContentChar | pm_CommonContent );
@@ -37294,7 +37294,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1137:1: p_AposAttrValueContent : (s= p_AposAttrContentChar | pm_CommonContent );
@@ -37389,7 +37389,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1142:1: pm_DirElemContent : ( p_DirectConstructor | p_CDataSection | pm_CommonContent | p_ElementContentChar );
@@ -37521,7 +37521,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1152:1: pm_CommonContent : ( L_PredefinedEntityRef | L_CharRef | s= ESCAPE_LBRACKET | s= ESCAPE_RBRACKET | pg_EnclosedExprXml );
@@ -37668,7 +37668,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1165:1: pg_EnclosedExprXml : LBRACKET p_StatementsAndOptionalExpr RBRACKET ;
@@ -37746,7 +37746,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1173:1: p_DirCommentConstructor : c= L_DirCommentConstructor ;
@@ -37807,7 +37807,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1181:1: p_DirPIConstructor : p= L_DirPIConstructor ;
@@ -37868,7 +37868,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1189:1: p_CDataSection : c= L_CDataSection ;
@@ -37929,7 +37929,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1197:1: p_ComputedConstructor : ( pm_CompDocConstructor | pm_CompElemConstructor | pm_CompAttrConstructor | p_CompNamespaceConstructor | p_CompTextConstructor | pm_CompCommentConstructor | pm_CompPIConstructor | {...}? => p_CompBinaryConstructor );
@@ -38127,7 +38127,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1210:1: pm_CompDocConstructor : k= DOCUMENT LBRACKET p_StatementsAndOptionalExpr RBRACKET ;
@@ -38209,7 +38209,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1215:1: pm_CompElemConstructor : k= ELEMENT ( p_QName | ( LBRACKET p_Expr[true,true] RBRACKET ) ) LBRACKET pm_ContentExpr RBRACKET ;
@@ -38355,7 +38355,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1221:1: pm_ContentExpr : p_StatementsAndOptionalExpr ;
@@ -38413,7 +38413,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1227:1: pm_CompAttrConstructor : k= ATTRIBUTE ( p_QName | ( LBRACKET p_Expr[true,true] RBRACKET ) ) LBRACKET p_StatementsAndOptionalExpr RBRACKET ;
@@ -38559,7 +38559,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1232:1: p_CompNamespaceConstructor : k= NAMESPACE ( p_Prefix | ( LBRACKET p_PrefixExpr RBRACKET ) ) LBRACKET ( p_URIExpr )? RBRACKET ;
@@ -38721,7 +38721,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1237:1: p_Prefix : p_NCName ;
@@ -38779,7 +38779,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1242:1: p_PrefixExpr : p_Expr[true,true] ;
@@ -38837,7 +38837,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1247:1: p_URIExpr : p_Expr[true,true] ;
@@ -38895,7 +38895,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1252:1: p_CompTextConstructor : k= TEXT LBRACKET p_Expr[true,true] RBRACKET ;
@@ -38977,7 +38977,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1257:1: p_CompBinaryConstructor : k= BINARY LBRACKET p_Expr[true,true] RBRACKET ;
@@ -39059,7 +39059,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1263:1: pm_CompCommentConstructor : k= COMMENT LBRACKET p_StatementsAndOptionalExpr RBRACKET ;
@@ -39141,7 +39141,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1269:1: pm_CompPIConstructor : k= PROCESSING_INSTRUCTION ( p_NCName | ( LBRACKET p_Expr[true,true] RBRACKET ) ) LBRACKET p_StatementsAndOptionalExpr RBRACKET ;
@@ -39287,7 +39287,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1292:1: p_SingleType : p_AtomicOrUnionType ( QUESTION )? ;
@@ -39368,7 +39368,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1297:1: p_TypeDeclaration : k= AS st= p_SequenceType -> ^( TypeDeclaration $st) ;
@@ -39461,7 +39461,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1303:1: p_SequenceType : (k= EMPTY_SEQUENCE l= LPAREN r= RPAREN -> ^( SequenceType ^( EmptySequenceTest $k $l $r) ) | it= p_ItemType ( ( p_OccurrenceIndicator )=>oi= p_OccurrenceIndicator )? -> ^( SequenceType $it ( $oi)? ) );
@@ -39672,7 +39672,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1311:1: p_OccurrenceIndicator : ( QUESTION | STAR | PLUS );
@@ -39737,7 +39737,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1316:1: p_ItemType : ( p_KindTest -> ^( KindTest p_KindTest ) | {...}? => ( BINARY LPAREN RPAREN ) -> ^( BinaryTest BINARY LPAREN RPAREN ) | ( ITEM LPAREN RPAREN ) -> ^( ItemTest ITEM LPAREN RPAREN ) | p_AtomicOrUnionType | p_ParenthesizedItemType );
@@ -39970,7 +39970,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1331:1: p_AtomicOrUnionType : p_QName -> ^( AtomicOrUnionType p_QName ) ;
@@ -40053,7 +40053,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1337:1: p_KindTest : ( p_DocumentTest | p_ElementTest | p_AttributeTest | p_SchemaElementTest | p_SchemaAttributeTest | p_PITest | p_CommentTest | p_TextTest | p_NamespaceNodeTest | p_AnyKindTest );
@@ -40281,7 +40281,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1351:1: p_AnyKindTest : NODE LPAREN RPAREN ;
@@ -40353,7 +40353,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1356:1: p_DocumentTest : DOCUMENT_NODE LPAREN ( p_ElementTest | p_SchemaElementTest )? RPAREN ;
@@ -40463,7 +40463,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1361:1: p_TextTest : TEXT LPAREN RPAREN ;
@@ -40535,7 +40535,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1366:1: p_CommentTest : COMMENT LPAREN RPAREN ;
@@ -40607,7 +40607,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1371:1: p_NamespaceNodeTest : NAMESPACE_NODE LPAREN RPAREN ;
@@ -40679,7 +40679,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1376:1: p_PITest : PROCESSING_INSTRUCTION LPAREN ( p_NCName | p_StringLiteral )? RPAREN ;
@@ -40789,7 +40789,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1381:1: p_AttributeTest : ATTRIBUTE LPAREN ( p_AttribNameOrWildcard ( COMMA p_TypeName )? )? RPAREN ;
@@ -40914,7 +40914,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1386:1: p_AttribNameOrWildcard : ( p_AttributeName | STAR );
@@ -41006,7 +41006,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1391:1: p_SchemaAttributeTest : SCHEMA_ATTRIBUTE LPAREN p_AttributeDeclaration RPAREN ;
@@ -41085,7 +41085,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1396:1: p_AttributeDeclaration : p_AttributeName ;
@@ -41143,7 +41143,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1401:1: p_ElementTest : ELEMENT LPAREN ( p_ElementNameOrWildcard ( COMMA p_TypeName ( QUESTION )? )? )? RPAREN ;
@@ -41291,7 +41291,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1406:1: p_ElementNameOrWildcard : ( p_QName | STAR );
@@ -41383,7 +41383,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1410:1: p_SchemaElementTest : SCHEMA_ELEMENT LPAREN p_ElementDeclaration RPAREN ;
@@ -41462,7 +41462,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1415:1: p_ElementDeclaration : p_ElementName ;
@@ -41520,7 +41520,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1420:1: p_AttributeName : p_QName ;
@@ -41578,7 +41578,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1425:1: p_ElementName : p_QName ;
@@ -41636,7 +41636,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1430:1: p_TypeName : p_QName ;
@@ -41694,7 +41694,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1435:1: p_FunctionTest : ( p_Annotation )* ( p_AnyFunctionTest | p_TypedFunctionTest ) ;
@@ -41842,7 +41842,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1440:1: p_AnyFunctionTest : FUNCTION LPAREN STAR RPAREN ;
@@ -41921,7 +41921,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1445:1: p_TypedFunctionTest : FUNCTION LPAREN ( p_SequenceType ( COMMA p_SequenceType )* )? RPAREN AS p_SequenceType ;
@@ -42067,7 +42067,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1450:1: p_ParenthesizedItemType : LPAREN p_ItemType RPAREN ;
@@ -42139,7 +42139,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1480:1: p_StringLiteral : ( QUOT pg_QuotStringLiteralContent QUOT -> ^( StringLiteral ( pg_QuotStringLiteralContent )* ) | APOS pg_AposStringLiteralContent APOS -> ^( StringLiteral ( pg_AposStringLiteralContent )* ) );
@@ -42327,7 +42327,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1490:1: pg_QuotStringLiteralContent : ( ESCAPE_QUOT | L_CharRef | L_PredefinedEntityRef | ~ ( QUOT | AMP ) )* ;
@@ -42415,7 +42415,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1498:1: pg_AposStringLiteralContent : ( ESCAPE_APOS | L_CharRef | L_PredefinedEntityRef | ~ ( APOS | AMP ) )* ;
@@ -42503,7 +42503,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1513:1: p_ElementContentChar : L_ElementContentChar ;
@@ -42561,7 +42561,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1518:1: p_QuotAttrContentChar : L_QuotAttrContentChar -> ^( AttributeValueChar L_QuotAttrContentChar ) ;
@@ -42643,7 +42643,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1524:1: p_AposAttrContentChar : L_AposAttrContentChar -> ^( AttributeValueChar L_AposAttrContentChar ) ;
@@ -42725,7 +42725,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1544:1: p_QName : ( pg_QName | p_NCName -> ^( QName p_NCName ) );
@@ -42855,7 +42855,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1552:1: pg_FQName : ( pg_QName | p_FNCName -> ^( QName p_FNCName ) );
@@ -43192,7 +43192,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1557:1: pg_QName : nn= p_NCName COLON nl= p_NCName -> ^( QName $nn $nl) ;
@@ -43291,7 +43291,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1589:1: p_NCName : ( L_NCName | ANCESTOR | ANCESTOR_OR_SELF | AND | AS | ASCENDING | AT | ATTRIBUTE | BASE_URI | BOUNDARY_SPACE | BY | CASE | CAST | CASTABLE | CHILD | COLLATION | COMMENT | CONSTRUCTION | COPY_NAMESPACES | DECLARE | DEFAULT | DESCENDANT | DESCENDANT_OR_SELF | DESCENDING | DIV | DOCUMENT | DOCUMENT_NODE | ELEMENT | ELSE | EMPTY | EMPTY_SEQUENCE | ENCODING | EQ | EVERY | EXCEPT | EXTERNAL | FOLLOWING | FOLLOWING_SIBLING | FOR | FUNCTION | GE | GREATEST | GT | IDIV | IF | IMPORT | IN | INHERIT | INSTANCE | INTERSECT | IS | ITEM | LAX | LE | LEAST | LET | LT | MOD | MODULE | NAMESPACE | NE | NO_INHERIT | NO_PRESERVE | NODE | OF | OPTION | OR | ORDER | ORDERED | ORDERING | PARENT | PRECEDING | PRECEDING_SIBLING | PRESERVE | PROCESSING_INSTRUCTION | RETURN | SATISFIES | SCHEMA | SCHEMA_ATTRIBUTE | SCHEMA_ELEMENT | SELF | SOME | STABLE | STRICT | STRIP | SWITCH | TEXT | THEN | TO | TREAT | TYPESWITCH | UNION | UNORDERED | VALIDATE | VARIABLE | VERSION | WHERE | XQUERY | ALLOWING | CATCH | CONTEXT | COUNT | DECIMAL_FORMAT | DECIMAL_SEPARATOR | DIGIT | END | GROUP | GROUPING_SEPARATOR | INFINITY | MINUS_SIGN | NAMESPACE_NODE | NAN | NEXT | ONLY | PATTERN_SEPARATOR | PERCENT | PER_MILLE | PREVIOUS | SLIDING | START | TRY | TUMBLING | TYPE | WHEN | WINDOW | ZERO_DIGIT | AFTER | BEFORE | COPY | DELETE | FIRST | INSERT | INTO | LAST | MODIFY | NODES | RENAME | REPLACE | REVALIDATION | SKIP | VALUE | WITH | ALL | ANY | CONTAINS | CONTENT | DIACRITICS | DIFFERENT | DISTANCE | ENTIRE | EXACTLY | FROM | FT_OPTION | FTAND | FTNOT | FTOR | INSENSITIVE | LANGUAGE | LEVELS | LOWERCASE | MOST | NO | NOT | OCCURS | PARAGRAPH | PARAGRAPHS | PHRASE | RELATIONSHIP | SAME | SCORE | SENSITIVE | SENTENCE | SENTENCES | STEMMING | STOP | THESAURUS | TIMES | UPPERCASE | USING | WEIGHT | WILDCARDS | WITHOUT | WORD | WORDS | BREAK | CONTINUE | EXIT | LOOP | RETURNING | WHILE | CHECK | COLLECTION | CONSTRAINT | EXPLICITLY | FOREACH | FOREIGN | INDEX | INTEGRITY | KEY | ON | UNIQUE | BINARY | AMP_ER | APOS_ER | QUOT_ER );
@@ -43356,7 +43356,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1608:1: p_FNCName : ( L_NCName | ANCESTOR | ANCESTOR_OR_SELF | AND | AS | ASCENDING | AT | BASE_URI | BOUNDARY_SPACE | BY | CASE | CAST | CASTABLE | CHILD | COLLATION | CONSTRUCTION | COPY_NAMESPACES | DECLARE | DEFAULT | DESCENDANT | DESCENDANT_OR_SELF | DESCENDING | DIV | DOCUMENT | ELSE | EMPTY | ENCODING | EQ | EVERY | EXCEPT | EXTERNAL | FOLLOWING | FOLLOWING_SIBLING | FOR | FUNCTION | GE | GREATEST | GT | IDIV | IMPORT | IN | INHERIT | INSTANCE | INTERSECT | IS | LAX | LE | LEAST | LET | LT | MOD | MODULE | NAMESPACE | NE | NO_INHERIT | NO_PRESERVE | OF | OPTION | OR | ORDER | ORDERED | ORDERING | PARENT | PRECEDING | PRECEDING_SIBLING | PRESERVE | RETURN | SATISFIES | SCHEMA | SELF | SOME | STABLE | STRICT | STRIP | THEN | TO | TREAT | UNION | UNORDERED | VALIDATE | VARIABLE | VERSION | WHERE | XQUERY | ALLOWING | CATCH | CONTEXT | COUNT | DECIMAL_FORMAT | DECIMAL_SEPARATOR | DIGIT | END | GROUP | GROUPING_SEPARATOR | INFINITY | MINUS_SIGN | NAN | NEXT | ONLY | PATTERN_SEPARATOR | PERCENT | PER_MILLE | PREVIOUS | SLIDING | START | TRY | TUMBLING | TYPE | WHEN | WINDOW | ZERO_DIGIT | AFTER | BEFORE | COPY | DELETE | FIRST | INSERT | INTO | LAST | MODIFY | NODES | RENAME | REPLACE | REVALIDATION | SKIP | UPDATING | VALUE | WITH | ALL | ANY | CONTAINS | CONTENT | DIACRITICS | DIFFERENT | DISTANCE | ENTIRE | EXACTLY | FROM | FT_OPTION | FTAND | FTNOT | FTOR | INSENSITIVE | LANGUAGE | LEVELS | LOWERCASE | MOST | NO | NOT | OCCURS | PARAGRAPH | PARAGRAPHS | PHRASE | RELATIONSHIP | SAME | SCORE | SENSITIVE | SENTENCE | SENTENCES | STEMMING | STOP | THESAURUS | TIMES | UPPERCASE | USING | WEIGHT | WILDCARDS | WITHOUT | WORD | WORDS | BREAK | CONTINUE | EXIT | LOOP | RETURNING | CHECK | COLLECTION | CONSTRAINT | EXPLICITLY | FOREACH | FOREIGN | INDEX | INTEGRITY | KEY | ON | UNIQUE | BINARY | AMP_ER | APOS_ER | QUOT_ER );
@@ -43421,7 +43421,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1646:1: pg_UpdateExpr : ( p_InsertExpr | p_DeleteExpr | p_RenameExpr | p_ReplaceExpr | p_TransformExpr );
@@ -43564,7 +43564,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1655:1: pm_RevalidationDecl : k+= DECLARE k+= REVALIDATION (k+= STRICT | k+= LAX | k+= SKIP ) SEMICOLON ;
@@ -43707,7 +43707,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1660:1: p_InsertExprTargetChoice : ( ( (k+= AS (k+= FIRST | k+= LAST ) )? k+= INTO ) | ka= AFTER | kb= BEFORE );
@@ -43906,7 +43906,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1667:1: p_InsertExpr : k+= INSERT (k+= NODE | k+= NODES ) p_SourceExpr p_InsertExprTargetChoice p_TargetExpr ;
@@ -44039,7 +44039,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1672:1: p_DeleteExpr : k+= DELETE (k+= NODE | k+= NODES ) p_TargetExpr ;
@@ -44158,7 +44158,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1677:1: p_ReplaceExpr : k+= REPLACE (k+= VALUE k+= OF )? k+= NODE p_ExprSingle[true] k+= WITH p_ExprSingle[true] ;
@@ -44285,7 +44285,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1682:1: p_RenameExpr : k+= RENAME k+= NODE p_TargetExpr k+= AS p_NewNameExpr ;
@@ -44380,7 +44380,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1687:1: p_SourceExpr : p_ExprSingle[true] ;
@@ -44438,7 +44438,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1692:1: p_TargetExpr : p_ExprSingle[true] ;
@@ -44496,7 +44496,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1697:1: p_NewNameExpr : p_ExprSingle[true] ;
@@ -44554,7 +44554,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1702:1: p_TransformExpr : k+= COPY d= DOLLAR v= p_VarName BIND p_ExprSingle[true] ( COMMA e= DOLLAR w= p_VarName BIND p_ExprSingle[true] )* k+= MODIFY p_ExprSingle[true] k+= RETURN p_ExprSingle[true] ;
@@ -44741,7 +44741,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1713:1: pm_FTOptionDecl : k+= DECLARE k+= FT_OPTION p_FTMatchOptions SEMICOLON ;
@@ -44828,7 +44828,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1718:1: p_FTScoreVar : ks= SCORE d= DOLLAR v= p_VarName ;
@@ -44906,7 +44906,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1723:1: p_FTContainsExpr : p_StringConcatExpr (k+= CONTAINS k+= TEXT p_FTSelection ( p_FTIgnoreOption )? )? ;
@@ -45032,7 +45032,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1728:1: p_FTSelection : p_FTOr ( p_FTPosFilter )* ;
@@ -45120,7 +45120,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1733:1: p_FTWeight : kw= WEIGHT LBRACKET p_Expr[true,true] RBRACKET ;
@@ -45202,7 +45202,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1738:1: p_FTOr : p_FTAnd (ko= FTOR p_FTAnd )* ;
@@ -45300,7 +45300,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1743:1: p_FTAnd : p_FTMildNot (ka= FTAND p_FTMildNot )* ;
@@ -45398,7 +45398,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1748:1: p_FTMildNot : p_FTUnaryNot (k+= NOT k+= IN p_FTUnaryNot )* ;
@@ -45508,7 +45508,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1753:1: p_FTUnaryNot : (kn= FTNOT )? p_FTPrimaryWithOptions ;
@@ -45592,7 +45592,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1758:1: p_FTPrimaryWithOptions : p_FTPrimary ( p_FTMatchOptions )? ( p_FTWeight )? ;
@@ -45696,7 +45696,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1766:1: p_FTPrimary : ( ( p_FTWords ( p_FTTimes )? ) | ( LPAREN p_FTSelection RPAREN ) | p_FTExtensionSelection );
@@ -45854,7 +45854,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1773:1: p_FTWords : p_FTWordsValue ( p_FTAnyallOption )? ;
@@ -45935,7 +45935,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1778:1: p_FTWordsValue : ( p_StringLiteral | ( LBRACKET p_Expr[true,true] RBRACKET ) );
@@ -46046,7 +46046,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1784:1: p_FTExtensionSelection : ( L_Pragma )+ LBRACKET ( p_FTSelection )? RBRACKET ;
@@ -46171,7 +46171,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1789:1: p_FTAnyallOption : ( (k+= ANY (k+= WORD )? ) | (k+= ALL ( WORDS )? ) | k+= PHRASE ) ;
@@ -46348,7 +46348,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1794:1: p_FTTimes : k+= OCCURS p_FTRange k+= TIMES ;
@@ -46428,7 +46428,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1799:1: p_FTRange : ( (k+= EXACTLY p_AdditiveExpr ) | (k+= AT k+= LEAST p_AdditiveExpr ) | (k+= AT k+= MOST p_AdditiveExpr ) | (k+= FROM p_AdditiveExpr k+= TO p_AdditiveExpr ) ) ;
@@ -46654,7 +46654,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1807:1: p_FTPosFilter : ( p_FTOrder | p_FTWindow | p_FTDistance | p_FTScope | p_FTContent );
@@ -46799,7 +46799,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1812:1: p_FTOrder : ko= ORDERED ;
@@ -46860,7 +46860,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1817:1: p_FTWindow : kw= WINDOW p_AdditiveExpr p_FTUnit ;
@@ -46935,7 +46935,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1822:1: p_FTDistance : kd= DISTANCE p_FTRange p_FTUnit ;
@@ -47010,7 +47010,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1827:1: p_FTUnit : (k+= WORDS | k+= SENTENCES | k+= PARAGRAPHS ) ;
@@ -47130,7 +47130,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1832:1: p_FTScope : (k+= SAME | k+= DIFFERENT ) p_FTBigUnit ;
@@ -47241,7 +47241,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1837:1: p_FTBigUnit : (k+= SENTENCE | k+= PARAGRAPH ) ;
@@ -47345,7 +47345,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1842:1: p_FTContent : ( (k+= AT k+= START ) | (k+= AT k+= END ) | (k+= ENTIRE k+= CONTENT ) ) ;
@@ -47515,7 +47515,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1847:1: p_FTMatchOptions : (ku= USING p_FTMatchOption )+ ;
@@ -47613,7 +47613,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1852:1: p_FTMatchOption : ( p_FTLanguageOption | p_FTWildCardOption | p_FTThesaurusOption | p_FTStemOption | p_FTCaseOption | p_FTDiacriticsOption | p_FTStopWordOption | p_FTExtensionOption );
@@ -47775,7 +47775,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1864:1: p_FTCaseOption : ( (k+= CASE k+= INSENSITIVE ) | (k+= CASE k+= SENSITIVE ) | k+= LOWERCASE | k+= UPPERCASE ) ;
@@ -47948,7 +47948,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1872:1: p_FTDiacriticsOption : ( (k+= DIACRITICS k+= INSENSITIVE ) | (k+= DIACRITICS k+= SENSITIVE ) ) ;
@@ -48089,7 +48089,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1878:1: p_FTStemOption : (k+= STEMMING | (k+= NO k+= STEMMING ) ) ;
@@ -48206,7 +48206,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1883:1: p_FTThesaurusOption : ( (k+= THESAURUS ( p_FTThesaurusID | k+= DEFAULT ) ) | (k+= THESAURUS LPAREN ( p_FTThesaurusID | k+= DEFAULT ) ( COMMA p_FTThesaurusID )* RPAREN ) | (k+= NO k+= THESAURUS ) ) ;
@@ -48503,7 +48503,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1890:1: p_FTThesaurusID : k+= AT p_StringLiteral (k+= RELATIONSHIP p_StringLiteral )? ( p_FTLiteralRange k+= LEVELS )? ;
@@ -48644,7 +48644,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1895:1: p_FTLiteralRange : ( (k+= EXACTLY L_IntegerLiteral ) | (k+= AT k+= LEAST L_IntegerLiteral ) | (k+= AT k+= MOST L_IntegerLiteral ) | (k+= FROM L_IntegerLiteral TO L_IntegerLiteral ) ) ;
@@ -48869,7 +48869,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1903:1: p_FTStopWordOption : ( (k+= STOP k+= WORDS p_FTStopWords ( p_FTStopWordsInclExcl )* ) | (k+= STOP k+= WORDS k+= DEFAULT ( p_FTStopWordsInclExcl )* ) | (k+= NO k+= STOP k+= WORDS ) ) ;
@@ -49133,7 +49133,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1910:1: p_FTStopWords : ( (ka= AT p_StringLiteral ) | ( LPAREN p_StringLiteral ( COMMA p_StringLiteral )* RPAREN ) );
@@ -49296,7 +49296,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1916:1: p_FTStopWordsInclExcl : ( (k+= UNION | k+= EXCEPT ) p_FTStopWords ) ;
@@ -49412,7 +49412,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1921:1: p_FTLanguageOption : kl= LANGUAGE p_StringLiteral ;
@@ -49480,7 +49480,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1926:1: p_FTWildCardOption : (k+= WILDCARDS | (k+= NO k+= WILDCARDS ) ) ;
@@ -49597,7 +49597,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1931:1: p_FTExtensionOption : ko= OPTION p_QName p_StringLiteral ;
@@ -49672,7 +49672,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1936:1: p_FTIgnoreOption : k+= WITHOUT k+= CONTENT p_UnionExpr ;
@@ -49752,7 +49752,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1947:1: p_Program : p_StatementsAndOptionalExpr ;
@@ -49810,7 +49810,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1952:1: p_Statements[strict] : ( p_Hybrid[$strict,true] )* ;
@@ -49891,7 +49891,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1957:1: p_StatementsAndExpr : p_Statements[false] ;
@@ -49949,7 +49949,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1962:1: p_StatementsAndOptionalExpr : p_Statements[false] ;
@@ -50007,7 +50007,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1966:1: p_Hybrid[strict, allowConcat] : ( p_HybridExprSingle[$strict,$allowConcat] | p_Statement );
@@ -50091,7 +50091,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1984:1: p_Statement : ( p_AssignStatement | p_BreakStatement | p_ContinueStatement | p_ExitStatement | p_VarDeclStatement | p_WhileStatement );
@@ -50252,7 +50252,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:1992:1: p_HybridExprSingle[strict, allowConcat] : e= p_Expr[$strict,$allowConcat] SEMICOLON ;
@@ -50325,7 +50325,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2028:1: p_ApplyStatement : p_ExprSimple SEMICOLON ;
@@ -50390,7 +50390,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2033:1: p_AssignStatement : d= DOLLAR v= p_VarName BIND p_ExprSingle[true] SEMICOLON ;
@@ -50479,7 +50479,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2038:1: p_BlockStatement : LBRACKET p_Statements[false] RBRACKET ;
@@ -50551,7 +50551,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2042:1: p_BlockHybrid[strict] : LBRACKET p_Statements[$strict] RBRACKET ;
@@ -50623,7 +50623,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2047:1: p_BreakStatement : k= BREAK k= LOOP SEMICOLON ;
@@ -50699,7 +50699,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2052:1: p_ContinueStatement : k= CONTINUE k= LOOP SEMICOLON ;
@@ -50775,7 +50775,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2057:1: p_ExitStatement : k= EXIT k= RETURNING p_ExprSingle[true] SEMICOLON ;
@@ -50858,7 +50858,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2062:1: p_FLWORStatement : p_InitialClause ( p_IntermediateClause )* p_ReturnStatement ;
@@ -50953,7 +50953,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2067:1: p_ReturnStatement : k= RETURN p_Hybrid[false,false] ;
@@ -51021,7 +51021,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2072:1: p_IfStatement : k= IF LPAREN p_Expr[true,true] RPAREN k= THEN p_Hybrid[false,false] k= ELSE p_Hybrid[false,false] ;
@@ -51133,7 +51133,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2077:1: p_SwitchStatement : k= SWITCH LPAREN p_Expr[true,true] RPAREN ( p_SwitchCaseStatement )+ k= DEFAULT k= RETURN p_Hybrid[false,false] ;
@@ -51275,7 +51275,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2082:1: p_SwitchCaseStatement : (k= CASE p_SwitchCaseOperand )+ k= RETURN p_Hybrid[false,false] ;
@@ -51388,7 +51388,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2087:1: p_TryCatchStatement : k= TRY p_BlockStatement (k= CATCH p_CatchErrorList p_BlockStatement )+ ;
@@ -51511,7 +51511,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2091:1: p_TryCatchHybrid[strict] : k= TRY p_BlockHybrid[$strict] (k= CATCH p_CatchErrorList p_BlockHybrid[$strict] )+ ;
@@ -51634,7 +51634,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2096:1: p_TypeswitchStatement : k= TYPESWITCH LPAREN p_Expr[true,true] RPAREN ( p_CaseStatement )+ k= DEFAULT (d= DOLLAR v= p_VarName )? k= RETURN p_Hybrid[false,false] ;
@@ -51809,7 +51809,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2101:1: p_CaseStatement : k= CASE (d= DOLLAR v= p_VarName AS )? p_SequenceType k= RETURN p_Hybrid[false,false] ;
@@ -51932,7 +51932,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2106:1: p_VarDeclStatement : ( p_Annotation )* k= VARIABLE d= DOLLAR v= p_VarName ( p_TypeDeclaration )? ( BIND p_ExprSingle[true] )? ( COMMA e= DOLLAR w= p_VarName ( p_TypeDeclaration )? ( BIND p_ExprSingle[true] )? )* SEMICOLON ;
@@ -52200,7 +52200,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2113:1: p_WhileStatement : k= WHILE LPAREN p_Expr[true,true] RPAREN p_Hybrid[false,false] ;
@@ -52289,7 +52289,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2118:1: p_ExprSimple : ( p_QuantifiedExpr | p_OrExpr | {...}? => pg_UpdateExpr );
@@ -52385,7 +52385,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2125:1: p_BlockExpr : LBRACKET p_StatementsAndExpr RBRACKET ;
@@ -52457,7 +52457,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2133:1: p_CollectionDecl : k= COLLECTION p_QName ( p_CollectionTypeDecl )? ;
@@ -52548,7 +52548,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2137:1: p_CollectionTypeDecl : (k= AS p_KindTest ( ( p_OccurrenceIndicator )=> p_OccurrenceIndicator )? ) ;
@@ -52644,7 +52644,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2141:1: p_IndexDecl : k= INDEX p_IndexName k= ON k= NODES p_IndexDomainExpr k= BY p_IndexKeySpec ( COMMA p_IndexKeySpec )* ;
@@ -52787,7 +52787,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2145:1: p_IndexName : p_QName ;
@@ -52845,7 +52845,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2149:1: p_IndexDomainExpr : p_PathExpr ;
@@ -52903,7 +52903,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2153:1: p_IndexKeySpec : p_IndexKeyExpr ( p_IndexKeyTypeDecl )? ( p_IndexKeyCollation )? ;
@@ -53007,7 +53007,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2157:1: p_IndexKeyExpr : p_PathExpr ;
@@ -53065,7 +53065,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2161:1: p_IndexKeyTypeDecl : k= AS p_AtomicType ( p_OccurrenceIndicator )? ;
@@ -53156,7 +53156,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2165:1: p_AtomicType : p_QName ;
@@ -53214,7 +53214,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2169:1: p_IndexKeyCollation : k= COLLATION p_StringLiteral ;
@@ -53282,7 +53282,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2173:1: p_ICDecl : k= INTEGRITY k= CONSTRAINT p_QName ( p_ICCollection | p_ICForeignKey ) ;
@@ -53403,7 +53403,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2177:1: p_ICCollection : k= ON k= COLLECTION p_QName ( p_ICCollSequence | p_ICCollSequenceUnique | p_ICCollNode ) ;
@@ -53539,7 +53539,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2181:1: p_ICCollSequence : d= DOLLAR v= p_QName k= CHECK p_ExprSingle[true] ;
@@ -53624,7 +53624,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2185:1: p_ICCollSequenceUnique : k= NODE d= DOLLAR v= p_QName k= CHECK k= UNIQUE k= KEY p_PathExpr ;
@@ -53733,7 +53733,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2189:1: p_ICCollNode : k= FOREACH k= NODE d= DOLLAR v= p_QName k= CHECK p_ExprSingle[true] ;
@@ -53834,7 +53834,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2193:1: p_ICForeignKey : k= FOREIGN k= KEY p_ICForeignKeySource p_ICForeignKeyTarget ;
@@ -53917,7 +53917,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2197:1: p_ICForeignKeySource : k= FROM p_ICForeignKeyValues ;
@@ -53985,7 +53985,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2201:1: p_ICForeignKeyTarget : k= TO p_ICForeignKeyValues ;
@@ -54053,7 +54053,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         {
             getTree: function() { return this.tree; }
         });
-        return;
+
     })(),
 
     // xquery/XQueryParser.g:2205:1: p_ICForeignKeyValues : k= COLLECTION p_QName k= NODE d= DOLLAR v= p_QName k= KEY p_PathExpr ;
@@ -54238,7 +54238,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         // xquery/XQueryParser.g:575:11: ( IF LPAREN )
         // xquery/XQueryParser.g:575:12: IF LPAREN
         this.match(this.input,IF,XQueryParser.FOLLOW_IF_in_synpred2_XQueryParser3577); if (this.state.failed) return ;
-        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred2_XQueryParser3579); if (this.state.failed) return ;
+        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred2_XQueryParser3579); if (this.state.failed)
 
 
     },
@@ -54249,7 +54249,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         // xquery/XQueryParser.g:576:11: ( SWITCH LPAREN )
         // xquery/XQueryParser.g:576:12: SWITCH LPAREN
         this.match(this.input,SWITCH,XQueryParser.FOLLOW_SWITCH_in_synpred3_XQueryParser3607); if (this.state.failed) return ;
-        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred3_XQueryParser3609); if (this.state.failed) return ;
+        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred3_XQueryParser3609); if (this.state.failed)
 
 
     },
@@ -54260,7 +54260,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         // xquery/XQueryParser.g:577:11: ( TYPESWITCH LPAREN )
         // xquery/XQueryParser.g:577:12: TYPESWITCH LPAREN
         this.match(this.input,TYPESWITCH,XQueryParser.FOLLOW_TYPESWITCH_in_synpred4_XQueryParser3633); if (this.state.failed) return ;
-        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred4_XQueryParser3635); if (this.state.failed) return ;
+        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred4_XQueryParser3635); if (this.state.failed)
 
 
     },
@@ -54271,7 +54271,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         // xquery/XQueryParser.g:578:11: ( TRY LBRACKET )
         // xquery/XQueryParser.g:578:12: TRY LBRACKET
         this.match(this.input,TRY,XQueryParser.FOLLOW_TRY_in_synpred5_XQueryParser3655); if (this.state.failed) return ;
-        this.match(this.input,LBRACKET,XQueryParser.FOLLOW_LBRACKET_in_synpred5_XQueryParser3657); if (this.state.failed) return ;
+        this.match(this.input,LBRACKET,XQueryParser.FOLLOW_LBRACKET_in_synpred5_XQueryParser3657); if (this.state.failed)
 
 
     },
@@ -54326,7 +54326,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         this.p_RelativePathExpr();
 
         this.state._fsp--;
-        if (this.state.failed) return ;
+        if (this.state.failed)
 
 
     },
@@ -54495,7 +54495,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         this.p_KindTest();
 
         this.state._fsp--;
-        if (this.state.failed) return ;
+        if (this.state.failed)
 
 
     },
@@ -54510,7 +54510,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
 
         this.state._fsp--;
         if (this.state.failed) return ;
-        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred11_XQueryParser6843); if (this.state.failed) return ;
+        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred11_XQueryParser6843); if (this.state.failed)
 
 
     },
@@ -54524,7 +54524,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         this.p_PrimaryExpr();
 
         this.state._fsp--;
-        if (this.state.failed) return ;
+        if (this.state.failed)
 
 
     },
@@ -54538,7 +54538,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         this.p_Wildcard();
 
         this.state._fsp--;
-        if (this.state.failed) return ;
+        if (this.state.failed)
 
 
     },
@@ -54553,7 +54553,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
 
         this.state._fsp--;
         if (this.state.failed) return ;
-        this.match(this.input,COLON,XQueryParser.FOLLOW_COLON_in_synpred14_XQueryParser7321); if (this.state.failed) return ;
+        this.match(this.input,COLON,XQueryParser.FOLLOW_COLON_in_synpred14_XQueryParser7321); if (this.state.failed)
 
 
     },
@@ -54567,7 +54567,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         this.p_NCName();
 
         this.state._fsp--;
-        if (this.state.failed) return ;
+        if (this.state.failed)
 
 
     },
@@ -54577,7 +54577,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
     synpred16_XQueryParser_fragment: function() {
         // xquery/XQueryParser.g:1027:11: ( LPAREN )
         // xquery/XQueryParser.g:1027:12: LPAREN
-        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred16_XQueryParser7595); if (this.state.failed) return ;
+        this.match(this.input,LPAREN,XQueryParser.FOLLOW_LPAREN_in_synpred16_XQueryParser7595); if (this.state.failed)
 
 
     },
@@ -54591,7 +54591,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         this.p_OccurrenceIndicator();
 
         this.state._fsp--;
-        if (this.state.failed) return ;
+        if (this.state.failed)
 
 
     },
@@ -54605,7 +54605,7 @@ org.antlr.lang.augmentObject(XQueryParser.prototype, {
         this.p_OccurrenceIndicator();
 
         this.state._fsp--;
-        if (this.state.failed) return ;
+        if (this.state.failed)
 
 
     },
@@ -66042,7 +66042,7 @@ define('ace/mode/xquery/XQuerySemanticHighlighter', ['require', 'exports', 'modu
           offset = 0;
           cursor = i;
         } 
-      };
+      }
       this.addPosition(new Position(currentLine, offset, stop - cursor + 1), type); 
     };
     

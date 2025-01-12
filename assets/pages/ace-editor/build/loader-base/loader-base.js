@@ -2344,7 +2344,7 @@ Y.Loader.prototype = {
 	    if (groupName && this.groups[groupName] && this.groups[groupName].filter) {		
 	 	   modFilter = this.groups[groupName].filter;
 		   hasFilter = true;		
-	     };
+	     }
 
         if (u) {
             if (hasFilter) {

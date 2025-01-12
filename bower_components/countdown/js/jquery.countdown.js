@@ -4,7 +4,7 @@ var defaultOptions = {
   refresh: 1000,
   offset: 0,
   onEnd: function() {
-    return;
+
   },
   render: function (date) {
     this.el.innerHTML = date.years + " years, " +

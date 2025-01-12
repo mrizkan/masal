@@ -1120,7 +1120,7 @@ Event._interval = setInterval(Event._poll, Event.POLL_INTERVAL);
 
             Event.locked = false;
 
-            return;
+
 
         },
 

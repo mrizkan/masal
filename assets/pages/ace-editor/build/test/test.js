@@ -2745,7 +2745,7 @@ YUI.add('test', function(Y) {
          * @property _fields
          * @private
          */
-        this._fields = new Object();
+        this._fields = {};
         
         /**
          * The form element used to submit the results.
@@ -2786,7 +2786,7 @@ YUI.add('test', function(Y) {
          * @method addField
          */
         clearFields : function(){
-            this._fields = new Object();
+            this._fields = {};
         },
     
         /**

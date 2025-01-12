@@ -41,7 +41,7 @@ $(document).ready(function() {
             labelBoxBorderColor: "red"
 
         });
-    };
+    }
 
     /*Stracking chart*/
     function strackingChart() {
@@ -84,7 +84,7 @@ $(document).ready(function() {
         }
 
         plotWithOptions();
-    };
+    }
 
 
 
@@ -114,7 +114,7 @@ $(document).ready(function() {
             }
         });
 
-    };
+    }
 
 
     /*Donut Hole*/
@@ -144,7 +144,7 @@ $(document).ready(function() {
                 }
             }
         });
-    };
+    }
 
     //  series types chart
     $(function() {

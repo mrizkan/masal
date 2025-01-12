@@ -538,7 +538,7 @@ Y.ScrollView = Y.extend(ScrollView, Y.Widget, {
             onGestureMoveEnd: true
         });
 
-        return;
+
     },
 
     /**

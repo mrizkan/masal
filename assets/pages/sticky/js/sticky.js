@@ -175,4 +175,4 @@
           export: false,
           addArrow: 'back' //Add an arrow to notes : none, front, back, all
       };
-  };
+  }

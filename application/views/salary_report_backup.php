@@ -119,7 +119,7 @@
 
                             <?php if ($newDate != $str=$row->ADate){ if ($PreviousDate<$newDate){ if ($dayname=='Sunday'){?>
                                 <tr>
-                                    <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ; ?></td>
+                                    <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>
                                     <td> Holiday </td>
                                     <td> - </td>
                                     <td> - </td>
@@ -131,7 +131,7 @@
                             <?php } else{ ?>
 
                                 <tr>
-                                    <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ; ?></td>
+                                    <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>
                                     <td> AB </td>
                                     <td> - </td>
                                     <td> - </td>

@@ -34,11 +34,11 @@ $(document).ready(function() {
                 $('#y2').val(c.y2);
                 $('#w').val(c.w);
                 $('#h').val(c.h);
-            };
+            }
 
             function clearCoords() {
                 $('#coords input').val('');
-            };
+            }
         }
 
         var demo3 = function() {
@@ -83,7 +83,7 @@ $(document).ready(function() {
                         marginTop: '-' + Math.round(ry * c.y) + 'px'
                     });
                 }
-            };
+            }
         }
 
 
@@ -91,7 +91,7 @@ $(document).ready(function() {
             //main function to initiate the module
             init: function() {
 
-                if (!jQuery().Jcrop) {;
+                if (!jQuery().Jcrop) {
                     return;
                 }
 

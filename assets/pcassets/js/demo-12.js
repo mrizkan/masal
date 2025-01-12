@@ -48,7 +48,7 @@ $( document ).ready(function() {
 			var lheadertheme = $(this).attr("lheader-theme");
 			$('.pcoded-header .pcoded-left-header').attr("lheader-theme", lheadertheme);
         });
-    };
+    }
 
 	handleleftheadertheme();
  /* Left header Theme Change function Close */
@@ -58,7 +58,7 @@ $( document ).ready(function() {
 			var headertheme = $(this).attr("header-theme");
 			$('.pcoded-header').attr("header-theme", headertheme);
         });
-    };
+    }
 	handleheadertheme();
  /* header Theme Change function Close */
  /* Navbar Theme Change function Start */
@@ -67,7 +67,7 @@ $( document ).ready(function() {
 			var navbartheme = $(this).attr("navbar-theme");
 			$('.pcoded-navbar').attr("navbar-theme", navbartheme);
         });
-    };
+    }
 
 	handlenavbartheme();
  /* Navbar Theme Change function Close */
@@ -77,7 +77,7 @@ $( document ).ready(function() {
 			var activeitemtheme = $(this).attr("active-item-theme");
 			$('.pcoded-navbar').attr("active-item-theme", activeitemtheme);
         });
-    };
+    }
 
 	handleactiveitemtheme();
  /* Active Item Theme Change function Close */
@@ -87,7 +87,7 @@ $( document ).ready(function() {
 			var subitemtheme = $(this).attr("sub-item-theme");
 			$('.pcoded-navbar').attr("sub-item-theme", subitemtheme);
         });
-    };
+    }
 
 	handlesubitemtheme();
  /* SubItem Theme Change function Close */
@@ -97,7 +97,7 @@ $( document ).ready(function() {
 			var themebgpattern = $(this).attr("themebg-pattern");
 			$('body').attr("themebg-pattern", themebgpattern);
         });
-    };
+    }
 
 	handlethemebgpattern();
  /* Theme background pattren Change function Close */
@@ -107,7 +107,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded').attr('vnavigation-view', get_value);
 		});
-	};
+	}
 
    handleVerticalNavigationViewChange ();
  /* Theme Layout Change function Close*/
@@ -117,7 +117,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded').attr('vertical-layout', get_value);
 		});
-	};
+	}
 
    handlethemeverticallayout ();
  /* Theme Layout Change function Close*/
@@ -127,7 +127,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded').attr('vertical-effect', get_value);
 		});
-	};
+	}
 
    handleverticalMenueffect ();
  /* Menu effect change function Close*/
@@ -139,7 +139,7 @@ $( document ).ready(function() {
 			$('.pcoded-navbar').attr("pcoded-navbar-position", 'absolute' );
 			$('.pcoded-header .pcoded-left-header').attr("pcoded-lheader-position", 'relative' );
 		});
-	};
+	}
 
    handleverticalMenuplacement ();
  /* Vertical Menu Placement change function Close*/
@@ -149,7 +149,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded-navbar').attr('active-item-style', get_value);
 		});
-	};
+	}
 
    handleverticalActiveItemStyle ();
  /* Vertical Active Item Style change function Close*/
@@ -162,7 +162,7 @@ $( document ).ready(function() {
 					$('.pcoded-navbar .pcoded-item').attr('item-border', 'true');
 				}
 			});
-		};
+		}
 
    handleVerticalIItemBorder ();
  /* Vertical Item border change function Close*/
@@ -175,7 +175,7 @@ $( document ).ready(function() {
 					$('.pcoded-navbar .pcoded-item').attr('subitem-border', 'true');
 				}
 			});
-		};
+		}
 
    handleVerticalSubIItemBorder ();
  /* Vertical SubItem border change function Close*/
@@ -185,7 +185,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded-navbar .pcoded-item').attr('item-border-style', get_value);
 		});
-	};
+	}
 
    handleverticalboderstyle ();
  /* Vertical Item border Style change function Close*/
@@ -195,7 +195,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded-navbar .pcoded-hasmenu').attr('dropdown-icon', get_value);
 		});
-	};
+	}
 
    handleVerticalDropDownIconStyle ();
  /* Vertical Dropdown Icon change function Close*/
@@ -206,7 +206,7 @@ $( document ).ready(function() {
 			get_value = $(this).val();
 			$('.pcoded-navbar .pcoded-hasmenu').attr('subitem-icon', get_value);
 		});
-	};
+	}
 
    handleVerticalSubMenuItemIconStyle ();
  /* Vertical SubItem Icon change function Close*/
@@ -221,7 +221,7 @@ $( document ).ready(function() {
 					$('.pcoded-header .pcoded-left-header').attr("pcoded-lheader-position", 'relative' );
 				}
 			});
-		};
+		}
 
    handlesidebarposition ();
  /* Vertical Navbar Position change function Close*/
@@ -236,7 +236,7 @@ $( document ).ready(function() {
 					$('.pcoded-main-container').css('margin-top', '0px');
 				}
 			});
-		};
+		}
 
    handleheaderposition ();
  /* Vertical Header Position change function Close*/
@@ -253,7 +253,7 @@ $( document ).ready(function() {
 					$('.pcoded-header, .pcoded').removeClass('nocollapsed');
 				}
 			});
-		};
+		}
 
    handlecollapseLeftHeader ();
 

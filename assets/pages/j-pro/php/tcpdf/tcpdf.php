@@ -20380,8 +20380,8 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 			case 'square': {
 				$l = $size / 3;
 				$lspace += $l;
-				if ($this->rtl) {;
-					$this->x += $lspace;
+				if ($this->rtl) {
+                    $this->x += $lspace;
 				} else {
 					$this->x -= $lspace;
 				}
@@ -20391,8 +20391,8 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 			case 'img': {
 				// 1=>type, 2=>width, 3=>height, 4=>image.ext
 				$lspace += $img[2];
-				if ($this->rtl) {;
-					$this->x += $lspace;
+				if ($this->rtl) {
+                    $this->x += $lspace;
 				} else {
 					$this->x -= $lspace;
 				}
@@ -24361,8 +24361,8 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 	 */
 	protected function endSVGElementHandler($parser, $name) {
 		$name = $this->removeTagNamespace($name);
-		if ($this->svgdefsmode AND !in_array($name, array('defs', 'clipPath', 'linearGradient', 'radialGradient', 'stop'))) {;
-			if (end($this->svgdefs) !== FALSE) {
+		if ($this->svgdefsmode AND !in_array($name, array('defs', 'clipPath', 'linearGradient', 'radialGradient', 'stop'))) {
+            if (end($this->svgdefs) !== FALSE) {
 				$last_svgdefs_id = key($this->svgdefs);
 				if (isset($this->svgdefs[$last_svgdefs_id]['attribs']['child_elements'])) {
 					foreach($this->svgdefs[$last_svgdefs_id]['attribs']['child_elements'] as $child_element) {

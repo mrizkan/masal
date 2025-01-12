@@ -32,7 +32,7 @@
                       refresh: 1000,
                       offset: 0,
                       onEnd: function() {
-                          return;
+
                       },
                       render: function(date) {
                           this.el.innerHTML = '<div class="row"><div class="col-xs-3"><h2 class="f-20 f-w-400">' +

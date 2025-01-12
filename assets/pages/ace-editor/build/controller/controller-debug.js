@@ -268,7 +268,7 @@ Y.Controller = Y.extend(Controller, Y.Base, {
             this._ready = true;
 
             if (html5 && this.upgrade()) {
-                return;
+
             } else {
                 this._dispatch(this._getPath());
             }

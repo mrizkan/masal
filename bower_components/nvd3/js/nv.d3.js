@@ -1671,7 +1671,7 @@ nv.models.axis = function() {
                     w = isOrdinal ? scale.range()[0] + scale.range()[1] + scale.rangeBand() : scale.range()[1];
                   } else if ( scale.range().length > 2){
                     w = scale.range()[scale.range().length-1]+(scale.range()[1]-scale.range()[0]);
-                  };
+                  }
                     axisLabel
                         .attr('text-anchor', 'middle')
                         .attr('y', 0)
@@ -1743,7 +1743,7 @@ nv.models.axis = function() {
                         w = isOrdinal ? scale.range()[0] + scale.range()[1] + scale.rangeBand() : scale.range()[1];
                     } else if ( scale.range().length > 2){
                         w = scale.range()[scale.range().length-1]+(scale.range()[1]-scale.range()[0]);
-                    };
+                    }
                     axisLabel
                         .attr('text-anchor', 'middle')
                         .attr('y', xLabelMargin)
@@ -2575,7 +2575,7 @@ nv.models.bullet = function() {
             var iB = lz.indexOf(b);
             return d3.descending(values[iA], values[iB]);
         });
-    };
+    }
 
     function chart(selection) {
         selection.each(function(d, i) {
@@ -10520,7 +10520,7 @@ nv.models.parallelCoordinates = function() {
             var dataValues = data.map(function (d) {return d.values});
             if (active.length === 0) {
                 active = data;
-            }; //set all active before first brush call
+            } //set all active before first brush call
             
             dimensionNames = dimensionData.sort(function (a, b) { return a.currentPosition - b.currentPosition; }).map(function (d) { return d.key });
             enabledDimensions = dimensionData.filter(function (d) { return !d.disabled; });
@@ -14654,7 +14654,7 @@ nv.models.stackedAreaChart = function() {
                         if (showTotalInTooltip && stacked.style() != 'expand' && tooltipValue != null) {
                           valueSum += tooltipValue;
                           allNullValues = false;
-                        };
+                        }
                     });
 
                 allData.reverse();
@@ -14673,7 +14673,7 @@ nv.models.stackedAreaChart = function() {
                         if ( yValue >= stackedY0 && yValue <= (stackedY + stackedY0))
                         {
                             indexToHighlight = i;
-                            return;
+
                         }
                     });
                     if (indexToHighlight != null)
@@ -14983,7 +14983,7 @@ nv.models.sunburst = function() {
                 y.domain(yd(t)).range(yr(t));
                 return arc(e);
             }
-        };
+        }
     }
 
     function arcTweenUpdate(d) {
