@@ -50,7 +50,7 @@ class Home extends CI_Controller
            $d['records'] = $this->employee->get_all();
             $currentYear = date('Y');
             $currentMonth = date('m');
-            $d['records2'] = $this->db->query("SELECT ADate FROM attendance WHERE YEAR(ADate) =". $currentYear ." AND MONTH(ADate) =". $currentMonth." Order by ADate DESC")->result();
+            $d['records2'] = $this->db->query("SELECT ADate FROM attendance WHERE YEAR(ADate) =". $currentYear ." AND MONTH(ADate) =". $currentMonth." GROUP BY ADate Order by ADate DESC")->result();
 //        p($d['records']);
 //        p($this->db->last_query());
 //        exit;
@@ -72,7 +72,7 @@ class Home extends CI_Controller
 
         $currentYear = date('Y');
         $currentMonth = date('m');
-       $d['records2'] = $this->db->query("SELECT ADate FROM attendance WHERE YEAR(ADate) =". $currentYear ." AND MONTH(ADate) =". $currentMonth." Order by ADate DESC")->result();
+       $d['records2'] = $this->db->query("SELECT ADate FROM attendance WHERE YEAR(ADate) =". $currentYear ." AND MONTH(ADate) =". $currentMonth."  GROUP BY ADate  Order by ADate DESC")->result();
 
 //        p($d['records2']);
 //        p($this->db->last_query());

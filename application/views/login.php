@@ -45,7 +45,7 @@
                                 <hr/>
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <p class="text-inverse text-left m-b-0">Pallet Management System</p>
+                                        <p class="text-inverse text-left m-b-0">Employee Salary Calculator</p>
                                         <p class="text-inverse text-left"><b>Powered by <a href="http://www.rizcreation.com/" target="_blank">Riz Creation</a></b></p>
                                     </div>
                                     <div class="col-md-5">

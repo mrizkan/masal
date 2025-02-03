@@ -37,8 +37,9 @@
                 </style>
             </header>
             <?php
-            $currentYear = date('Y');
-            $currentMonth = date('m');
+            $currentYear = $year;
+          $currentMonth = $month;
+
             $firstDay = new DateTime("$currentYear-$currentMonth-01");
             $daysInMonth = $firstDay->format('t');
 
@@ -48,7 +49,7 @@
             <section class="row" style="display:block;">
 
                 <div class="large invoice-container">
-                    <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $firstDay->format('F Y')?> </h2>
+                    <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $month ?> - <?= $year ?> </h2>
                     <table>
                         <tr>
                             <!--                            <th>#</th>-->
@@ -83,6 +84,8 @@
                             $newDate = date("Y-m-d", strtotime($originalDate));
 
 
+
+
                             foreach ($records as $k => $row):
 
 
@@ -91,6 +94,7 @@
                                 // Format and display the day
 
                                 if ($newDate == $str=$row->ADate){
+
                                     ?>
                                     <tr>
 
@@ -138,7 +142,9 @@
                                     <td> - </td>
 
                                 </tr>
-                            <?php } else{ ?>
+                            <?php } else{
+
+                                ?>
 
                                 <tr>
                                     <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>

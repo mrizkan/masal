@@ -213,6 +213,7 @@ class Attendance extends MY_Controller
         $post = $this->input->post('form');
         $EmployeeID = $post[EmployeeId];
         $Month = $post[adate];
+
         $d['records2'] = $this->employee->get($EmployeeID);
 
 
@@ -224,6 +225,9 @@ class Attendance extends MY_Controller
 
         // SQl Query to get the records
         $d['records'] = $this->db->query("SELECT * FROM `attendance` WHERE ADate LIKE '$Month%' AND EmployeeId='$EmployeeID';")->result();
+//        p($this->db->last_query());
+//        p($d);
+//        exit;
         $this->load->view('salary_report', $d);
     }
 
