@@ -63,6 +63,7 @@ class Attendance extends MY_Controller
                 // Calculate overtime hours
                 $overtimeHours = 0;
 
+
                 if ($empStart < $workStart) {
                     $overtimeHours += $workStart - $empStart;
                 }
@@ -342,11 +343,18 @@ class Attendance extends MY_Controller
             // Calculate overtime hours
             $overtimeHours = 0;
 
-            if ($empStart < $workStart) {
-                $overtimeHours += $workStart - $empStart;
+
+            if ($empStart=='28975350' && $empEnd=='28975350'){
+                $overtimeHours=0;
             }
-            if ($empEnd > $workEnd) {
-                $overtimeHours += $empEnd - $workEnd;
+            else {
+
+                if ($empStart < $workStart) {
+                    $overtimeHours += $workStart - $empStart;
+                }
+                if ($empEnd > $workEnd) {
+                    $overtimeHours += $empEnd - $workEnd;
+                }
             }
             $overtimeHours = $overtimeHours / 60; // Convert to hours
 

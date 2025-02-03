@@ -54,7 +54,7 @@
                                                 <div class="card-block">
                                                     <form action="<?= base_url('Attendance/CalculateSalary') ?>" method="post" enctype="multipart/form-data">
                                                         <div class="form-group row">
-                                                            <input class="col-sm-3 col-form-label form-control form-bg-warning" name="form2[ADate]" value="2025-01-01" type="date" class="form-control">
+                                                            <input class="col-sm-3 col-form-label form-control form-bg-warning" name="form2[ADate]" type="date" class="form-control">
                                                             <label class="col-sm-2 col-form-label form-txt-success"><b>Start Time</b></label>
                                                             <label class="col-sm-2 col-form-label form-txt-danger"><b>End Time</b></label>
                                                             <label class="col-sm-2 col-form-label form-txt-danger"><b>Advance</b></label>

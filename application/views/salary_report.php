@@ -123,7 +123,12 @@
 
                                         <?php
                                         $TotalOTHours+=$OTHours;
-                                        $TotalOTPayent+=$row->OTPayment;
+                                    if ($checkstrttime=='12:00 am' && $checkendtime=='12:00 am'){
+                                        $TotalOTPayent=0;
+                                    }
+                                    else {
+                                        $TotalOTPayent += $row->OTPayment;
+                                    }
                                         $TotalAdvance+=$row->AdvanceAmount;
                                         $TotalPerDaySalary+=$row->PerDaySalary;
                                         $TotalSpecialAmount+=$row->SpecialAmount;
