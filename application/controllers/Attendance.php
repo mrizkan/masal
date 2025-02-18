@@ -13,120 +13,170 @@ class Attendance extends MY_Controller
         $this->controller = get_class();
     }
 
-    function AddAttendance()
+
+    public function CalculateSalary()
     {
-
-        $this->form_validation->set_rules("form[EmployeeId]", "Employee Name", "required");
-
-
-        if ($this->form_validation->run()) {
-
-            $post = $this->input->post('form');
-            $EmployeeID = $post[EmployeeId];
-            $AID = $post[AID];
-            $EmployeeOTPH = $this->employee->get($EmployeeID)->OTPH;
-            $EmployeeBasicSalary = $this->employee->get($EmployeeID)->FullDaySalary;
-            $post['OTRate'] = $EmployeeOTPH;
+        $post2 = $this->input->post('form2');
+        $post3 = $this->input->post('form');
+        $SelectedDate = $post2[ADate];
 
 
-
-            // Define constants
-            define('DAILY_SALARY', $EmployeeBasicSalary);
-            define('OT_RATE_PER_HOUR', $EmployeeOTPH);
-            define('WORK_START_TIME', '08:00');
-            define('WORK_END_TIME', '18:00');
-            define('LUNCH_START_TIME', '13:00');
-            define('LUNCH_END_TIME', '14:00');
-
-            function calculateDailySalary($employeeStartTime, $employeeEndTime) {
-                // Convert times to minutes since midnight
-                $workStart = strtotime(WORK_START_TIME) / 60;
-                $workEnd = strtotime(WORK_END_TIME) / 60;
-                $lunchStart = strtotime(LUNCH_START_TIME) / 60;
-                $lunchEnd = strtotime(LUNCH_END_TIME) / 60;
-                $empStart = strtotime($employeeStartTime) / 60;
-                $empEnd = strtotime($employeeEndTime) / 60;
-
-                // Calculate regular hours
-                $regularHours = min($workEnd, $empEnd) - max($workStart, $empStart);
-
-                // Deduct lunch hour only if employee works past lunch time
-                if ($empEnd > $lunchEnd && $empStart < $lunchStart)  {
-                    $regularHours -= ($lunchEnd - $lunchStart);
-                }
+        foreach($post3 as $record) {
+//            p($record);
+            $EmployeeBasicSalary=0;
+            $EmployeeOTPH=0;
+            $EmployeeId= $record['EmployeeId'];
+            $Start_Time= $record['Start_Time'];
+            $End_Time= $record['End_Time'];
+            $Advance= $record['Advance'];
+            $Special_Amount= $record['Special_Amount'];
+            $employeeStartTime = $Start_Time;
+            echo "<br>";
+            $employeeEndTime = $End_Time;
+            $AID = $SelectedDate;
+            $EmployeeOTPH = $this->employee->get($EmployeeId)->OTPH;
+           $EmployeeBasicSalary = $this->employee->get($EmployeeId)->FullDaySalary;
 
 
 
-                $regularHours = max(0, $regularHours / 60); // Convert to hours and ensure non-negative
 
+            //setting Array Data's
+            $post['adate'] = $SelectedDate;
+            $post['StartTime'] = $Start_Time;
+            $post['EndTime'] = $End_Time;
+            $post['EmployeeId'] = $EmployeeId;
+            $post['AdvanceAmount'] = $Advance;
+            $post['SpecialAmount'] = $Special_Amount;
 
-                // Calculate overtime hours
-                $overtimeHours = 0;
-
-
-                if ($empStart < $workStart) {
-                    $overtimeHours += $workStart - $empStart;
-                }
-                if ($empEnd > $workEnd) {
-                    $overtimeHours += $empEnd - $workEnd;
-                }
-                $overtimeHours = $overtimeHours / 60; // Convert to hours
-
-
-                $dailySalary=DAILY_SALARY/9;
-
-
-
-                // Calculate salary
-                $regularSalary = $dailySalary*$regularHours;
-                $overtimeSalary = $overtimeHours * OT_RATE_PER_HOUR;
-                $totalSalary = $regularSalary + $overtimeSalary;
-
-                return [
-                    'regularHours' => $regularHours,
-                    'overtimeHours' => $overtimeHours,
-                    'regularSalary' => $regularSalary,
-                    'overtimeSalary' => $overtimeSalary,
-                    'totalSalary' => $totalSalary
-                ];
+            if (empty($employeeStartTime)){
+                $employeeStartTime='08:00';
+                $employeeEndTime='08:00';
             }
 
+            $result = $this->calculateDailySalary($employeeStartTime, $employeeEndTime, $EmployeeBasicSalary, $EmployeeOTPH);
 
-            $starttime = $post['StartTime'];
-            $endTime = $post['EndTime'];
-            $employeeStartTime = $starttime;
-            $employeeEndTime = $endTime;
+            //   p($result);
 
-            $result = calculateDailySalary($employeeStartTime, $employeeEndTime);
-
-
+            $post['OTRate'] = $EmployeeOTPH;
             $post['OTPayment'] = $result['overtimeSalary'];
             $post['PerDaySalary'] = $result['regularSalary'];
-            echo "$AID";
-
-//            p($post);
-//            exit;
-//
-            if (!empty($AID)){
-                $d = '<div class="alert alert-warning background-warning"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Updated Successfully</strong> </div>';
-                $this->attendance->update($AID,$post);
-
-            }
-            else {
-
-                $d = '<div class="alert alert-success background-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Marked Successfully</strong> </div>';
-                $this->attendance->insert($post);
-            }
 
 
-            $this->session->set_flashdata('notification', $d);
-            redirect('Home/dashboard');
-        } else {
+            $d = '<div class="alert alert-success background-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Marked Successfully</strong> </div>';
+           $this->attendance->insert($post);
 
-            echo "error go back";
-        }
+        } /*end of Foreach of Form Submitted Data*/
+
+
+        $this->session->set_flashdata('notification', $d);
         redirect('Home/dashboard');
+
+
+
+
     }
+
+
+    public function calculateDailySalary($employeeStartTime, $employeeEndTime, $EmployeeBasicSalary, $EmployeeOTPH) {
+
+
+        // Define constants
+        define('DAILY_SALARY', $EmployeeBasicSalary);
+        define('OT_RATE_PER_HOUR', $EmployeeOTPH);
+        define('WORK_START_TIME', '08:00');
+        define('WORK_END_TIME', '18:00');
+        define('LUNCH_START_TIME', '13:00');
+        define('LUNCH_END_TIME', '14:00');
+        $overtimeHours = 0;
+        $regularHours=0;
+        $dailySalary=0;
+
+
+
+        // Convert times to minutes since midnight
+        $workStart = strtotime(WORK_START_TIME) / 60;
+        $workEnd = strtotime(WORK_END_TIME) / 60;
+        $lunchStart = strtotime(LUNCH_START_TIME) / 60;
+        $lunchEnd = strtotime(LUNCH_END_TIME) / 60;
+       $empStart = strtotime($employeeStartTime) / 60;
+
+        $empEnd = strtotime($employeeEndTime) / 60;
+
+
+
+
+        // Calculate regular hours
+       $regularHours = min($workEnd, $empEnd) - max($workStart, $empStart);
+
+        // Deduct lunch hour only if employee works past lunch time
+        if ($empEnd > $lunchEnd && $empStart < $lunchStart)  {
+            $regularHours -= ($lunchEnd - $lunchStart);
+        }
+
+
+
+      $regularHours = max(0, $regularHours / 60); // Convert to hours and ensure non-negative
+
+
+
+        // Calculate overtime hours
+
+            if ($empStart < $workStart) {
+                $overtimeHours += $workStart - $empStart;
+            }
+            if ($empEnd > $workEnd) {
+                $overtimeHours += $empEnd - $workEnd;
+            }
+
+       $overtimeHours = $overtimeHours / 60; // Convert to hours
+
+
+        $maxRegularHours = 9;
+
+
+        // Calculate salary
+
+       $regularSalary = ($regularHours / $maxRegularHours) * $EmployeeBasicSalary;
+       $overtimeSalary = $overtimeHours * $EmployeeOTPH;
+       $totalSalary = $regularSalary + $overtimeSalary;
+
+
+        return [
+            'regularHours' => $regularHours,
+            'overtimeHours' => $overtimeHours,
+            'regularSalary' => $regularSalary,
+            'overtimeSalary' => $overtimeSalary,
+            'totalSalary' => $totalSalary
+        ];
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function EditAttendance(){
         $post = $this->input->post('form');
@@ -241,141 +291,7 @@ class Attendance extends MY_Controller
 
     }
 
-    public function CalculateSalary()
-    {
-        $post2 = $this->input->post('form2');
-        $post3 = $this->input->post('form');
-        $SelectedDate = $post2[ADate];
 
-
-        foreach($post3 as $record) {
-//            p($record);
-            $EmployeeId= $record['EmployeeId'];
-            $Start_Time= $record['Start_Time'];
-            $End_Time= $record['End_Time'];
-            $Advance= $record['Advance'];
-            $Special_Amount= $record['Special_Amount'];
-            $employeeStartTime = $Start_Time;
-            $employeeEndTime = $End_Time;
-            $AID = $SelectedDate;
-            $EmployeeOTPH = $this->employee->get($EmployeeId)->OTPH;
-            $EmployeeBasicSalary = $this->employee->get($EmployeeId)->FullDaySalary;
-
-            //setting Array Data's
-            $post['adate'] = $SelectedDate;
-            $post['StartTime'] = $Start_Time;
-            $post['EndTime'] = $End_Time;
-            $post['EmployeeId'] = $EmployeeId;
-            $post['AdvanceAmount'] = $Advance;
-            $post['SpecialAmount'] = $Special_Amount;
-
-
-            if (empty($employeeStartTime)){
-                $employeeStartTime='08:00';
-                $employeeEndTime='08:00';
-            }
-
-//                echo $employeeStartTime." TIME ".$employeeEndTime;
-
-
-
-
-
-           $result = $this->calculateDailySalary($employeeStartTime, $employeeEndTime, $EmployeeBasicSalary, $EmployeeOTPH);
-
-         //   p($result);
-
-            $post['OTRate'] = $EmployeeOTPH;
-            $post['OTPayment'] = $result['overtimeSalary'];
-            $post['PerDaySalary'] = $result['regularSalary'];
-
-
-            $d = '<div class="alert alert-success background-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Marked Successfully</strong> </div>';
-            $this->attendance->insert($post);
-
-
-
-
-
-
-        } /*end of Foreach of Form Submitted Data*/
-        $this->session->set_flashdata('notification', $d);
-        redirect('Home/dashboard');
-
-
-
-
-    }
-
-
-        public function calculateDailySalary($employeeStartTime, $employeeEndTime, $EmployeeBasicSalary, $EmployeeOTPH) {
-
-
-            // Define constants
-            define('DAILY_SALARY', $EmployeeBasicSalary);
-            define('OT_RATE_PER_HOUR', $EmployeeOTPH);
-            define('WORK_START_TIME', '08:00');
-            define('WORK_END_TIME', '18:00');
-            define('LUNCH_START_TIME', '13:00');
-            define('LUNCH_END_TIME', '14:00');
-
-            // Convert times to minutes since midnight
-            $workStart = strtotime(WORK_START_TIME) / 60;
-            $workEnd = strtotime(WORK_END_TIME) / 60;
-            $lunchStart = strtotime(LUNCH_START_TIME) / 60;
-            $lunchEnd = strtotime(LUNCH_END_TIME) / 60;
-            $empStart = strtotime($employeeStartTime) / 60;
-            $empEnd = strtotime($employeeEndTime) / 60;
-
-            // Calculate regular hours
-            $regularHours = min($workEnd, $empEnd) - max($workStart, $empStart);
-
-            // Deduct lunch hour only if employee works past lunch time
-            if ($empEnd > $lunchEnd && $empStart < $lunchStart)  {
-                $regularHours -= ($lunchEnd - $lunchStart);
-            }
-
-
-
-            $regularHours = max(0, $regularHours / 60); // Convert to hours and ensure non-negative
-
-
-            // Calculate overtime hours
-            $overtimeHours = 0;
-
-
-            if ($empStart=='28975350' && $empEnd=='28975350'){
-                $overtimeHours=0;
-            }
-            else {
-
-                if ($empStart < $workStart) {
-                    $overtimeHours += $workStart - $empStart;
-                }
-                if ($empEnd > $workEnd) {
-                    $overtimeHours += $empEnd - $workEnd;
-                }
-            }
-            $overtimeHours = $overtimeHours / 60; // Convert to hours
-
-
-            $dailySalary=DAILY_SALARY/9;
-
-
-
-            // Calculate salary
-            $regularSalary = $dailySalary*$regularHours;
-            $overtimeSalary = $overtimeHours * OT_RATE_PER_HOUR;
-            $totalSalary = $regularSalary + $overtimeSalary;
-
-            return [
-                'regularHours' => $regularHours,
-                'overtimeHours' => $overtimeHours,
-                'regularSalary' => $regularSalary,
-                'overtimeSalary' => $overtimeSalary,
-                'totalSalary' => $totalSalary
-            ];
-        }
 
 
 

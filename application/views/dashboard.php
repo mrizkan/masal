@@ -72,10 +72,10 @@
                                                                     <input type="time" class="form-control form-txt-danger"  name="form[<?= $k  ?>][End_Time]">
                                                                 </div>
                                                                 <div class="col-sm-2">
-                                                                    <input type="number" class="form-control form-txt-danger"  name="form[<?= $k  ?>][Advance]">
+                                                                    <input type="number" class="form-control form-txt-danger" value="0"  name="form[<?= $k  ?>][Advance]">
                                                                 </div>
                                                                 <div class="col-sm-2">
-                                                                    <input type="number" class="form-control form-txt-danger"  name="form[<?= $k  ?>][Special_Amount]">
+                                                                    <input type="number" class="form-control form-txt-danger"  value="0"  name="form[<?= $k  ?>][Special_Amount]">
                                                                 </div>
                                                             </div>
                                                         <?php endforeach; ?>
@@ -106,9 +106,6 @@
                                                         <table class="table">
                                                             <thead>
                                                             <tr>
-
-                                                                <th>Day</th>
-
                                                             </tr>
                                                             </thead>
                                                             <tbody>
