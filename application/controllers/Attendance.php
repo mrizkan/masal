@@ -31,7 +31,6 @@ class Attendance extends MY_Controller
             $Advance= $record['Advance'];
             $Special_Amount= $record['Special_Amount'];
             $employeeStartTime = $Start_Time;
-            echo "<br>";
             $employeeEndTime = $End_Time;
             $AID = $SelectedDate;
             $EmployeeOTPH = $this->employee->get($EmployeeId)->OTPH;
@@ -70,8 +69,6 @@ class Attendance extends MY_Controller
 
         $this->session->set_flashdata('notification', $d);
         redirect('Home/dashboard');
-
-
 
 
     }
