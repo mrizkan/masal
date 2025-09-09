@@ -149,32 +149,6 @@ class Attendance extends MY_Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     function EditAttendance(){
         $post = $this->input->post('form');
         $EmployeeID = $post[EmployeeId];
@@ -278,6 +252,41 @@ class Attendance extends MY_Controller
 //        exit;
         $this->load->view('salary_report', $d);
     }
+
+    function marked_salary($_id = 0){
+
+        $d['selected_date'] = $this->uri->segment(3);
+
+        $d['records'] = $this->db->query("SELECT * FROM `attendance` WHERE ADate LIKE '$_id';")->result();
+        $d['records2'] = $this->employee->get_all();
+//        p($this->db->last_query());
+//        p($d);
+//        exit;
+
+        $this->load->view('marked_salary', $d);
+    }
+
+
+    function marked_salary_report($_id = 0){
+
+        $d['selected_date'] = $this->uri->segment(3);
+
+        $d['records'] = $this->db->query("SELECT * FROM `attendance` WHERE ADate LIKE '$_id';")->result();
+        $d['records2'] = $this->employee->get_all();
+        p($this->db->last_query());
+        p($d);
+        exit;
+
+        $this->load->view('marked_salary', $d);
+    }
+
+
+
+
+
+
+
+
 
     public function days(){
         $this->load->view('days');

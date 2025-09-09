@@ -94,21 +94,37 @@
 
 
 
+                                        <div class="col-lg-4">
+                                            <!-- Basic Form Inputs card start -->
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Find Previous Day Salary</h5>
+                                                    <div class="card-header-right">
+                                                        <i class="icofont icofont-rounded-down"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <form action="<?= base_url('Attendance/marked_salary_report') ?>" method="post" enctype="multipart/form-data">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6">
+                                                                <input type="date" name="form[adate]"  class="form-control">
+                                                            </div>
+                                                            <div class="col-sm-4">
+
+                                                                <button class="btn btn-primary btn-round">Show</button>
+                                                            </div>
+
+                                                        </div>
+
+                                                </div> <!-- End of card-block tag -->
 
 
 
+                                                <?= form_close() ?>
 
 
-
-
-
-
-
-
-
-
-
-
+                                            </div>
+                                        </div>
 
 
 
