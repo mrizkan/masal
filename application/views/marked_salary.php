@@ -44,6 +44,7 @@
                     <table>
                         <tr>
                             <!--                            <th>#</th>-->
+                            <th>#</th>
                             <th>Employee Name</th>
                             <th>In</th>
                             <th>Out</th>
@@ -55,28 +56,61 @@
                             <th>Special Amount</th>
                         </tr>
 
-                        <?php foreach ($records2 as $k2 => $row2):
-                            foreach ($records as $k => $row):
+                        <?php
+                        // Create a lookup array that combines employee details with attendance
+                        $attendanceLookup = [];
+                        $numbercount=1;
+                        // First, add all employees with null attendance (for handling missing records)
+                        foreach ($records2 as $row2) {
+                            $attendanceLookup[$row2->EmployeeId] = [
+                                'employee' => $row2,
+                                'attendance' => null
+                            ];
+                        }
 
-                                if ($row2->EmployeeId == $row->EmployeeId) { ?>
+                        // Then, add attendance records where they exist
+                        foreach ($records as $row) {
+                            if (isset($attendanceLookup[$row->EmployeeId])) {
+                                $attendanceLookup[$row->EmployeeId]['attendance'] = $row;
+                            }
+                        }
+
+                        // Now use the lookup array
+                        foreach ($attendanceLookup as $data):
+                            $row2 = $data['employee'];
+                            $row = $data['attendance'];
+
+                            if ($row): ?>
+                                <?php if ($row->StartTime == '00:00:00'): ?>
+                                    <tr>
+                                        <td><?php echo $numbercount; ?></td>
+                                        <td><?php echo $row2->EmployeeName; ?></td>
+                                        <td>AB</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                <?php else: ?>
+                                    <tr>
+                                        <td><?php echo $numbercount; ?></td>
+                                        <td><?php echo $row2->EmployeeName; ?></td>
+                                        <td><?php echo $row->StartTime; ?></td>
+                                        <td><?php echo $row->EndTime; ?></td>
+                                        <td><?php echo number_format($row->PerDaySalary, 2); ?></td>
+                                        <td><?php echo number_format($row->OTPayment, 2); ?></td>
+                                        <td><?php echo $row->AdvanceAmount; ?></td>
+                                        <td><?php echo $row->SpecialAmount; ?></td>
+                                    </tr>
+                                <?php endif;  $numbercount++; ?>
+                            <?php else: ?>
                                 <tr>
-                                    <td><?php echo $row2->EmployeeName;  ?></td>
-                                    <td><?php echo $row->StartTime;  ?></td>
-                                    <td><?php echo $row->EndTime;  ?></td>
-                                    <td><?php echo $row->PerDaySalary;  ?></td>
-                                    <td><?php echo $row->OTPayment;  ?></td>
-                                    <td><?php echo $row->AdvanceAmount;  ?></td>
-                                    <td><?php echo $row->SpecialAmount;  ?></td>
-                            </tr>
-
-
-                             <?php } endforeach;
-                                endforeach;  ?>
-
-
-
-
-
+                                    <td><?php echo $row2->EmployeeName; ?></td>
+                                    <td colspan="6">No attendance record</td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </table>
 
 

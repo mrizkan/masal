@@ -110,7 +110,6 @@
                                                                 <input type="date" name="form[adate]"  class="form-control">
                                                             </div>
                                                             <div class="col-sm-4">
-
                                                                 <button class="btn btn-primary btn-round">Show</button>
                                                             </div>
 

@@ -269,22 +269,20 @@ class Attendance extends MY_Controller
 
     function marked_salary_report($_id = 0){
 
-        $d['selected_date'] = $this->uri->segment(3);
+        $d['selected_date'] = $this->input->post('form[adate]');
+
+      $_id= $this->input->post('form[adate]');
+
+
 
         $d['records'] = $this->db->query("SELECT * FROM `attendance` WHERE ADate LIKE '$_id';")->result();
         $d['records2'] = $this->employee->get_all();
-        p($this->db->last_query());
-        p($d);
-        exit;
+//        p($this->db->last_query());
+//        p($d);
+//        exit;
 
         $this->load->view('marked_salary', $d);
     }
-
-
-
-
-
-
 
 
 
