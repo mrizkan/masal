@@ -56,7 +56,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-block">
-                                                    <form id="contactfrm"  method="post" enctype="multipart/form-data">
+<!--                                                    <form action="--><?php //= base_url('Attendance/CalculateSingleSalary') ?><!--"  method="post" enctype="multipart/form-data">-->
+                                                    <form id="contactfrm">
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
                                                                 <input type="date" name="form2[ADate]"

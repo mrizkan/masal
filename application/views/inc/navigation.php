@@ -18,7 +18,7 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class="">
-                                        <a href="<?= base_url('Home/dashboard') ?>">
+                                        <a href="<?= base_url('Attendance/MarkAttendanceSingle') ?>">
                                             <span class="pcoded-micon"></span>
                                             <span class="pcoded-mtext">Mark Attendance</span>
                                             <span class="pcoded-mcaret"></span>

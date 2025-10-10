@@ -14,6 +14,13 @@ class Attendance extends MY_Controller
     }
 
 
+
+    function MarkAttendanceSingle()
+    {
+        redirect('/');
+    }
+
+
     public function CalculateSalary()
     {
         $post2 = $this->input->post('form2');
@@ -78,6 +85,8 @@ class Attendance extends MY_Controller
         $post2 = $this->input->post('form2');
         $post3 = $this->input->post('form');
         $SelectedDate = $post2[ADate];
+//        p($post2);
+//       exit;
 
 
 
@@ -119,7 +128,7 @@ class Attendance extends MY_Controller
             $post['OTPayment'] = $result['overtimeSalary'];
             $post['PerDaySalary'] = $result['regularSalary'];
 
-
+            p($post);
             $d = '<div class="alert alert-success background-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Marked Successfully</strong> </div>';
             $this->attendance->insert($post);
 
@@ -127,7 +136,7 @@ class Attendance extends MY_Controller
 
 
         $this->session->set_flashdata('notification', $d);
-        redirect('Home/dashboard');
+        redirect('/');
 
 
     }
