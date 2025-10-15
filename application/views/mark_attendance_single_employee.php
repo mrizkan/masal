@@ -134,8 +134,38 @@
                                         </div>
 
 
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-2">
+                                            <!--                                            Previous Data start-->
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Previous Day's</h5>
 
+
+                                                </div>
+                                                <div class="card-block table-border-style">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <?php foreach ($records2 as $k => $row2): ?>
+                                                                <tr>
+                                                                    <td> <?= $row2->ADate?> <div class="btn-group " role="group" data-toggle="tooltip" data-placement="top" title="" data-original-title=".btn-xlg">
+                                                                            <button type="button" class="btn btn-primary btn-mini waves-effect waves-light"><a href="<?= base_url() ?>Attendance/marked_salary/<?= $row2->ADate?>" target="_blank" style="color: white;">View </a></button>
+                                                                            <!--                                                                        <button type="button" class="btn btn-danger btn-mini waves-effect waves-light">Delete</button>-->
+
+                                                                        </div></td>
+                                                                </tr>
+                                                            <?php endforeach; ?>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--                                            Previus data end-->
                                         </div>
 
 

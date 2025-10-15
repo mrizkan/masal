@@ -106,10 +106,16 @@
                                 <?php endif;  $numbercount++; ?>
                             <?php else: ?>
                                 <tr>
+                                    <td><?php echo $numbercount; ?></td>
                                     <td><?php echo $row2->EmployeeName; ?></td>
-                                    <td colspan="6">No attendance record</td>
+                                    <td>AB</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
                                 </tr>
-                            <?php endif; ?>
+                            <?php $numbercount++; endif;  ?>
                         <?php endforeach; ?>
                     </table>
 
