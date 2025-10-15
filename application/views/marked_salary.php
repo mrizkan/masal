@@ -23,7 +23,7 @@
     <main class="columns">
         <div class="inner-container">
             <header class="row control-group">
-                <a class="button" href="<?= base_url() ?>Home/index" >
+                <a class="button" href="<?= base_url() ?>" >
                     <i class="ion-ios-home"></i>
                     Home
                 </a>
