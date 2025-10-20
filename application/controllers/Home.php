@@ -55,7 +55,7 @@ class Home extends CI_Controller
 //        p($this->db->last_query());
 //        exit;
 
-            $this->load->view('mark_attendance_single_employee',$d);
+            $this->load->view('dashboard',$d);
 
         }
     }
