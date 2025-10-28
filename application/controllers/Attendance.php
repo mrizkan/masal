@@ -80,65 +80,112 @@ class Attendance extends MY_Controller
 
     }
 
-    public function CalculateSingleSalary()
+    public function CalculateSalarySingle()
     {
-        $post2 = $this->input->post('form2');
-        $post3 = $this->input->post('form');
-        $SelectedDate = $post2[ADate];
-//        p($post2);
-//       exit;
+        // Disable any profiler or debug output
+        $this->output->enable_profiler(FALSE);
 
+        // Set JSON header
+        header('Content-Type: application/json');
 
+        try {
+            // Get POST data
+            $EmployeeId = $this->input->post('EmployeeId');
+            $SelectedDate = $this->input->post('ADate');
+            $Start_Time = $this->input->post('Start_Time');
+            $End_Time = $this->input->post('End_Time');
+            $Advance = $this->input->post('Advance');
+            $Special_Amount = $this->input->post('Special_Amount');
 
+            // Validation
+            if (empty($SelectedDate) || empty($EmployeeId) || empty($Start_Time) || empty($End_Time)) {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'All fields are required'
+                ]);
+                exit;
+            }
 
-            $EmployeeBasicSalary = 0;
-            $EmployeeOTPH = 0;
-            $EmployeeId = $post3[EmployeeId];
-            $Start_Time = $post3['Start_Time'];
-            $End_Time = $post3['End_Time'];
-            $Advance = $post3['Advance'];
-            $Special_Amount = $post3['Special_Amount'];
+            // Get employee details
+            $employeeData = $this->employee->get($EmployeeId);
+
+            if (!$employeeData) {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Employee not found'
+                ]);
+                exit;
+            }
+
+            $EmployeeOTPH = $employeeData->OTPH;
+            $EmployeeBasicSalary = $employeeData->FullDaySalary;
+
             $employeeStartTime = $Start_Time;
             $employeeEndTime = $End_Time;
-            $AID = $SelectedDate;
-            $EmployeeOTPH = $this->employee->get($EmployeeId)->OTPH;
-            $EmployeeBasicSalary = $this->employee->get($EmployeeId)->FullDaySalary;
-//        p($EmployeeOTPH);
-//            p($this->db->last_query());
-//        exit;
 
-            //setting Array Data's
-            $post['adate'] = $SelectedDate;
-            $post['StartTime'] = $Start_Time;
-            $post['EndTime'] = $End_Time;
-            $post['EmployeeId'] = $EmployeeId;
-            $post['AdvanceAmount'] = $Advance;
-            $post['SpecialAmount'] = $Special_Amount;
-
+            // Set default times if empty
             if (empty($employeeStartTime)) {
                 $employeeStartTime = '08:00';
                 $employeeEndTime = '08:00';
             }
 
+            // Calculate salary
             $result = $this->calculateDailySalary($employeeStartTime, $employeeEndTime, $EmployeeBasicSalary, $EmployeeOTPH);
 
-            //   p($result);
+            // Prepare data for insertion
+            $post = array(
+                'adate' => $SelectedDate,
+                'StartTime' => $Start_Time,
+                'EndTime' => $End_Time,
+                'EmployeeId' => $EmployeeId,
+                'AdvanceAmount' => $Advance ? $Advance : 0,
+                'SpecialAmount' => $Special_Amount ? $Special_Amount : 0,
+                'OTRate' => $EmployeeOTPH,
+                'OTPayment' => $result['overtimeSalary'],
+                'PerDaySalary' => $result['regularSalary'],
+                'TotalOTHours' => $result['overtimeHours']
+            );
 
-            $post['OTRate'] = $EmployeeOTPH;
-            $post['OTPayment'] = $result['overtimeSalary'];
-            $post['PerDaySalary'] = $result['regularSalary'];
+            // Check if attendance already exists for this employee on this date
+            $existing = $this->db->query("SELECT * FROM attendance WHERE EmployeeId = ? AND ADate = ?",
+                array($EmployeeId, $SelectedDate))->row();
 
-            p($post);
-            $d = '<div class="alert alert-success background-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Marked Successfully</strong> </div>';
-            $this->attendance->insert($post);
+            if ($existing) {
+                // Update existing record
+                $this->db->where('EmployeeId', $EmployeeId);
+                $this->db->where('ADate', $SelectedDate);
+                $inserted = $this->db->update('attendance', $post);
+                $message = 'Attendance updated successfully';
+            } else {
+                // Insert new record
+                $inserted = $this->attendance->insert($post);
+                $message = '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                        <i class="icofont icofont-close-line-circled"></i>
+                                                                    </button>
+                                                                    <strong>Success!</strong>';
+            }
 
+            if ($inserted) {
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => $message,
+                    'data' => $post
+                ]);
+            } else {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Failed to save attendance'
+                ]);
+            }
 
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Error: ' . $e->getMessage()
+            ]);
+        }
 
-
-        $this->session->set_flashdata('notification', $d);
-        redirect('/');
-
-
+        exit;
     }
 
 

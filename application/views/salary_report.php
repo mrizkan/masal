@@ -46,7 +46,7 @@
 
 
             ?>
-            <section class="row" style="display:block;">
+            <section class="row" style="display:block; width: 120%;">
 
                 <div class="large invoice-container">
                     <h2 style="font-size:21px; text-align:center;"> <?= $records2->EmployeeName ?> Salary Report - <?= $month ?> - <?= $year ?> </h2>
@@ -58,6 +58,7 @@
                             <th>Out</th>
 
                             <th>Per Day Salary</th>
+                            <th>OT Hours</th>
 
                             <th>OT Payment</th>
                             <th>Advance</th>
@@ -114,6 +115,7 @@
                                         <?php } ?>
 
                                         <td>Rs. <?= number_format($row->PerDaySalary,2);  ?></td>
+                                        <td> <?= number_format($row->TotalOTHours,2);  ?></td>
 
 
 
@@ -145,6 +147,7 @@
                                     <td> - </td>
                                     <td> - </td>
                                     <td> - </td>
+                                    <td> - </td>
 
                                 </tr>
                             <?php } else{
@@ -154,6 +157,7 @@
                                 <tr>
                                     <td><?php echo $currentDate->format('m-j')."  ".$dayname= $currentDate->format('l'); ?></td>
                                     <td> AB </td>
+                                    <td> - </td>
                                     <td> - </td>
                                     <td> - </td>
                                     <td> - </td>
