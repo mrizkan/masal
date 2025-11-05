@@ -37,7 +37,7 @@
                 </style>
             </header>
 
-            <section class="row" style="display:block;">
+            <section class="row" style="display:block; width: 120%;">
 
                 <div class="large invoice-container">
                     <h2 style="font-size:21px; text-align:center;"> Attendance Report - <?= $selected_date ?> </h2>
@@ -50,6 +50,7 @@
                             <th>Out</th>
 
                             <th>Per Day Salary</th>
+                            <th>OT Hours</th>
 
                             <th>OT Payment</th>
                             <th>Advance</th>
@@ -91,14 +92,16 @@
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
+                                        <td>-</td>
                                     </tr>
                                 <?php else: ?>
                                     <tr>
                                         <td><?php echo $numbercount; ?></td>
                                         <td><?php echo $row2->EmployeeName; ?></td>
-                                        <td><?php echo $row->StartTime; ?></td>
-                                        <td><?php echo $row->EndTime; ?></td>
+                                        <td><?=  date("g:i a", strtotime("$row->StartTime"))  ?></td>
+                                        <td><?=  date("g:i a", strtotime("$row->EndTime"))  ?></td>
                                         <td><?php echo number_format($row->PerDaySalary, 2); ?></td>
+                                        <td><?php echo number_format($row->TotalOTHours, 2); ?></td>
                                         <td><?php echo number_format($row->OTPayment, 2); ?></td>
                                         <td><?php echo $row->AdvanceAmount; ?></td>
                                         <td><?php echo $row->SpecialAmount; ?></td>
@@ -109,6 +112,7 @@
                                     <td><?php echo $numbercount; ?></td>
                                     <td><?php echo $row2->EmployeeName; ?></td>
                                     <td>AB</td>
+                                    <td>-</td>
                                     <td>-</td>
                                     <td>-</td>
                                     <td>-</td>

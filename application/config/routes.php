@@ -63,4 +63,5 @@ $route['Dashboard'] = 'Home/dashboard';
 
 $route['404_override'] = 'Home/e_404';
 
-
+$route['salary-download'] = 'salary/dashboard';
+$route['generate-salary-sheets'] = 'salary/generate_all_salary_sheets';
