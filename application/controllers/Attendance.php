@@ -75,7 +75,7 @@ class Attendance extends MY_Controller
 
 
         $this->session->set_flashdata('notification', $d);
-        redirect('Home/dashboard');
+        redirect('/');
 
 
     }
@@ -268,7 +268,7 @@ class Attendance extends MY_Controller
         $d['records2'] = $this->db->query("DELETE from attendance where EmployeeId=" . $EmployeeID . " AND ADate='" . $DateToEdit . "'");
         $d = '<div class="alert alert-danger background-danger"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="icofont icofont-close-line-circled text-white"></i> </button> <strong>Attendance Deleted Successfully</strong> </div>';
         $this->session->set_flashdata('notification', $d);
-        redirect('Home/dashboard');
+        redirect('/');
 
 
     }
